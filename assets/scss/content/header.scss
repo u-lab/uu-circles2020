@@ -1,0 +1,13 @@
+.header-heading {
+  font-size: 20px;
+  @include mq(sm) {
+    font-size: 30px;
+  }
+}
+
+.header-subheading {
+  font-size: 16px;
+  @include mq(sm) {
+    font-size: 20px;
+  }
+}
