@@ -6,7 +6,7 @@
 
     <v-row>
       <v-col
-        v-for="(circle, key) in shuffleArr(circles)"
+        v-for="(circle, key) in circles"
         :key="key"
         cols="6"
         xs="6"
@@ -16,6 +16,7 @@
       >
         <v-card :to="`/circles/${circle.id}`" hover>
           <v-img :src="circle.image" />
+
           <v-card-title
             class="justify-center circle-name"
             :class="getPublishColorClass(circle.public)"
@@ -36,6 +37,8 @@
 </template>
 
 <script>
+import { shuffleArr } from '@/util/shuffleArr'
+
 export default {
   async asyncData({ app, params, store }) {
     // firestoreからDataの回収
@@ -62,20 +65,13 @@ export default {
     return { circles: items }
   },
 
+  created() {
+    this.circles = shuffleArr(this.circles)
+  },
+
   methods: {
     getPublishColorClass(bool) {
       return bool ? 'circle-light-blue' : 'circle-light-green'
-    },
-
-    shuffleArr(array) {
-      for (let i = array.length - 2; i > 0; i--) {
-        const r = Math.floor(Math.random() * (i + 1))
-        const tmp = array[i]
-        array[i] = array[r]
-        array[r] = tmp
-      }
-
-      return array.reverse()
     }
   }
 }

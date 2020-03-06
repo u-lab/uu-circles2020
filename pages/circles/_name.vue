@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="8">
-        <h2>{{ circle.name }}</h2>
+        <h2>{{ circle.shortname || circle.name }}</h2>
       </v-col>
       <v-col cols="4" class="text-right">
         <span v-if="circle.public" class="light-blue white--text pa-2 radius">
@@ -16,7 +16,9 @@
 
     <v-row>
       <v-col cols="12" xs="12" sm="12" md="6">
-        <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
+        <a :href="circle.image" target="_blank" rel="noopener">
+          <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
+        </a>
       </v-col>
 
       <v-col cols="12" xs="12" sm="12" md="6">

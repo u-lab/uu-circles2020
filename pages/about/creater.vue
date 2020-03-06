@@ -39,6 +39,17 @@
       </p>
     </v-col>
 
+    <v-col>
+      <h2>意見・要望について</h2>
+      <p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform?usp=sf_link"
+        >
+          Google Formへ
+        </a>
+      </p>
+    </v-col>
+
     <v-col cols="12" class="d-flex justify-center">
       <v-btn to="/" nuxt color="blue" large>
         サークルビラ一覧へ
