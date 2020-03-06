@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="8">
-        <h2>{{ circle.name }}</h2>
+        <h2>{{ circle.shortname || circle.name }}</h2>
       </v-col>
       <v-col cols="4" class="text-right">
         <span v-if="circle.public" class="light-blue white--text pa-2 radius">
