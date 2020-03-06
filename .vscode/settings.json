@@ -1,0 +1,38 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.variables": {
+    "lang": "ja"
+  },
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "vue"],
+  "files.insertFinalNewline": true,
+  "prettier.jsxSingleQuote": true,
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "[css]": {
+    "editor.formatOnSave": false
+  },
+  "[javascript]": {
+    "editor.tabSize": 2
+  },
+  "[vue]": {
+    "editor.tabSize": 2
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "vetur.format.defaultFormatter.css": "none",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.less": "none",
+  "vetur.format.defaultFormatter.postcss": "none",
+  "vetur.format.defaultFormatter.stylus": "none"
+}
