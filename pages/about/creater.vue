@@ -7,7 +7,9 @@
     <v-col cols="12">
       <h2>運営団体について</h2>
       <p>このサイトは学生団体U-labが作成しました。</p>
-      <p><nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link></p>
+      <p>
+        <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
+      </p>
       <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
     </v-col>
 
