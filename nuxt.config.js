@@ -3,6 +3,10 @@ require('dotenv').config()
 
 export default {
   mode: 'spa',
+
+  env: {
+    appUrl: process.env.BASE_URL
+  },
   /*
    ** Headers of the page
    */

@@ -14,13 +14,14 @@
         md="3"
         lg="3"
       >
-        <v-card
-          :to="`/circles/${circle.id}`"
-          :color="getPublishColor(circle.public)"
-          hover
-        >
+        <v-card :to="`/circles/${circle.id}`" hover>
           <v-img :src="circle.image" />
-          <v-card-title>{{ circle.name }}</v-card-title>
+          <v-card-title
+            class="justify-center circle-name"
+            :class="getPublishColorClass(circle.public)"
+          >
+            {{ circle.name }}
+          </v-card-title>
         </v-card>
       </v-col>
     </v-row>
@@ -62,8 +63,8 @@ export default {
   },
 
   methods: {
-    getPublishColor(bool) {
-      return bool ? 'light-blue' : 'light-green'
+    getPublishColorClass(bool) {
+      return bool ? 'circle-light-blue' : 'circle-light-green'
     },
 
     shuffleArr(array) {
@@ -80,4 +81,25 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.circle-name {
+  font-size: 1rem;
+  line-height: 1.8;
+  padding: 8px;
+}
+
+.circle-name::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.circle-light-blue::before {
+  background-color: #4926c7;
+}
+
+.circle-light-green::before {
+  background-color: #84fa33;
+}
+</style>

@@ -45,24 +45,36 @@
         </div>
 
         <div>
-          <v-btn icon>
-            <v-icon>mdi-share-variant</v-icon>
-          </v-btn>
+          <client-only>
+            <v-btn icon>
+              <v-icon>mdi-share-variant</v-icon>
+            </v-btn>
+          </client-only>
         </div>
       </v-col>
     </v-row>
 
-    <div class="d-flex flex-row-reverse justify-center justify-md-start">
-      <v-btn-toggle mandatory>
-        <v-btn v-if="beforeCircle" :to="`/circles/${beforeCircle.id}`" nuxt>
+    <div class="d-flex flex-md-row-reverse justify-center justify-md-start">
+      <v-btn-toggle mandatory class="d-flex flex-column flex-md-row">
+        <v-btn
+          v-if="beforeCircle"
+          :to="`/circles/${beforeCircle.id}`"
+          nuxt
+          class="mb-2"
+        >
           <v-icon>mdi-format-align-left</v-icon>
           <span class="ml-2">前を見る</span>
         </v-btn>
-        <v-btn to="/" nuxt link>
+        <v-btn to="/" nuxt link class="mb-2">
           <v-icon>mdi-format-align-justify</v-icon>
           <span class="ml-2">一覧を見る</span>
         </v-btn>
-        <v-btn v-if="nextCircle" :to="`/circles/${nextCircle.id}`" nuxt>
+        <v-btn
+          v-if="nextCircle"
+          :to="`/circles/${nextCircle.id}`"
+          nuxt
+          class="mb-2"
+        >
           <v-icon>mdi-format-align-left</v-icon>
           <span class="ml-2">次を見る</span>
         </v-btn>
@@ -127,7 +139,26 @@ export default {
   data() {
     return {
       circle: '',
-      success: false
+      success: false,
+      shareData: {
+        title: document.title,
+        url: ''
+      }
+    }
+  },
+
+  created() {
+    this.shareData.url = process.env.appUrl + this.$route.path
+  },
+
+  methods: {
+    async share(data) {
+      if (window.navigator.share) {
+        await window.navigator
+          .share(data)
+          .then(() => console.log('Successful share'))
+          .catch((error) => console.log('Error sharing', error))
+      }
     }
   }
 }
