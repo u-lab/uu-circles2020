@@ -16,7 +16,9 @@
 
     <v-row>
       <v-col cols="12" xs="12" sm="12" md="6">
-        <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
+        <a :href="circle.image" target="_blank" rel="noopener">
+          <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
+        </a>
       </v-col>
 
       <v-col cols="12" xs="12" sm="12" md="6">
