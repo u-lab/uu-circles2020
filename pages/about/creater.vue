@@ -42,8 +42,9 @@
       <p>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform?usp=sf_link"
-          >Google Formへ</a
         >
+          Google Formへ
+        </a>
       </p>
     </v-col>
 
