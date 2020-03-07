@@ -8,12 +8,15 @@
 }
 
 .circle-name-title {
-  font-size: 20px;
+  font-size: 18px;
   @include mq(sm) {
     font-size: 30px;
   }
 }
 
 .circle-name-title3 {
-  font-size: 18px;
+  font-size: 20px;
+  &::before {
+    content: "　";
+  }
 }

@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12" xs="12" sm="12" md="6">
-        <a :href="circle.image" target="_blank" rel="noopener">
+        <a v-if="!loading" :href="circle.image" target="_blank" rel="noopener">
           <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
         </a>
       </v-col>
@@ -11,7 +11,7 @@
         <div>
           <h2 class="circle-name-title">{{ circle.name }}</h2>
 
-          <div class="d-sm-flex justify-space-between">
+          <div class="d-sm-flex justify-space-between pb-3">
             <h3 v-show="circle.shortname" class="circle-name-title3">
               {{ circle.shortname }}
             </h3>
@@ -124,24 +124,30 @@ export default {
 
     const doc = await ref.get()
     const item = doc.data()
-    const storageRef = app.$fireStorage.ref()
-
-    item.image = await storageRef
-      .child(`circles/${item.image}`)
-      .getDownloadURL()
 
     return {
+      loading: true,
       success: true,
       beforeCircle: beforeItem,
       circle: item,
       nextCircle: nextItem
     }
   },
+
   data() {
     return {
       circle: '',
       success: false
     }
+  },
+
+  async mounted() {
+    const storageRef = this.$fireStorage.ref()
+
+    this.circle.image = await storageRef
+      .child(`circles/${this.circle.image}`)
+      .getDownloadURL()
+    this.loading = false
   },
 
   head() {

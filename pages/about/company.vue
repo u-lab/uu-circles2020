@@ -9,13 +9,17 @@
     </v-col>
 
     <v-col cols="12" class="d-flex justify-center">
-      <v-btn to="/" nuxt color="blue" large>
-        サークルビラ一覧へ
-      </v-btn>
+      <circle-list-btn />
     </v-col>
   </v-row>
 </template>
 
 <script>
-export default {}
+import CircleListBtn from '@/components/util/CircleListBtn'
+
+export default {
+  components: {
+    CircleListBtn
+  }
+}
 </script>
