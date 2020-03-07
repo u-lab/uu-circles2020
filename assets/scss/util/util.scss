@@ -1,3 +1,15 @@
 .radius {
   border-radius: 5px;
 }
+
+.loading-col {
+  position: relative;
+}
+
+.loading-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}

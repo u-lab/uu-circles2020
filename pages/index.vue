@@ -21,6 +21,26 @@
           :name="circle.shortname || circle.name"
         />
       </v-col>
+      <template v-if="loading">
+        <v-col
+          v-for="i in 2"
+          :key="i"
+          cols="12"
+          xs="6"
+          sm="4"
+          md="4"
+          lg="4"
+          class="loading-col"
+        >
+          <v-progress-circular
+            indeterminate
+            color="gray"
+            :size="70"
+            :width="7"
+            class="loading-circle"
+          ></v-progress-circular>
+        </v-col>
+      </template>
     </v-row>
 
     <v-row>
@@ -41,14 +61,33 @@ export default {
     CircleItem
   },
 
-  async asyncData({ app, params, store }) {
+  data() {
+    return {
+      loading: true,
+      circles: [
+        {
+          date: '',
+          description: '',
+          id: 'u-lab',
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/circles%2Fu-lab.jpg?alt=media&token=bb41f324-65ea-49bc-8f00-3b71879bfbf7',
+          name: '宇都宮大学情報デザインサークル',
+          public: 'student',
+          shortname: 'U-lab',
+          sns: ''
+        }
+      ]
+    }
+  },
+
+  async mounted() {
     // firestoreからDataの回収
-    const collection = app.$fireStore.collection('circles')
+    const collection = this.$fireStore.collection('circles')
     const docs = await collection.get()
-    const storageRef = app.$fireStorage.ref()
+    const storageRef = this.$fireStorage.ref()
 
     // 戻り値の生成
-    const items = []
+    let items = []
     const docsLen = docs.docs.length
     for (let i = 0; i < docsLen; i++) {
       const _doc = docs.docs[i]
@@ -62,14 +101,18 @@ export default {
             .getDownloadURL()
         } catch (e) {}
       }
-      items.push(_data)
+
+      if (_data.id === 'u-lab') {
+        this.circles[0] = _data
+      } else {
+        items.push(_data)
+      }
     }
 
-    return { circles: items }
-  },
+    items = shuffleArr(items)
 
-  created() {
-    this.circles = shuffleArr(this.circles)
+    this.loading = false
+    this.circles = [...this.circles, ...items]
   },
 
   methods: {
