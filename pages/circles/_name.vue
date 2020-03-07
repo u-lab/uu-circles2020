@@ -1,8 +1,17 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12" xs="12" sm="12" md="6">
-        <a v-if="!loading" :href="circle.image" target="_blank" rel="noopener">
+      <v-col cols="12" xs="12" sm="12" md="6" class="loading-col">
+        <template v-if="loading">
+          <v-progress-circular
+            indeterminate
+            color="gray"
+            :size="70"
+            :width="7"
+            class="loading-circle"
+          ></v-progress-circular>
+        </template>
+        <a v-else :href="circle.image" target="_blank" rel="noopener">
           <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
         </a>
       </v-col>
@@ -81,6 +90,30 @@
 <script>
 import GroupBadge from '@/components/util/GroupBadge'
 
+function getItemAfter(arr, count) {
+  let item
+  if (arr[count + 1]) {
+    const _doc = arr[count + 1]
+    const _data = _doc.data()
+    _data.id = _doc.id
+    item = _data
+  }
+
+  return item
+}
+
+function getItemBefore(arr, count) {
+  let item
+  if (arr[count - 1]) {
+    const _doc = arr[count - 1]
+    const _data = _doc.data()
+    _data.id = _doc.id
+    item = _data
+  }
+
+  return item
+}
+
 export default {
   components: {
     GroupBadge
@@ -88,66 +121,56 @@ export default {
 
   async asyncData({ app, params }) {
     const collection = app.$fireStore.collection('circles')
-    const ref = collection.doc(params.name)
-    const docs = await collection.get()
+    let count // サークルの配列の番号
+    let circle // サークルObject
+    // サークル一覧の取得
+    const _docs = await collection.get()
+    const docs = _docs.docs
 
-    const docsLen = docs.docs.length
-
-    let count
-    let flag = false
-    for (count = 0; count < docsLen; count++) {
-      const _doc = docs.docs[count]
+    // パラメータに一致するサークルを探す
+    for (count = 0; count < docs.length; count++) {
+      const _doc = docs[count]
 
       if (_doc.id === params.name) {
-        flag = true
+        circle = _doc.data()
+        circle.id = _doc.id
         break
       }
     }
 
-    let nextItem
-    let beforeItem
-    if (flag) {
-      if (docs.docs[count + 1]) {
-        const _doc = docs.docs[count + 1]
-        const _data = _doc.data()
-        _data.id = _doc.id
-        nextItem = _data
-      }
-
-      if (docs.docs[count - 1]) {
-        const _beforeDoc = docs.docs[count - 1]
-        const _beforeData = _beforeDoc.data()
-        _beforeData.id = _beforeDoc.id
-        beforeItem = _beforeData
-      }
-    }
-
-    const doc = await ref.get()
-    const item = doc.data()
-
     return {
-      loading: true,
       success: true,
-      beforeCircle: beforeItem,
-      circle: item,
-      nextCircle: nextItem
+      circle,
+      docs,
+      count
     }
   },
 
   data() {
     return {
       circle: '',
-      success: false
+      count: '',
+      docs: '',
+      loading: true,
+      success: false,
+      nextCircle: '',
+      beforeCircle: ''
     }
+  },
+
+  created() {
+    this.beforeCircle = getItemBefore(this.docs, this.count) // 一つ前のサークル情報取得
+    this.afterCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
   },
 
   async mounted() {
     const storageRef = this.$fireStorage.ref()
 
+    // サークル画像のURLの取得
     this.circle.image = await storageRef
       .child(`circles/${this.circle.image}`)
       .getDownloadURL()
-    this.loading = false
+    this.loading = false // ローディングアニメーションの削除
   },
 
   head() {
