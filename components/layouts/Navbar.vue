@@ -8,7 +8,7 @@
         <p v-else class="header-heading m0">
           宇都宮大学のサークルビラ一覧
         </p>
-        <p class="mb-0 header-subheading">協賛 U-lab</p>
+        <p class="mb-0 header-subheading">企画・運営 U-lab</p>
       </div>
     </div>
   </header>

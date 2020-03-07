@@ -6,11 +6,18 @@
 
     <v-col cols="12">
       <about-heading :num="2">運営団体について</about-heading>
-      <p>このサイトは学生団体U-labが作成しました。</p>
-      <p>
-        <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
-      </p>
-      <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
+      <div class="d-flex">
+        <div>
+          <p>このサイトは学生団体U-labが作成しました。</p>
+          <p>
+            <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
+          </p>
+          <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
+        </div>
+        <div>
+          <v-img src="/u-lab-icon.png" width="100" />
+        </div>
+      </div>
     </v-col>
 
     <v-col cols="12">

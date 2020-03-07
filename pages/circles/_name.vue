@@ -54,15 +54,18 @@
         </div>
 
         <div class="pt-4">
-          <div v-if="circle.sns">
-            <v-btn
-              v-for="(sns, key) in circle.sns"
-              :key="key"
-              :href="sns.url"
-              class="mb-4"
-            >
-              {{ key }}{{ sns.name }}
-            </v-btn>
+          <div v-if="circle.sns" class="d-flex">
+            <template v-for="(sns, key) in circle.sns">
+              <twitter-icon v-if="isTwitter(key)" :key="key" :href="sns.url" />
+              <instagram-icon
+                v-else-if="isInstagram(key)"
+                :key="key"
+                :href="sns.url"
+              />
+              <v-btn v-else :key="key" :href="sns.url" class="mb-4">
+                {{ key }}{{ sns.name }}
+              </v-btn>
+            </template>
           </div>
         </div>
       </v-col>
@@ -89,12 +92,16 @@
 
 <script>
 import GroupBadge from '@/components/util/GroupBadge'
+import InstagramIcon from '@/components/util/InstagramIcon'
+import TwitterIcon from '@/components/util/TwitterIcon'
 import { getItemBefore } from '@/util/getItemBefore'
 import { getItemAfter } from '@/util/getItemAfter'
 
 export default {
   components: {
-    GroupBadge
+    GroupBadge,
+    InstagramIcon,
+    TwitterIcon
   },
 
   async asyncData({ app, params }) {
@@ -149,6 +156,16 @@ export default {
       .child(`circles/${this.circle.image}`)
       .getDownloadURL()
     this.loading = false // ローディングアニメーションの削除
+  },
+
+  methods: {
+    isTwitter(key) {
+      return key.toLowerCase() === 'twitter'
+    },
+
+    isInstagram(key) {
+      return key.toLowerCase() === 'instagram'
+    }
   },
 
   head() {
