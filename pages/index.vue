@@ -1,9 +1,12 @@
 <template>
   <div>
-    <div class="d-flex justify-center">
-      <p class="intro-background pa-6">
-        このサイトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができる場所です。
-      </p>
+    <div class="d-flex justify-center py-2">
+      <div class="intro-background pa-6">
+        <p class="mb-0">
+          このサイトは新入生の新生活を応援したいという思いから有志によって作られました
+        </p>
+        <p class="mb-0">在校生一同皆様のご入学を心からお祝い申し上げます</p>
+      </div>
     </div>
 
     <v-row>
@@ -43,13 +46,6 @@
           ></v-progress-circular>
         </v-col>
       </template>
-    </v-row>
-
-    <v-row>
-      <v-col cols="1" />
-      <v-col cols="10">
-        ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。
-      </v-col>
     </v-row>
   </div>
 </template>

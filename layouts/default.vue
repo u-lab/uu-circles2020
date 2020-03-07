@@ -3,7 +3,7 @@
     <navbar />
 
     <v-content>
-      <v-container fluid class="px-6">
+      <v-container fluid class="px-6 pb-1">
         <nuxt />
       </v-container>
     </v-content>

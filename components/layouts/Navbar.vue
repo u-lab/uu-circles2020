@@ -1,5 +1,5 @@
 <template>
-  <header class="d-flex justify-space-around app-bar mt-2 py-3">
+  <header class="d-flex justify-space-around app-bar mt-4 py-3">
     <div class="background-container">
       <div class="text-center background-color">
         <h1 v-if="$route.path === '/'" class="header-heading m0">

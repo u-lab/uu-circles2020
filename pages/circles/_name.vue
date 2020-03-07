@@ -58,25 +58,40 @@
             <icon-group :sns="circle.sns" />
           </template>
         </div>
+
+        <div class="d-flex justify-center mb-4">
+          <v-btn
+            v-if="beforeCircle"
+            :to="`/circles/${beforeCircle.id}`"
+            nuxt
+            color="#0b2157"
+            dark
+          >
+            <v-icon dark>mdi-menu-left</v-icon>
+            <span class="ml-2">前を見る</span>
+          </v-btn>
+
+          <v-btn
+            v-if="nextCircle"
+            :to="`/circles/${nextCircle.id}`"
+            nuxt
+            color="#0b2157"
+            dark
+          >
+            <span class="ml-2">次を見る</span>
+            <v-icon dark>mdi-menu-right</v-icon>
+          </v-btn>
+          <!-- </v-btn-toggle> -->
+        </div>
+
+        <div class="d-flex justify-center">
+          <v-btn to="/" nuxt color="#0b2157" dark>
+            <v-icon small>mdi-format-align-justify</v-icon>
+            <span class="ml-2">一覧を見る</span>
+          </v-btn>
+        </div>
       </v-col>
     </v-row>
-
-    <div class="d-flex flex-md-row-reverse justify-center justify-md-start">
-      <v-btn-toggle mandatory class="d-flex flex-column flex-md-row">
-        <v-btn v-if="beforeCircle" :to="`/circles/${beforeCircle.id}`" nuxt>
-          <v-icon>mdi-menu-left</v-icon>
-          <span class="ml-2">前を見る</span>
-        </v-btn>
-        <v-btn to="/" nuxt>
-          <v-icon>mdi-format-align-justify</v-icon>
-          <span class="ml-2">一覧を見る</span>
-        </v-btn>
-        <v-btn v-if="nextCircle" :to="`/circles/${nextCircle.id}`" nuxt>
-          <span class="ml-2">次を見る</span>
-          <v-icon>mdi-menu-right</v-icon>
-        </v-btn>
-      </v-btn-toggle>
-    </div>
   </div>
 </template>
 
