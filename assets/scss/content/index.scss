@@ -2,4 +2,9 @@
   max-width: 800px;
   background-color: #eee;
   border-radius: 8px;
+  font-size: 0.9rem;
+
+  @include mq(sm) {
+    font-size: 1rem;
+  }
 }

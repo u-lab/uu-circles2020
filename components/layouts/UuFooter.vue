@@ -2,7 +2,7 @@
   <v-footer class="d-flex justify-center flex-column">
     <nuxt-link to="/about/creater" class="mb-2">このサイトについて</nuxt-link>
     <nuxt-link to="/about/company" class="mb-2">協賛企業様一覧</nuxt-link>
-    <small>2020 &copy; 宇都宮大学情報デザインサークル U-lab</small>
+    <small class="mb-2">2020 &copy; 宇都宮大学情報デザインサークル U-lab</small>
   </v-footer>
 </template>
 
