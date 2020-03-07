@@ -47,7 +47,27 @@ export default {
         content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png'
+      },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -131,14 +151,16 @@ export default {
     id: 'UA-159871975-1'
   },
 
-  manifest: {
-    name: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
-    theme_color: '#dbf7ff',
-    background_color: '#ffffff',
-    display: 'standalone',
-    Scope: '/',
-    start_url: '/',
-    splash_pages: null
+  pwa: {
+    manifest: {
+      name: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
+      theme_color: '#ffffff',
+      background_color: '#ffffff',
+      display: 'standalone',
+      Scope: '/',
+      start_url: '/',
+      splash_pages: null
+    }
   },
 
   /*
