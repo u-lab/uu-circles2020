@@ -1,9 +1,11 @@
-@import "variables";
+@import 'variables';
 
 // functions
-@import "functions/mq.scss";
+@import 'functions/mq.scss';
 
 // content
-@import "content/header.scss";
-@import "content/circle.scss";
-@import "util/util.scss";
+@import 'content/header.scss';
+@import 'content/circle.scss';
+@import 'content/index.scss';
+@import 'content/about.scss';
+@import 'util/util.scss';

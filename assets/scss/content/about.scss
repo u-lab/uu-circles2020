@@ -1,0 +1,21 @@
+.about-heading {
+  font-size: 28px;
+
+  @include mq(sm) {
+    font-size: 32px;
+  }
+}
+
+.about-heading2 {
+  font-size: 24px;
+  @include mq(sm) {
+    font-size: 28px;
+  }
+}
+
+.about-heading3 {
+  font-size: 20px;
+  @include mq(sm) {
+    font-size: 24px;
+  }
+}

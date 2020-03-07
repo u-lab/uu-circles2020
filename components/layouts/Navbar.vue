@@ -1,29 +1,15 @@
 <template>
   <header class="d-flex justify-space-around app-bar">
-    <div>
-      <v-img src="/headerlogo.png" class="d-none d-md-block" />
-    </div>
-
     <div class="background-container">
       <div class="text-center background-color">
-        <h1 class="header-heading">宇都宮大学のサークルビラ一覧</h1>
-        <p class="mb-0 header-subheading">提供 U-lab</p>
+        <h1 v-if="$route.path === '/'" class="header-heading m0">
+          宇都宮大学のサークルビラ一覧
+        </h1>
+        <p v-else class="header-heading m0">
+          宇都宮大学のサークルビラ一覧
+        </p>
+        <p class="mb-0 header-subheading">協賛 U-lab</p>
       </div>
-    </div>
-
-    <div>
-      <v-img src="/headerlogo.png" class="d-none d-md-block" />
     </div>
   </header>
 </template>
-
-<script>
-export default {}
-</script>
-
-<style scoped>
-.app-bar {
-  border: #fff 10px solid;
-  background-color: #dbf7ff !important;
-}
-</style>

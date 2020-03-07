@@ -1,8 +1,10 @@
 <template>
   <div>
-    <p class="text-center">
-      このサイトは新入生の新生活を応援したいという思いから有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができる場所です。
-    </p>
+    <div class="d-flex justify-center">
+      <p class="intro-background pa-6">
+        このサイトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができる場所です。
+      </p>
+    </div>
 
     <v-row>
       <v-col

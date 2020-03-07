@@ -1,7 +1,7 @@
 <template>
   <v-row class="background">
     <v-col cols="12">
-      <h1 class="text-center">協賛企業様一覧</h1>
+      <h1 class="text-center about-heading">協賛企業様一覧</h1>
     </v-col>
 
     <v-col cols="12">
