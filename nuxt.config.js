@@ -78,7 +78,6 @@ export default {
       measurementId: process.env.FIREBASE_MESSAGING_SENDER_ID
     },
     services: {
-      auth: true, // Just as example. Can be any other service.
       firestore: true,
       storage: true
     }

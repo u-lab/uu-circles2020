@@ -15,6 +15,7 @@
         lg="4"
       >
         <circle-item
+          v-if="circle.id && circle.image && circle.name"
           :to="`/circles/${circle.id}`"
           :src="circle.image"
           :name="circle.name"
@@ -55,9 +56,11 @@ export default {
       _data.id = _doc.id
       if (_data.image) {
         // 画像のURLの生成
-        _data.image = await storageRef
-          .child(`circles/${_data.image}`)
-          .getDownloadURL()
+        try {
+          _data.image = await storageRef
+            .child(`circles/${_data.image}`)
+            .getDownloadURL()
+        } catch (e) {}
       }
       items.push(_data)
     }
