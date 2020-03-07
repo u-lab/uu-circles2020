@@ -1,6 +1,6 @@
 <template>
   <a :href="href" class="mr-4">
-    <v-img src="/instagram.png" width="50" />
+    <v-img src="/instagram-i.png" width="50" />
   </a>
 </template>
 
