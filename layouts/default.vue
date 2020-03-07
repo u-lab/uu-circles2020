@@ -2,8 +2,8 @@
   <v-app>
     <navbar />
 
-    <v-content class="background-color">
-      <v-container>
+    <v-content>
+      <v-container fluid class="px-6">
         <nuxt />
       </v-container>
     </v-content>
@@ -23,9 +23,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.background-color {
-  background-color: #5e88a3;
-}
-</style>

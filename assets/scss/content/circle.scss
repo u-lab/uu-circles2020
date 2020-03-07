@@ -1,0 +1,19 @@
+.date-border {
+  border: 1px solid #000;
+  border-radius: 5px;
+
+  @include mq(sm) {
+    border-radius: 0;
+  }
+}
+
+.circle-name-title {
+  font-size: 20px;
+  @include mq(sm) {
+    font-size: 30px;
+  }
+}
+
+.circle-name-title3 {
+  font-size: 18px;
+}

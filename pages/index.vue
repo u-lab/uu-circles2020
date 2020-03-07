@@ -8,22 +8,17 @@
       <v-col
         v-for="(circle, key) in circles"
         :key="key"
-        cols="6"
+        cols="12"
         xs="6"
         sm="4"
-        md="3"
-        lg="3"
+        md="4"
+        lg="4"
       >
-        <v-card :to="`/circles/${circle.id}`" hover>
-          <v-img :src="circle.image" />
-
-          <v-card-title
-            class="justify-center circle-name"
-            :class="getPublishColorClass(circle.public)"
-          >
-            {{ circle.name }}
-          </v-card-title>
-        </v-card>
+        <circle-item
+          :to="`/circles/${circle.id}`"
+          :src="circle.image"
+          :name="circle.name"
+        />
       </v-col>
     </v-row>
 
@@ -38,8 +33,13 @@
 
 <script>
 import { shuffleArr } from '@/util/shuffleArr'
+import CircleItem from '@/components/CircleItem.vue'
 
 export default {
+  components: {
+    CircleItem
+  },
+
   async asyncData({ app, params, store }) {
     // firestoreからDataの回収
     const collection = app.$fireStore.collection('circles')
