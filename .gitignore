@@ -92,3 +92,4 @@ sw.*
 .env.local
 .env.prod
 .env.production
+.firebase
