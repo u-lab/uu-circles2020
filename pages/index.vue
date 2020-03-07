@@ -18,7 +18,7 @@
           v-if="circle.id && circle.image && circle.name"
           :to="`/circles/${circle.id}`"
           :src="circle.image"
-          :name="circle.name"
+          :name="circle.shortname || circle.name"
         />
       </v-col>
     </v-row>

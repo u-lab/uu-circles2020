@@ -38,7 +38,7 @@
           </v-list>
         </div>
 
-        <div>
+        <div class="pt-4">
           <h3 class="circle-name-title3">新歓日程</h3>
           <div class="date-border">
             <v-list v-if="circle.date">
@@ -49,6 +49,19 @@
             <v-list v-else>
               <v-list-item>なし</v-list-item>
             </v-list>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <div v-if="circle.sns">
+            <v-btn
+              v-for="(sns, key) in circle.sns"
+              :key="key"
+              :href="sns.url"
+              class="mb-4"
+            >
+              {{ key }}{{ sns.name }}
+            </v-btn>
           </div>
         </div>
       </v-col>
