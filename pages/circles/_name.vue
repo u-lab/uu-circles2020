@@ -144,6 +144,20 @@ export default {
       circle: '',
       success: false
     }
+  },
+
+  head() {
+    return {
+      title: this.circle.name || this.circle.shortname,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.circle.name || this.circle.shortname
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' }
+      ]
+    }
   }
 }
 </script>

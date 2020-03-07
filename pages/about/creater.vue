@@ -59,7 +59,34 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      title: 'このサイトについて',
+      description:
+        '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。',
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'このサイトについて'
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'このサイトについて'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style>
