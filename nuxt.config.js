@@ -41,9 +41,14 @@ export default {
         property: 'og:description',
         content:
           '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。'
+      },
+      {
+        name: 'google-site-verification',
+        content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [{ src: 'https://www.googletagmanager.com/gtag/js' }]
   },
   /*
    ** Customize the progress-bar color
@@ -121,6 +126,17 @@ export default {
       }
     }
   },
+
+  manifest: {
+    name: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
+    theme_color: '#dbf7ff',
+    background_color: '#ffffff',
+    display: 'standalone',
+    Scope: '/',
+    start_url: '/',
+    splash_pages: null
+  },
+
   /*
    ** Build configuration
    */
