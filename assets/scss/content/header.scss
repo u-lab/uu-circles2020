@@ -1,13 +1,23 @@
 .header-heading {
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0 !important;
   @include mq(sm) {
     font-size: 30px;
   }
 }
 
 .header-subheading {
-  font-size: 16px;
+  font-size: 14px;
+  color: #fff;
+
   @include mq(sm) {
     font-size: 20px;
   }
+}
+
+.app-bar {
+  background-image: url('/header-background.png');
+  background-size: cover;
 }

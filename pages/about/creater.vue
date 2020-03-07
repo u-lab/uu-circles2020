@@ -1,20 +1,27 @@
 <template>
   <v-row class="background">
     <v-col cols="12">
-      <h1 class="text-center">このサイトについて</h1>
+      <about-heading :num="1">このサイトについて</about-heading>
     </v-col>
 
     <v-col cols="12">
-      <h2>運営団体について</h2>
-      <p>このサイトは学生団体U-labが作成しました。</p>
-      <p>
-        <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
-      </p>
-      <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
+      <about-heading :num="2">運営団体について</about-heading>
+      <div class="d-flex">
+        <div>
+          <p>このサイトは学生団体U-labが作成しました。</p>
+          <p>
+            <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
+          </p>
+          <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
+        </div>
+        <div>
+          <v-img src="/u-lab-icon.png" width="100" />
+        </div>
+      </div>
     </v-col>
 
     <v-col cols="12">
-      <h2>このサイトの管理</h2>
+      <about-heading :num="2">このサイトの管理</about-heading>
       <p>このサイトはオープンソースで管理いたします。</p>
       <p>
         知識がある方はどなたでも改修等の管理にご参加いただけます。ぜひ、参加ください。
@@ -26,13 +33,13 @@
         </a>
       </p>
 
-      <h2>総合責任者</h2>
+      <about-heading :num="3">総合責任者</about-heading>
       <p>U-lab部長 3年 飯泉</p>
       <p>
         <a href="https://twitter.com/next_next77">twitter: @next_next77</a>
       </p>
 
-      <h2>プログラム管理者</h2>
+      <about-heading :num="3">プログラム管理者</about-heading>
       <p>U-lab 3年 樋口</p>
       <p>
         <a href="https://github.com/H37kouya">GitHub: H37kouya</a>
@@ -40,7 +47,7 @@
     </v-col>
 
     <v-col>
-      <h2>意見・要望について</h2>
+      <about-heading :num="2">意見・要望について</about-heading>
       <p>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform?usp=sf_link"
@@ -51,15 +58,47 @@
     </v-col>
 
     <v-col cols="12" class="d-flex justify-center">
-      <v-btn to="/" nuxt color="blue" large>
-        サークルビラ一覧へ
-      </v-btn>
+      <circle-list-btn />
     </v-col>
   </v-row>
 </template>
 
 <script>
-export default {}
+import AboutHeading from '@/components/about/AboutHeading'
+import CircleListBtn from '@/components/util/CircleListBtn'
+
+export default {
+  components: {
+    AboutHeading,
+    CircleListBtn
+  },
+  head() {
+    return {
+      title: 'このサイトについて',
+      description:
+        '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。',
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: 'このサイトについて'
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:site_name',
+          property: 'og:site_name',
+          content: 'このサイトについて'
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style>

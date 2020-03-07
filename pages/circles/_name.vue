@@ -1,29 +1,34 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="8">
-        <h2>{{ circle.shortname || circle.name }}</h2>
-      </v-col>
-      <v-col cols="4" class="text-right">
-        <span v-if="circle.public" class="light-blue white--text pa-2 radius">
-          公認団体
-        </span>
-        <span v-else class="light-green white--text pa-2 radius">
-          学生団体
-        </span>
-      </v-col>
-    </v-row>
-
-    <v-row>
-      <v-col cols="12" xs="12" sm="12" md="6">
-        <a :href="circle.image" target="_blank" rel="noopener">
+      <v-col cols="12" xs="12" sm="12" md="6" class="loading-col">
+        <template v-if="loading">
+          <v-progress-circular
+            indeterminate
+            color="gray"
+            :size="70"
+            :width="7"
+            class="loading-circle"
+          ></v-progress-circular>
+        </template>
+        <a v-else :href="circle.image" target="_blank" rel="noopener">
           <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
         </a>
       </v-col>
 
       <v-col cols="12" xs="12" sm="12" md="6">
         <div>
-          <h3>Information</h3>
+          <h2 class="circle-name-title">{{ circle.name }}</h2>
+
+          <div class="d-sm-flex justify-space-between pb-3">
+            <h3 v-show="circle.shortname" class="circle-name-title3">
+              {{ circle.shortname }}
+            </h3>
+            <div class="text-right">
+              <group-badge :public="circle.public" />
+            </div>
+          </div>
+
           <v-list v-if="circle.description">
             <v-list-item v-for="(text, key) in circle.description" :key="key">
               {{ text }}
@@ -34,51 +39,41 @@
           </v-list>
         </div>
 
-        <div>
-          <h3>新歓</h3>
-          <v-list v-if="circle.date">
-            <v-list-item v-for="(date, key) in circle.date" :key="key">
-              {{ date }}
-            </v-list-item>
-          </v-list>
-          <v-list v-else>
-            <v-list-item>なし</v-list-item>
-          </v-list>
+        <div class="pt-4">
+          <h3 class="circle-name-title3">新歓日程</h3>
+          <div class="date-border">
+            <v-list v-if="circle.date">
+              <v-list-item v-for="(date, key) in circle.date" :key="key">
+                {{ date }}
+              </v-list-item>
+            </v-list>
+            <v-list v-else>
+              <v-list-item>なし</v-list-item>
+            </v-list>
+          </div>
         </div>
 
-        <div>
-          <client-only>
-            <v-btn icon>
-              <v-icon>mdi-share-variant</v-icon>
-            </v-btn>
-          </client-only>
+        <div class="py-4">
+          <template v-if="circle.sns">
+            <icon-group :sns="circle.sns" />
+          </template>
         </div>
       </v-col>
     </v-row>
 
     <div class="d-flex flex-md-row-reverse justify-center justify-md-start">
       <v-btn-toggle mandatory class="d-flex flex-column flex-md-row">
-        <v-btn
-          v-if="beforeCircle"
-          :to="`/circles/${beforeCircle.id}`"
-          nuxt
-          class="mb-2"
-        >
-          <v-icon>mdi-format-align-left</v-icon>
+        <v-btn v-if="beforeCircle" :to="`/circles/${beforeCircle.id}`" nuxt>
+          <v-icon>mdi-menu-left</v-icon>
           <span class="ml-2">前を見る</span>
         </v-btn>
-        <v-btn to="/" nuxt link class="mb-2">
+        <v-btn to="/" nuxt>
           <v-icon>mdi-format-align-justify</v-icon>
           <span class="ml-2">一覧を見る</span>
         </v-btn>
-        <v-btn
-          v-if="nextCircle"
-          :to="`/circles/${nextCircle.id}`"
-          nuxt
-          class="mb-2"
-        >
-          <v-icon>mdi-format-align-left</v-icon>
+        <v-btn v-if="nextCircle" :to="`/circles/${nextCircle.id}`" nuxt>
           <span class="ml-2">次を見る</span>
+          <v-icon>mdi-menu-right</v-icon>
         </v-btn>
       </v-btn-toggle>
     </div>
@@ -86,88 +81,83 @@
 </template>
 
 <script>
+import GroupBadge from '@/components/util/GroupBadge'
+import IconGroup from '@/components/circle/IconGroup'
+import { getItemBefore } from '@/util/getItemBefore'
+import { getItemAfter } from '@/util/getItemAfter'
+
 export default {
+  components: {
+    GroupBadge,
+    IconGroup
+  },
+
   async asyncData({ app, params }) {
     const collection = app.$fireStore.collection('circles')
-    const ref = collection.doc(params.name)
-    const docs = await collection.get()
+    let count // サークルの配列の番号
+    let circle // サークルObject
+    // サークル一覧の取得
+    const _docs = await collection.get()
+    const docs = _docs.docs
 
-    const docsLen = docs.docs.length
-
-    let count
-    let flag = false
-    for (count = 0; count < docsLen; count++) {
-      const _doc = docs.docs[count]
+    // パラメータに一致するサークルを探す
+    for (count = 0; count < docs.length; count++) {
+      const _doc = docs[count]
 
       if (_doc.id === params.name) {
-        flag = true
+        circle = _doc.data()
+        circle.id = _doc.id
         break
       }
     }
 
-    let nextItem
-    let beforeItem
-    if (flag) {
-      if (docs.docs[count + 1]) {
-        const _doc = docs.docs[count + 1]
-        const _data = _doc.data()
-        _data.id = _doc.id
-        nextItem = _data
-      }
-
-      if (docs.docs[count - 1]) {
-        const _beforeDoc = docs.docs[count - 1]
-        const _beforeData = _beforeDoc.data()
-        _beforeData.id = _beforeDoc.id
-        beforeItem = _beforeData
-      }
-    }
-
-    const doc = await ref.get()
-    const item = doc.data()
-    const storageRef = app.$fireStorage.ref()
-
-    item.image = await storageRef
-      .child(`circles/${item.image}`)
-      .getDownloadURL()
-
     return {
       success: true,
-      beforeCircle: beforeItem,
-      circle: item,
-      nextCircle: nextItem
+      circle,
+      docs,
+      count
     }
   },
+
   data() {
     return {
       circle: '',
+      count: '',
+      docs: '',
+      loading: true,
       success: false,
-      shareData: {
-        title: document.title,
-        url: ''
-      }
+      nextCircle: '',
+      beforeCircle: ''
     }
   },
 
   created() {
-    this.shareData.url = process.env.appUrl + this.$route.path
+    this.beforeCircle = getItemBefore(this.docs, this.count) // 一つ前のサークル情報取得
+    this.nextCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
   },
 
-  methods: {
-    async share(data) {
-      if (window.navigator.share) {
-        await window.navigator
-          .share(data)
-          .then(() => console.log('Successful share'))
-          .catch((error) => console.log('Error sharing', error))
-      }
+  async mounted() {
+    const storageRef = this.$fireStorage.ref()
+
+    // サークル画像のURLの取得
+    this.circle.image = await storageRef
+      .child(`circles/${this.circle.image}`)
+      .getDownloadURL()
+    this.loading = false // ローディングアニメーションの削除
+  },
+
+  head() {
+    return {
+      title: this.circle.name || this.circle.shortname,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.circle.name || this.circle.shortname
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' }
+      ]
     }
   }
 }
 </script>
-
-<style>
-.radius {
-  border-radius: 5px;
-}
-</style>

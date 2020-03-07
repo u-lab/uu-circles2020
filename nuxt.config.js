@@ -11,18 +11,70 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'ja'
+    },
+    titleTemplate: '%s - ' + '宇都宮大学ビラ一覧',
+    title: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。'
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧'
+      },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。'
+      },
+      {
+        name: 'msapplication-TileColor',
+        color: '#2b5797'
+      },
+      {
+        name: 'theme-color',
+        color: '#ffffff'
+      },
+      {
+        name: 'google-site-verification',
+        content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png'
+      },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -43,7 +95,8 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics'
   ],
   /*
    ** Nuxt.js modules
@@ -78,7 +131,6 @@ export default {
       measurementId: process.env.FIREBASE_MESSAGING_SENDER_ID
     },
     services: {
-      auth: true, // Just as example. Can be any other service.
       firestore: true,
       storage: true
     }
@@ -101,6 +153,23 @@ export default {
       }
     }
   },
+
+  googleAnalytics: {
+    id: 'UA-159871975-1'
+  },
+
+  pwa: {
+    manifest: {
+      name: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
+      theme_color: '#ffffff',
+      background_color: '#ffffff',
+      display: 'standalone',
+      Scope: '/',
+      start_url: '/',
+      splash_pages: null
+    }
+  },
+
   /*
    ** Build configuration
    */

@@ -89,4 +89,7 @@ sw.*
 # Vim swap files
 *.swp
 
+.env.local
+.env.prod
 .env.production
+.firebase
