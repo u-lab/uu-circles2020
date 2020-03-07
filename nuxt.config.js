@@ -47,8 +47,7 @@ export default {
         content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w'
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [{ src: 'https://www.googletagmanager.com/gtag/js' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -69,7 +68,8 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics'
   ],
   /*
    ** Nuxt.js modules
@@ -125,6 +125,10 @@ export default {
         }
       }
     }
+  },
+
+  googleAnalytics: {
+    id: 'UA-159871975-1'
   },
 
   manifest: {
