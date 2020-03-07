@@ -11,6 +11,9 @@ export default {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'ja'
+    },
     titleTemplate: '%s - ' + '宇都宮大学ビラ一覧',
     title: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
     meta: [

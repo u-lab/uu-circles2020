@@ -16,15 +16,7 @@
               {{ circle.shortname }}
             </h3>
             <div class="text-right">
-              <span
-                v-if="circle.public"
-                class="light-blue white--text pa-2 radius"
-              >
-                公認団体
-              </span>
-              <span v-else class="light-green white--text pa-2 radius">
-                学生団体
-              </span>
+              <group-badge :public="circle.public" />
             </div>
           </div>
 
@@ -87,7 +79,13 @@
 </template>
 
 <script>
+import GroupBadge from '@/components/util/GroupBadge'
+
 export default {
+  components: {
+    GroupBadge
+  },
+
   async asyncData({ app, params }) {
     const collection = app.$fireStore.collection('circles')
     const ref = collection.doc(params.name)
@@ -161,9 +159,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.radius {
-  border-radius: 5px;
-}
-</style>
