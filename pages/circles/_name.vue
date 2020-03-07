@@ -89,30 +89,8 @@
 
 <script>
 import GroupBadge from '@/components/util/GroupBadge'
-
-function getItemAfter(arr, count) {
-  let item
-  if (arr[count + 1]) {
-    const _doc = arr[count + 1]
-    const _data = _doc.data()
-    _data.id = _doc.id
-    item = _data
-  }
-
-  return item
-}
-
-function getItemBefore(arr, count) {
-  let item
-  if (arr[count - 1]) {
-    const _doc = arr[count - 1]
-    const _data = _doc.data()
-    _data.id = _doc.id
-    item = _data
-  }
-
-  return item
-}
+import { getItemBefore } from '@/util/getItemBefore'
+import { getItemAfter } from '@/util/getItemAfter'
 
 export default {
   components: {
@@ -160,7 +138,7 @@ export default {
 
   created() {
     this.beforeCircle = getItemBefore(this.docs, this.count) // 一つ前のサークル情報取得
-    this.afterCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
+    this.nextCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
   },
 
   async mounted() {
