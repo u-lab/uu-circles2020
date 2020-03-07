@@ -1,7 +1,9 @@
 <template>
   <v-row class="background">
     <v-col cols="12">
-      <h1 class="text-center about-heading">協賛企業様一覧</h1>
+      <about-heading :num="1">
+        協賛企業様一覧
+      </about-heading>
     </v-col>
 
     <v-col cols="12">
@@ -15,10 +17,12 @@
 </template>
 
 <script>
+import AboutHeading from '@/components/about/AboutHeading'
 import CircleListBtn from '@/components/util/CircleListBtn'
 
 export default {
   components: {
+    AboutHeading,
     CircleListBtn
   }
 }
