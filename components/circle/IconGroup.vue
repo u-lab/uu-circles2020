@@ -17,9 +17,11 @@
 
       <youtube-icon v-else-if="isYoutube(key)" :key="key" :href="item.url" />
 
-      <v-icon v-else-if="isHome(key)" :key="key" :href="item.url" size="50">
-        mdi-home-circle
-      </v-icon>
+      <a v-else-if="isHome(key)" :key="key" :href="item.url">
+        <v-icon size="50">
+          mdi-home-circle
+        </v-icon>
+      </a>
 
       <v-btn v-else :key="key" :href="item.url" class="mr-2 mb-4">
         {{ key }}{{ item.name }}

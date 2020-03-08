@@ -114,13 +114,15 @@ export default {
     const urls = await Promise.all(promise)
 
     this.circles[0].image = urls[UlabNum]
-    for (let i = 0; i < items.length; i++) {
-      if (i !== UlabNum) {
-        if (items[i] && Object.keys(items[i]).includes('image')) {
-          items[i].image = urls[i]
-        } else {
-          items[i].image = '/no-image.jpg'
-        }
+    for (let i = 0, j = 0; i < items.length; i++, j++) {
+      if (i === UlabNum) {
+        j++
+      }
+
+      if (items[i] && Object.keys(items[i]).includes('image')) {
+        items[i].image = urls[j]
+      } else {
+        items[i].image = '/no-image.jpg'
       }
     }
 
