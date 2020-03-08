@@ -1,10 +1,10 @@
 // 一つ前の配列を取得、さらにidも注入
 export function getItemBefore(arr, count) {
   let item
+  console.log(arr)
+  console.log(count)
   if (arr[count - 1]) {
-    const _doc = arr[count - 1]
-    item = _doc.data()
-    item.id = _doc.id
+    item = arr[count - 1]
   }
 
   return item

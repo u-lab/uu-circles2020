@@ -162,8 +162,8 @@ export default {
 
     this.circle = circle
     this.count = count
-    this.beforeCircle = getItemBefore(this.docs, this.count) // 一つ前のサークル情報取得
-    this.nextCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
+    this.beforeCircle = getItemBefore(this.circles, this.count) // 一つ前のサークル情報取得
+    this.nextCircle = getItemAfter(this.circles, this.count) // 一つ後のサークル情報取得
     this.loading = false
   },
 
