@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
 
@@ -78,57 +79,75 @@ export default {
     }
   },
 
+  computed: mapGetters({
+    original: 'circles'
+  }),
+
   async mounted() {
-    // firestoreからDataの回収
-    const collection = this.$fireStore.collection('circles')
-    const docs = await collection.get()
-    const storageRef = this.$fireStorage.ref()
+    const circles = this.original
 
-    // 戻り値の生成
-    let items = []
-    const docsLen = docs.docs.length
-    const promise = []
-    let UlabNum = 0
-    for (let i = 0; i < docsLen; i++) {
-      const _doc = docs.docs[i]
-      const _data = _doc.data()
-      _data.id = _doc.id
-      if (_data.image) {
-        // 画像のURLの生成
-        try {
-          promise.push(
-            storageRef.child(`circles/${_data.image}`).getDownloadURL()
-          )
-        } catch (e) {}
-      }
-
-      if (_data.id === 'u-lab') {
-        this.circles[0] = _data
-        UlabNum = i
-      } else {
-        items.push(_data)
-      }
+    if (circles === null) {
+      await this.getCirclesByFirebase()
+    } else {
+      this.circles = circles
     }
 
-    // 画像のURLをまとめて取得
-    const urls = await Promise.all(promise)
-
-    this.circles[0].image = urls[UlabNum]
-    for (let i = 0, j = 0; i < items.length; i++, j++) {
-      if (i === UlabNum) {
-        j++
-      }
-
-      if (items[i] && Object.keys(items[i]).includes('image')) {
-        items[i].image = urls[j]
-      } else {
-        items[i].image = '/no-image.jpg'
-      }
-    }
-
-    items = shuffleArr(items)
-    this.circles = [...this.circles, ...items]
     this.loading = false
+  },
+
+  methods: {
+    async getCirclesByFirebase() {
+      // firestoreからDataの回収
+      const collection = this.$fireStore.collection('circles')
+      const docs = await collection.get()
+      const storageRef = this.$fireStorage.ref()
+
+      // 戻り値の生成
+      let items = []
+      const docsLen = docs.docs.length
+      const promise = []
+      let UlabNum = 0
+      for (let i = 0; i < docsLen; i++) {
+        const _doc = docs.docs[i]
+        const _data = _doc.data()
+        _data.id = _doc.id
+        if (_data.image) {
+          // 画像のURLの生成
+          try {
+            promise.push(
+              storageRef.child(`circles/${_data.image}`).getDownloadURL()
+            )
+          } catch (e) {}
+        }
+
+        if (_data.id === 'u-lab') {
+          this.circles[0] = _data
+          UlabNum = i
+        } else {
+          items.push(_data)
+        }
+      }
+
+      // 画像のURLをまとめて取得
+      const urls = await Promise.all(promise)
+
+      this.circles[0].image = urls[UlabNum]
+      for (let i = 0, j = 0; i < items.length; i++, j++) {
+        if (i === UlabNum) {
+          j++
+        }
+
+        if (items[i] && Object.keys(items[i]).includes('image')) {
+          items[i].image = urls[j]
+        } else {
+          items[i].image = '/no-image.jpg'
+        }
+      }
+
+      items = shuffleArr(items)
+      this.circles = [...this.circles, ...items]
+      this.$store.commit('SET_CIRCLES', this.circles)
+    }
   }
 }
 </script>
