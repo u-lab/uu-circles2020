@@ -87,6 +87,7 @@ export default {
     // 戻り値の生成
     let items = []
     const docsLen = docs.docs.length
+    const promise = []
     for (let i = 0; i < docsLen; i++) {
       const _doc = docs.docs[i]
       const _data = _doc.data()
@@ -94,9 +95,9 @@ export default {
       if (_data.image) {
         // 画像のURLの生成
         try {
-          _data.image = await storageRef
-            .child(`circles/${_data.image}`)
-            .getDownloadURL()
+          promise.push(
+            storageRef.child(`circles/${_data.image}`).getDownloadURL()
+          )
         } catch (e) {}
       }
 
@@ -107,10 +108,18 @@ export default {
       }
     }
 
-    items = shuffleArr(items)
+    // 画像のURLをまとめて取得
+    const urls = await Promise.all(promise)
+    this.circles[0].image = urls[items.length]
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].image) {
+        items[i].image = urls[i]
+      }
+    }
 
-    this.loading = false
+    items = shuffleArr(items)
     this.circles = [...this.circles, ...items]
+    this.loading = false
   },
 
   methods: {
