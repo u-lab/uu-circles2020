@@ -87,6 +87,8 @@ export default {
     // 戻り値の生成
     let items = []
     const docsLen = docs.docs.length
+    const promise = []
+    let UlabNum = 0
     for (let i = 0; i < docsLen; i++) {
       const _doc = docs.docs[i]
       const _data = _doc.data()
@@ -94,29 +96,39 @@ export default {
       if (_data.image) {
         // 画像のURLの生成
         try {
-          _data.image = await storageRef
-            .child(`circles/${_data.image}`)
-            .getDownloadURL()
+          promise.push(
+            storageRef.child(`circles/${_data.image}`).getDownloadURL()
+          )
         } catch (e) {}
       }
 
       if (_data.id === 'u-lab') {
         this.circles[0] = _data
+        UlabNum = i
       } else {
         items.push(_data)
       }
     }
 
-    items = shuffleArr(items)
+    // 画像のURLをまとめて取得
+    const urls = await Promise.all(promise)
 
-    this.loading = false
-    this.circles = [...this.circles, ...items]
-  },
+    this.circles[0].image = urls[UlabNum]
+    for (let i = 0, j = 0; i < items.length; i++, j++) {
+      if (i === UlabNum) {
+        j++
+      }
 
-  methods: {
-    getPublishColorClass(bool) {
-      return bool ? 'circle-light-blue' : 'circle-light-green'
+      if (items[i] && Object.keys(items[i]).includes('image')) {
+        items[i].image = urls[j]
+      } else {
+        items[i].image = '/no-image.jpg'
+      }
     }
+
+    items = shuffleArr(items)
+    this.circles = [...this.circles, ...items]
+    this.loading = false
   }
 }
 </script>

@@ -15,6 +15,14 @@
 
       <line-icon v-else-if="isLine(key)" :key="key" :href="item.url" />
 
+      <youtube-icon v-else-if="isYoutube(key)" :key="key" :href="item.url" />
+
+      <a v-else-if="isHome(key)" :key="key" :href="item.url">
+        <v-icon size="50">
+          mdi-home-circle
+        </v-icon>
+      </a>
+
       <v-btn v-else :key="key" :href="item.url" class="mr-2 mb-4">
         {{ key }}{{ item.name }}
       </v-btn>
@@ -28,6 +36,7 @@ import GithubIcon from '@/components/util/GithubIcon'
 import InstagramIcon from '@/components/util/InstagramIcon'
 import LineIcon from '@/components/util/LineIcon'
 import TwitterIcon from '@/components/util/TwitterIcon'
+import YoutubeIcon from '@/components/util/YoutubeIcon'
 
 export default {
   components: {
@@ -35,7 +44,8 @@ export default {
     GithubIcon,
     InstagramIcon,
     LineIcon,
-    TwitterIcon
+    TwitterIcon,
+    YoutubeIcon
   },
 
   props: {
@@ -54,8 +64,13 @@ export default {
       return key.toLowerCase() === 'github'
     },
 
+    isHome(key) {
+      const str = key.toLowerCase()
+      return str === 'home' || str === 'homepage' || str === 'hp'
+    },
+
     isInstagram(key) {
-      return key.toLowerCase() === 'instagram'
+      return key.toLowerCase() === 'instagram' || key.toLowerCase() === 'insta'
     },
 
     isLine(key) {
@@ -64,6 +79,10 @@ export default {
 
     isTwitter(key) {
       return key.toLowerCase() === 'twitter'
+    },
+
+    isYoutube(key) {
+      return key.toLowerCase() === 'youtube'
     }
   }
 }

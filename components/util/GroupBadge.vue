@@ -3,6 +3,10 @@
     公認団体
   </span>
 
+  <span v-else-if="is_send()" class="blue white--text pa-2 radius">
+    届出団体
+  </span>
+
   <span v-else-if="is_private()" class="pink lighten-2 white--text pa-2 radius">
     非公認団体
   </span>
@@ -28,6 +32,10 @@ export default {
   methods: {
     is_public() {
       return this.public === 'public'
+    },
+
+    is_send() {
+      return this.public === 'send'
     },
 
     is_private() {

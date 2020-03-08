@@ -26,7 +26,7 @@
       <p>
         知識がある方はどなたでも改修等の管理にご参加いただけます。ぜひ、参加ください。
       </p>
-      <p>仕様技術：Vue.js/Nuxt.js/Netlify/FireBase</p>
+      <p>仕様技術：Vue.js/Nuxt.js/FireBase</p>
       <p>
         <a href="https://github.com/u-lab/uu-circles2020">
           GitHub: u-lab/uu-circles2020
