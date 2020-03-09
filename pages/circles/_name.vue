@@ -96,7 +96,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import GroupBadge from '@/components/util/GroupBadge'
+import { shuffleArr } from '@/util/shuffleArr'
 import IconGroup from '@/components/circle/IconGroup'
 import { getItemBefore } from '@/util/getItemBefore'
 import { getItemAfter } from '@/util/getItemAfter'
@@ -107,33 +109,6 @@ export default {
     IconGroup
   },
 
-  async asyncData({ app, params }) {
-    const collection = app.$fireStore.collection('circles')
-    let count // サークルの配列の番号
-    let circle // サークルObject
-    // サークル一覧の取得
-    const _docs = await collection.get()
-    const docs = _docs.docs
-
-    // パラメータに一致するサークルを探す
-    for (count = 0; count < docs.length; count++) {
-      const _doc = docs[count]
-
-      if (_doc.id === params.name) {
-        circle = _doc.data()
-        circle.id = _doc.id
-        break
-      }
-    }
-
-    return {
-      success: true,
-      circle,
-      docs,
-      count
-    }
-  },
-
   data() {
     return {
       circle: '',
@@ -142,24 +117,127 @@ export default {
       loading: true,
       success: false,
       nextCircle: '',
-      beforeCircle: ''
+      beforeCircle: '',
+      circles: [
+        {
+          date: '',
+          description: '',
+          id: 'u-lab',
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/circles%2Fu-lab.jpg?alt=media&token=bb41f324-65ea-49bc-8f00-3b71879bfbf7',
+          name: '宇都宮大学情報デザインサークル',
+          public: 'student',
+          shortname: 'U-lab',
+          sns: ''
+        }
+      ]
     }
   },
 
-  created() {
-    this.beforeCircle = getItemBefore(this.docs, this.count) // 一つ前のサークル情報取得
-    this.nextCircle = getItemAfter(this.docs, this.count) // 一つ後のサークル情報取得
-  },
+  computed: mapGetters({
+    original: 'circles'
+  }),
 
   async mounted() {
-    const storageRef = this.$fireStorage.ref()
+    const circles = this.original
 
-    // サークル画像のURLの取得
-    this.circle.image = await storageRef
-      .child(`circles/${this.circle.image}`)
-      .getDownloadURL()
-    this.loading = false // ローディングアニメーションの削除
+    if (circles === null) {
+      await this.getCirclesByFirebase()
+    } else {
+      this.circles = circles
+    }
+
+    let count
+    let circle
+    const docs = this.circles
+    // パラメータに一致するサークルを探す
+    for (count = 0; count < docs.length; count++) {
+      const _doc = docs[count]
+
+      if (_doc.id === this.$route.params.name) {
+        circle = _doc
+        break
+      }
+    }
+
+    this.circle = circle
+    this.count = count
+    this.beforeCircle = getItemBefore(this.circles, this.count) // 一つ前のサークル情報取得
+    this.nextCircle = getItemAfter(this.circles, this.count) // 一つ後のサークル情報取得
+    this.loading = false
   },
+
+  methods: {
+    async getCirclesByFirebase() {
+      // firestoreからDataの回収
+      const collection = this.$fireStore.collection('circles')
+      const docs = await collection.get()
+      const storageRef = this.$fireStorage.ref()
+
+      // 戻り値の生成
+      let items = []
+      const docsLen = docs.docs.length
+      const promise = []
+      let UlabNum = 0
+      for (let i = 0; i < docsLen; i++) {
+        const _doc = docs.docs[i]
+        const _data = _doc.data()
+        _data.id = _doc.id
+        if (_data.image) {
+          // 画像のURLの生成
+          try {
+            promise.push(
+              storageRef.child(`circles/${_data.image}`).getDownloadURL()
+            )
+          } catch (e) {}
+        }
+
+        if (_data.id === 'u-lab') {
+          this.circles[0] = _data
+          UlabNum = i
+        } else {
+          items.push(_data)
+        }
+      }
+
+      // 画像のURLをまとめて取得
+      const urls = await Promise.all(promise)
+
+      this.circles[0].image = urls[UlabNum]
+      for (let i = 0, j = 0; i < items.length; i++, j++) {
+        if (i === UlabNum) {
+          j++
+        }
+
+        if (items[i] && Object.keys(items[i]).includes('image')) {
+          items[i].image = urls[j]
+        } else {
+          items[i].image = '/no-image.jpg'
+        }
+      }
+
+      items = shuffleArr(items)
+      this.circles = [...this.circles, ...items]
+      this.$store.commit('SET_CIRCLES', this.circles)
+    }
+  },
+
+  // created() {
+  // },
+
+  // async mounted() {
+  //   const circles = this.original
+  //   console.log(circles)
+  //   console.log('circles')
+
+  //   const storageRef = this.$fireStorage.ref()
+
+  //   // サークル画像のURLの取得
+  //   this.circle.image = await storageRef
+  //     .child(`circles/${this.circle.image}`)
+  //     .getDownloadURL()
+  //   this.loading = false // ローディングアニメーションの削除
+  // },
 
   head() {
     return {
