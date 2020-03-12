@@ -39,19 +39,7 @@
           </v-list>
         </div>
 
-        <div class="pt-4">
-          <h3 class="circle-name-title3">新歓日程</h3>
-          <div class="date-border">
-            <v-list v-if="circle.date">
-              <v-list-item v-for="(date, key) in circle.date" :key="key">
-                {{ date }}
-              </v-list-item>
-            </v-list>
-            <v-list v-else>
-              <v-list-item>なし</v-list-item>
-            </v-list>
-          </div>
-        </div>
+        <new-joy :dates="circle.date" />
 
         <div class="py-4">
           <template v-if="circle.sns">
@@ -81,7 +69,6 @@
             <span class="ml-2">次を見る</span>
             <v-icon dark>mdi-menu-right</v-icon>
           </v-btn>
-          <!-- </v-btn-toggle> -->
         </div>
 
         <div class="d-flex justify-center">
@@ -98,15 +85,17 @@
 <script>
 import { mapGetters } from 'vuex'
 import GroupBadge from '@/components/util/GroupBadge'
-import { shuffleArr } from '@/util/shuffleArr'
 import IconGroup from '@/components/circle/IconGroup'
+import NewJoy from '@/components/circle/NewJoy'
+import { shuffleArr } from '@/util/shuffleArr'
 import { getItemBefore } from '@/util/getItemBefore'
 import { getItemAfter } from '@/util/getItemAfter'
 
 export default {
   components: {
     GroupBadge,
-    IconGroup
+    IconGroup,
+    NewJoy
   },
 
   data() {
