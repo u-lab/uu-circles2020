@@ -222,23 +222,6 @@ export default {
     }
   },
 
-  // created() {
-  // },
-
-  // async mounted() {
-  //   const circles = this.original
-  //   console.log(circles)
-  //   console.log('circles')
-
-  //   const storageRef = this.$fireStorage.ref()
-
-  //   // サークル画像のURLの取得
-  //   this.circle.image = await storageRef
-  //     .child(`circles/${this.circle.image}`)
-  //     .getDownloadURL()
-  //   this.loading = false // ローディングアニメーションの削除
-  // },
-
   head() {
     return {
       title: this.circle.name || this.circle.shortname,
