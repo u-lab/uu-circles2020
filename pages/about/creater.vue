@@ -34,13 +34,13 @@
       </p>
 
       <about-heading :num="3">総合責任者</about-heading>
-      <p>U-lab部長 3年 飯泉</p>
+      <p>U-lab部長 3年 飯泉一馬</p>
       <p>
         <a href="https://twitter.com/next_next77">twitter: @next_next77</a>
       </p>
 
       <about-heading :num="3">プログラム管理者</about-heading>
-      <p>U-lab 3年 樋口</p>
+      <p>U-lab 3年 樋口航也</p>
       <p>
         <a href="https://github.com/H37kouya">GitHub: H37kouya</a>
       </p>
