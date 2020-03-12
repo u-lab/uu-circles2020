@@ -17,11 +17,11 @@
 
       <youtube-icon v-else-if="isYoutube(key)" :key="key" :href="item.url" />
 
-      <a v-else-if="isHome(key)" :key="key" :href="item.url">
-        <v-icon size="50">
-          mdi-home-circle
-        </v-icon>
-      </a>
+      <hp-icon v-else-if="isHome(key)" :key="key" :href="item.url" />
+
+      <peing-icon v-else-if="isPeing(key)" :key="key" :href="item.url" />
+
+      <form-icon v-else-if="isForm(key)" :key="key" :href="item.url" />
 
       <v-btn v-else :key="key" :href="item.url" class="mr-2 mb-4">
         {{ key }}{{ item.name }}
@@ -32,18 +32,24 @@
 
 <script>
 import FacebookIcon from '@/components/util/FacebookIcon'
+import FormIcon from '@/components/util/FormIcon'
 import GithubIcon from '@/components/util/GithubIcon'
+import HpIcon from '@/components/util/HpIcon'
 import InstagramIcon from '@/components/util/InstagramIcon'
 import LineIcon from '@/components/util/LineIcon'
+import PeingIcon from '@/components/util/PeingIcon'
 import TwitterIcon from '@/components/util/TwitterIcon'
 import YoutubeIcon from '@/components/util/YoutubeIcon'
 
 export default {
   components: {
     FacebookIcon,
+    FormIcon,
     GithubIcon,
+    HpIcon,
     InstagramIcon,
     LineIcon,
+    PeingIcon,
     TwitterIcon,
     YoutubeIcon
   },
@@ -58,6 +64,11 @@ export default {
   methods: {
     isFacebook(key) {
       return key.toLowerCase() === 'facebook'
+    },
+
+    isForm(key) {
+      const str = key.toLowerCase()
+      return str === 'form' || str === 'googleform'
     },
 
     isGithub(key) {
@@ -75,6 +86,10 @@ export default {
 
     isLine(key) {
       return key.toLowerCase() === 'line'
+    },
+
+    isPeing(key) {
+      return key.toLowerCase() === 'peing'
     },
 
     isTwitter(key) {
