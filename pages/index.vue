@@ -12,7 +12,7 @@
     <v-row>
       <v-col
         v-for="(circle, key) in circles"
-        :key="key"
+        :key="'circle' + key"
         cols="12"
         xs="6"
         sm="4"
@@ -29,7 +29,7 @@
       <template v-if="loading">
         <v-col
           v-for="i in 2"
-          :key="i"
+          :key="'loading' + i"
           cols="12"
           xs="6"
           sm="4"

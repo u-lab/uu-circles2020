@@ -28,7 +28,7 @@
           </v-carousel-item>
           <v-carousel-item
             v-for="(image, key) in subImages"
-            :key="image + key"
+            :key="image + key + 'sub'"
             reverse-transition="fade-transition"
             transition="fade-transition"
           >
@@ -59,7 +59,10 @@
           </div>
 
           <v-list v-if="circle.description">
-            <v-list-item v-for="(text, key) in circle.description" :key="key">
+            <v-list-item
+              v-for="(text, key) in circle.description"
+              :key="'description' + key"
+            >
               {{ text }}
             </v-list-item>
           </v-list>
@@ -72,7 +75,10 @@
           <h3 class="circle-name-title3">新歓日程</h3>
           <div class="date-border">
             <v-list v-if="circle.date">
-              <v-list-item v-for="(date, key) in circle.date" :key="key">
+              <v-list-item
+                v-for="(date, key) in circle.date"
+                :key="'date' + key"
+              >
                 {{ date }}
               </v-list-item>
             </v-list>
