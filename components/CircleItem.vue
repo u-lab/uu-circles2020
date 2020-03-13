@@ -66,6 +66,9 @@ export default {
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  padding: 5px;
   font-size: 20px;
 }
 </style>
