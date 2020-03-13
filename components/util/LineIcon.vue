@@ -1,5 +1,5 @@
 <template>
-  <a :href="href" class="mr-4">
+  <a :href="href" class="mr-4" target="_blank" rel="noopener">
     <v-img src="/line.png" width="50" />
   </a>
 </template>
