@@ -5,7 +5,7 @@
 
 .main-background-content-container {
   position: absolute;
-  top: 45%;
+  top: 40%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
@@ -18,7 +18,6 @@
 
   font-size: 28px;
   font-weight: bold;
-  // font-family: fot-klee-pro, sans-serif;
 
   @include mq(sm) {
     color: #333;
@@ -50,11 +49,6 @@
       font-size: 0.9rem;
     }
   }
-}
-
-main-background-icon {
-  position: absolute;
-  right: 0;
 }
 
 .header-heading {
