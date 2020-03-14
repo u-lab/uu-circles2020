@@ -11,6 +11,32 @@
             class="loading-circle"
           ></v-progress-circular>
         </template>
+        <v-carousel
+          v-else-if="subImages"
+          cycle
+          dark
+          hide-delimiter-background
+          show-arrows-on-hover
+        >
+          <v-carousel-item
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+          >
+            <a :href="circle.image" target="_blank" rel="noopener">
+              <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
+            </a>
+          </v-carousel-item>
+          <v-carousel-item
+            v-for="(image, key) in subImages"
+            :key="image + key + 'sub'"
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+          >
+            <a :href="image" target="_blank" rel="noopener">
+              <v-img :src="image" :alt="`${circle.name}${key} - 宇大ビラ`" />
+            </a>
+          </v-carousel-item>
+        </v-carousel>
         <a v-else :href="circle.image" target="_blank" rel="noopener">
           <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
         </a>
@@ -25,12 +51,18 @@
               {{ circle.shortname }}
             </h3>
             <div class="text-right">
-              <group-badge :public="circle.public" />
+              <group-badge v-if="circle.public" :public="circle.public" />
+              <span v-else class="grey white--text pa-2 radius">
+                不明
+              </span>
             </div>
           </div>
 
           <v-list v-if="circle.description">
-            <v-list-item v-for="(text, key) in circle.description" :key="key">
+            <v-list-item
+              v-for="(text, key) in circle.description"
+              :key="'description' + key"
+            >
               {{ text }}
             </v-list-item>
           </v-list>
@@ -43,7 +75,10 @@
           <h3 class="circle-name-title3">新歓日程</h3>
           <div class="date-border">
             <v-list v-if="circle.date">
-              <v-list-item v-for="(date, key) in circle.date" :key="key">
+              <v-list-item
+                v-for="(date, key) in circle.date"
+                :key="'date' + key"
+              >
                 {{ date }}
               </v-list-item>
             </v-list>
@@ -81,7 +116,6 @@
             <span class="ml-2">次を見る</span>
             <v-icon dark>mdi-menu-right</v-icon>
           </v-btn>
-          <!-- </v-btn-toggle> -->
         </div>
 
         <div class="d-flex justify-center">
@@ -98,8 +132,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import GroupBadge from '@/components/util/GroupBadge'
-import { shuffleArr } from '@/util/shuffleArr'
 import IconGroup from '@/components/circle/IconGroup'
+import { shuffleArr } from '@/util/shuffleArr'
 import { getItemBefore } from '@/util/getItemBefore'
 import { getItemAfter } from '@/util/getItemAfter'
 
@@ -115,6 +149,7 @@ export default {
       count: '',
       docs: '',
       loading: true,
+      subImages: '',
       success: false,
       nextCircle: '',
       beforeCircle: '',
@@ -157,6 +192,34 @@ export default {
       if (_doc.id === this.$route.params.name) {
         circle = _doc
         break
+      }
+    }
+
+    // サブ画像のURLの取得
+    if (circle.subImage) {
+      if (!circle.subImage[0].match('https:')) {
+        const promise = []
+        const storageRef = this.$fireStorage.ref()
+        for (let i = 0; i < circle.subImage.length; i++) {
+          const subImage = circle.subImage[i]
+
+          // 画像のURLの生成
+          try {
+            promise.push(
+              storageRef.child(`circles/${subImage}`).getDownloadURL()
+            )
+          } catch (e) {}
+        }
+
+        // 画像のURLをまとめて取得
+        const urls = await Promise.all(promise)
+        this.$store.commit('UPDATE_CIRCLE_SUBIMAGES', {
+          num: count,
+          urls
+        })
+        this.subImages = urls
+      } else {
+        this.subImages = this.circles[count].subImage
       }
     }
 
@@ -221,23 +284,6 @@ export default {
       this.$store.commit('SET_CIRCLES', this.circles)
     }
   },
-
-  // created() {
-  // },
-
-  // async mounted() {
-  //   const circles = this.original
-  //   console.log(circles)
-  //   console.log('circles')
-
-  //   const storageRef = this.$fireStorage.ref()
-
-  //   // サークル画像のURLの取得
-  //   this.circle.image = await storageRef
-  //     .child(`circles/${this.circle.image}`)
-  //     .getDownloadURL()
-  //   this.loading = false // ローディングアニメーションの削除
-  // },
 
   head() {
     return {

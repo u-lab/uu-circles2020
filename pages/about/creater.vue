@@ -12,7 +12,15 @@
           <p>
             <nuxt-link to="circles/u-lab">U-labの新歓チラシはこちら</nuxt-link>
           </p>
-          <p><a href="https://twitter.com/U_lab0811">twitter: @U_lab0811</a></p>
+          <p>
+            <a
+              href="https://twitter.com/U_lab0811"
+              target="_blank"
+              rel="noopener"
+            >
+              twitter: @U_lab0811
+            </a>
+          </p>
         </div>
         <div>
           <v-img src="/u-lab-icon.png" width="100" />
@@ -28,21 +36,33 @@
       </p>
       <p>仕様技術：Vue.js/Nuxt.js/FireBase</p>
       <p>
-        <a href="https://github.com/u-lab/uu-circles2020">
+        <a
+          href="https://github.com/u-lab/uu-circles2020"
+          target="_blank"
+          rel="noopener"
+        >
           GitHub: u-lab/uu-circles2020
         </a>
       </p>
 
       <about-heading :num="3">総合責任者</about-heading>
-      <p>U-lab部長 3年 飯泉</p>
+      <p>U-lab部長 3年 飯泉一馬</p>
       <p>
-        <a href="https://twitter.com/next_next77">twitter: @next_next77</a>
+        <a
+          href="https://twitter.com/next_next77"
+          target="_blank"
+          rel="noopener"
+        >
+          twitter: @next_next77
+        </a>
       </p>
 
       <about-heading :num="3">プログラム管理者</about-heading>
-      <p>U-lab 3年 樋口</p>
+      <p>U-lab 3年 樋口航也</p>
       <p>
-        <a href="https://github.com/H37kouya">GitHub: H37kouya</a>
+        <a href="https://github.com/H37kouya" target="_blank" rel="noopener">
+          GitHub: H37kouya
+        </a>
       </p>
     </v-col>
 
@@ -51,6 +71,8 @@
       <p>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform?usp=sf_link"
+          target="_blank"
+          rel="noopener"
         >
           Google Formへ
         </a>

@@ -1,6 +1,6 @@
 <template>
   <a :href="href" class="mr-4" target="_blank" rel="noopener">
-    <v-img src="/facebook.png" width="50" />
+    <v-img src="/hp.png" width="50" />
   </a>
 </template>
 
