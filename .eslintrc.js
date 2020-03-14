@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     "vue/max-attributes-per-line": "off",
     "template-curly-spacing": "off",
-    "indent" : "off"
+    "indent": "off",
+    "no-undef": "off"
   }
 }
