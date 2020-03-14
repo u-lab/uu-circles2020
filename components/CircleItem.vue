@@ -7,7 +7,7 @@
     @mouseover="TitleOn()"
     @mouseout="TitleDown()"
   >
-    <v-img :src="src" />
+    <v-img :src="src" :alt="`${name}のビラ`" />
 
     <div class="circle-title" :class="imageTitleOn ? '' : 'd-none'">
       {{ name }}

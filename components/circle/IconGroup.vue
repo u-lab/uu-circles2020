@@ -23,6 +23,15 @@
 
       <form-icon v-else-if="isForm(key)" :key="key" :href="item.url" />
 
+      <v-btn
+        v-else-if="isMail(key)"
+        :key="key"
+        :href="`mailto:${item.url}?subject=${getMailSubject}`"
+        color="grey"
+      >
+        <v-icon size="50">mdi-email</v-icon>
+      </v-btn>
+
       <v-btn v-else :key="key" :href="item.url" class="mr-2 mb-4">
         {{ key }}{{ item.name }}
       </v-btn>
@@ -61,6 +70,12 @@ export default {
     }
   },
 
+  computed: {
+    getMailSubject() {
+      return '宇都宮大学サークルビラ一覧からのお知らせ'
+    }
+  },
+
   methods: {
     isFacebook(key) {
       return key.toLowerCase() === 'facebook'
@@ -86,6 +101,11 @@ export default {
 
     isLine(key) {
       return key.toLowerCase() === 'line'
+    },
+
+    isMail(key) {
+      const str = key.toLowerCase()
+      return str === 'mail' || str === 'email'
     },
 
     isPeing(key) {
