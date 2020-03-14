@@ -9,9 +9,28 @@
       </div>
     </div>
 
+    <div>
+      <v-btn color="green" dark large @click="clearFilterCircle()"
+        >すべて</v-btn
+      >
+      <v-btn color="indigo" dark large @click="computedCircleByType('sports')">
+        運動系
+      </v-btn>
+      <v-btn
+        color="red lighten-2"
+        dark
+        large
+        @click="computedCircleByType('music')"
+        >音楽系</v-btn
+      >
+      <v-btn color="orange" dark large @click="computedCircleByType('mono')"
+        >製作系</v-btn
+      >
+    </div>
+
     <v-row>
       <v-col
-        v-for="(circle, key) in circles"
+        v-for="(circle, key) in filterCirlce"
         :key="'circle' + key"
         cols="12"
         xs="6"
@@ -63,6 +82,7 @@ export default {
   data() {
     return {
       loading: true,
+      filterCirlce: this.circles,
       circles: [
         {
           date: '',
@@ -92,6 +112,7 @@ export default {
       this.circles = circles
     }
 
+    this.filterCirlce = this.circles
     this.loading = false
   },
 
@@ -147,6 +168,16 @@ export default {
       items = shuffleArr(items)
       this.circles = [...this.circles, ...items]
       this.$store.commit('SET_CIRCLES', this.circles)
+    },
+
+    clearFilterCircle() {
+      this.filterCirlce = this.circles
+    },
+
+    computedCircleByType(type) {
+      this.filterCirlce = this.circles.filter(function(circle) {
+        return circle.type === type
+      })
     }
   }
 }
