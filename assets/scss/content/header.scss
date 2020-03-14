@@ -1,36 +1,29 @@
 .main-background {
   position: relative;
+  font-family: fot-klee-pro, sans-serif !important;
 }
 
 .main-background-content-container {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
 
 .main-background-content {
-  color: #333;
-  font-size: 24px;
-  @include mq(sm) {
-    font-size: 30px;
-  }
-  background-color: rgba(#fff, 0.7);
   padding: 10px;
   border-radius: 10px;
+  color: #fff;
 
-  // span::before {
-  //   content: "";
-  //   display: inline-block;
-  //   width: 50px;
-  //   height: 50px;
-  // }
+  font-size: 28px;
+  font-weight: bold;
+  // font-family: fot-klee-pro, sans-serif;
 
-  // span:first-child::before {
-  //   background-image: url(/icon.png);
-  //   background-size: contain;
-  // }
+  @include mq(sm) {
+    color: #333;
+    background: rgba(#fff, 0.7);
+  }
 }
 
 .main-background-icon-container {
@@ -52,6 +45,10 @@
   &-r {
     background: rgba(#fff, 0.7);
     padding: 15px !important;
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -82,4 +79,5 @@ main-background-icon {
 .app-bar {
   background-image: url("/header-background.png");
   background-size: cover;
+  font-family: fot-klee-pro, sans-serif !important;
 }
