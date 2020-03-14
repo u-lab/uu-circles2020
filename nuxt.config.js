@@ -91,7 +91,8 @@ export default {
         href: '/favicon-16x16.png'
       },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' }
-    ]
+    ],
+    script: [{ src: 'https://use.typekit.net/hir7vbf.js' }]
   },
   /*
    ** Customize the progress-bar color

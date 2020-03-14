@@ -24,6 +24,10 @@ export default {
     Navbar,
     MainBackground,
     UuFooter
+  },
+
+  mounted() {
+    Typekit.load({ async: true })
   }
 }
 </script>
