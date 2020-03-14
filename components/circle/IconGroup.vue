@@ -23,14 +23,16 @@
 
       <form-icon v-else-if="isForm(key)" :key="key" :href="item.url" />
 
-      <v-btn
+      <a
         v-else-if="isMail(key)"
         :key="key"
         :href="`mailto:${item.url}?subject=${getMailSubject}`"
-        color="grey"
+        light
+        style="text-decoration: none"
+        class="mr-4"
       >
         <v-icon size="50">mdi-email</v-icon>
-      </v-btn>
+      </a>
 
       <v-btn v-else :key="key" :href="item.url" class="mr-2 mb-4">
         {{ key }}{{ item.name }}
