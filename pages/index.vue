@@ -9,9 +9,61 @@
       </div>
     </div>
 
+    <div class="d-flex justify-center">
+      <div cols="10" class="tap-intro-content text-center">
+        <p class="tap-intro-content-detail mb-0">気になるサークルがあったら</p>
+        <p class="tap-intro-content-tap mb-0 d-md-none">Tap!!</p>
+        <p class="tap-intro-content-tap mb-0 d-none d-md-block">Click!!</p>
+      </div>
+
+      <div cols="2">
+        <v-icon size="80" color="#000">
+          mdi-gesture-tap
+        </v-icon>
+      </div>
+    </div>
+
+    <div v-if="false">
+      <v-btn color="#FF5D5D" dark class="mb-2" @click="clearFilterCircle()">
+        すべて
+      </v-btn>
+      <v-btn
+        color="#37E1FF"
+        dark
+        class="mb-2"
+        @click="computedCircleByType('sports')"
+      >
+        運動系
+      </v-btn>
+      <v-btn
+        color="#833DE5"
+        dark
+        class="mb-2"
+        @click="computedCircleByType('music')"
+      >
+        音楽系
+      </v-btn>
+      <v-btn
+        color="#8BE531"
+        dark
+        class="mb-2"
+        @click="computedCircleByType('mono')"
+      >
+        製作系
+      </v-btn>
+      <v-btn
+        color="#FFC043"
+        dark
+        class="mb-2"
+        @click="computedCircleByType('culture')"
+      >
+        文化系
+      </v-btn>
+    </div>
+
     <v-row>
       <v-col
-        v-for="(circle, key) in circles"
+        v-for="(circle, key) in filterCirlce"
         :key="'circle' + key"
         cols="12"
         xs="6"
@@ -63,6 +115,7 @@ export default {
   data() {
     return {
       loading: true,
+      filterCirlce: this.circles,
       circles: [
         {
           date: '',
@@ -92,6 +145,7 @@ export default {
       this.circles = circles
     }
 
+    this.filterCirlce = this.circles
     this.loading = false
   },
 
@@ -147,6 +201,16 @@ export default {
       items = shuffleArr(items)
       this.circles = [...this.circles, ...items]
       this.$store.commit('SET_CIRCLES', this.circles)
+    },
+
+    clearFilterCircle() {
+      this.filterCirlce = this.circles
+    },
+
+    computedCircleByType(type) {
+      this.filterCirlce = this.circles.filter(function(circle) {
+        return circle.type === type
+      })
     }
   }
 }
