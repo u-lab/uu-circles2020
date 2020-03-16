@@ -23,42 +23,36 @@
       </div>
     </div>
 
-    <div v-if="false">
-      <v-btn color="#FF5D5D" dark class="mb-2" @click="clearFilterCircle()">
-        すべて
-      </v-btn>
-      <v-btn
-        color="#37E1FF"
-        dark
-        class="mb-2"
-        @click="computedCircleByType('sports')"
-      >
-        運動系
-      </v-btn>
-      <v-btn
-        color="#833DE5"
-        dark
-        class="mb-2"
-        @click="computedCircleByType('music')"
-      >
-        音楽系
-      </v-btn>
-      <v-btn
-        color="#8BE531"
-        dark
-        class="mb-2"
-        @click="computedCircleByType('mono')"
-      >
-        製作系
-      </v-btn>
-      <v-btn
-        color="#FFC043"
-        dark
-        class="mb-2"
-        @click="computedCircleByType('culture')"
-      >
-        文化系
-      </v-btn>
+    <div class="d-flex justify-center mt-2">
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn dark v-on="on">
+            検索する
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item @click="clearFilterCircle()">
+            <v-list-title>すべて</v-list-title>
+          </v-list-item>
+
+          <v-list-item @click="computedCircleByType('sports')">
+            <v-list-title>運動系</v-list-title>
+          </v-list-item>
+
+          <v-list-item @click="computedCircleByType('music')">
+            <v-list-title>音楽系</v-list-title>
+          </v-list-item>
+
+          <v-list-item @click="computedCircleByType('cluture')">
+            <v-list-title>文化系</v-list-title>
+          </v-list-item>
+
+          <v-list-item @click="computedCircleByType('mono')">
+            <v-list-title>製作系</v-list-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </div>
 
     <v-row>
