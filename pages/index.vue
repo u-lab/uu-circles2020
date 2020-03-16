@@ -44,7 +44,7 @@
             <v-list-title>音楽系</v-list-title>
           </v-list-item>
 
-          <v-list-item @click="computedCircleByType('cluture')">
+          <v-list-item @click="computedCircleByType('culture')">
             <v-list-title>文化系</v-list-title>
           </v-list-item>
 
@@ -72,25 +72,12 @@
           :name="circle.shortname || circle.name"
         />
       </v-col>
+
       <template v-if="loading">
-        <v-col
-          v-for="i in 2"
-          :key="'loading' + i"
-          cols="12"
-          xs="6"
-          sm="4"
-          md="4"
-          lg="4"
-          class="loading-col"
-        >
-          <v-progress-circular
-            indeterminate
-            color="gray"
-            :size="70"
-            :width="7"
-            class="loading-circle"
-          ></v-progress-circular>
-        </v-col>
+        <loading-animation
+          v-for="i in loadingAnimeNum"
+          :key="getLoadingKeyName(i)"
+        />
       </template>
     </v-row>
   </div>
@@ -100,10 +87,12 @@
 import { mapGetters } from 'vuex'
 import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
+import LoadingAnimation from '@/components/index/LoadingAnimation'
 
 export default {
   components: {
-    CircleItem
+    CircleItem,
+    LoadingAnimation
   },
 
   data() {
@@ -126,9 +115,21 @@ export default {
     }
   },
 
-  computed: mapGetters({
-    original: 'circles'
-  }),
+  computed: {
+    ...mapGetters({
+      original: 'circles'
+    }),
+
+    loadingAnimeNum() {
+      return 2
+    },
+
+    getLoadingKeyName() {
+      return function(num) {
+        return `loading-${num}`
+      }
+    }
+  },
 
   async mounted() {
     const circles = this.original
