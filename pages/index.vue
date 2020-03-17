@@ -1,28 +1,9 @@
 <template>
   <div>
-    <div class="d-flex justify-center py-2">
-      <div class="intro-background pa-6">
-        <p class="mb-0">
-          このサイトは新入生の新生活を応援したいという思いから有志によって作られました
-        </p>
-        <p class="mb-0">在校生一同皆様のご入学を心からお祝い申し上げます</p>
-      </div>
-    </div>
+    <!-- 紹介文 -->
+    <intro-content />
 
-    <div class="d-flex justify-center">
-      <div cols="10" class="tap-intro-content text-center">
-        <p class="tap-intro-content-detail mb-0">気になるサークルがあったら</p>
-        <p class="tap-intro-content-tap mb-0 d-md-none">Tap!!</p>
-        <p class="tap-intro-content-tap mb-0 d-none d-md-block">Click!!</p>
-      </div>
-
-      <div cols="2">
-        <v-icon size="80" color="#000">
-          mdi-gesture-tap
-        </v-icon>
-      </div>
-    </div>
-
+    <!-- 検索 -->
     <div class="d-flex justify-center mt-2">
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
@@ -36,25 +17,18 @@
             <v-list-title>すべて</v-list-title>
           </v-list-item>
 
-          <v-list-item @click="computedCircleByType('sports')">
-            <v-list-title>運動系</v-list-title>
-          </v-list-item>
-
-          <v-list-item @click="computedCircleByType('music')">
-            <v-list-title>音楽系</v-list-title>
-          </v-list-item>
-
-          <v-list-item @click="computedCircleByType('culture')">
-            <v-list-title>文化系</v-list-title>
-          </v-list-item>
-
-          <v-list-item @click="computedCircleByType('mono')">
-            <v-list-title>製作系</v-list-title>
+          <v-list-item
+            v-for="typeList in typeListForSearch"
+            :key="`type-${typeList.type}`"
+            @click="computedCircleByType(typeList.type)"
+          >
+            <v-list-title v-text="typeList.name" />
           </v-list-item>
         </v-list>
       </v-menu>
     </div>
 
+    <!-- ビラ一覧 -->
     <v-row>
       <v-col
         v-for="(circle, key) in filterCirlce"
@@ -62,8 +36,6 @@
         cols="12"
         xs="6"
         sm="4"
-        md="4"
-        lg="4"
       >
         <circle-item
           v-if="circle.id && circle.image && circle.name"
@@ -87,11 +59,13 @@
 import { mapGetters } from 'vuex'
 import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
+import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
 
 export default {
   components: {
     CircleItem,
+    IntroContent,
     LoadingAnimation
   },
 
@@ -128,6 +102,15 @@ export default {
       return function(num) {
         return `loading-${num}`
       }
+    },
+
+    typeListForSearch() {
+      return [
+        { name: '運動系', type: 'sports' },
+        { name: '音楽系', type: 'music' },
+        { name: '文化系', type: 'culture' },
+        { name: '製作系', type: 'mono' }
+      ]
     }
   },
 
