@@ -107,15 +107,40 @@ export default {
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
-          hid: 'og:site_name',
-          property: 'og:site_name',
-          content: 'このサイトについて'
-        },
-        {
           hid: 'og:description',
           property: 'og:description',
           content:
             '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。'
+        }
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
+            "url": "https://uu-circle20.firebaseapp.com",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com",
+                  "name": "ビラ一覧"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com/about/creater",
+                  "name": "このサイトについて"
+                }
+              }
+            ]
+          }`,
+          type: 'application/ld+json'
         }
       ]
     }
