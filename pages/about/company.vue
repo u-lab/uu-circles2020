@@ -54,7 +54,7 @@ export default {
         {
           innerHTML: `{
             "@context": "http://schema.org",
-            "@type": "Circles",
+            "@type": "BreadcrumbList",
             "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
             "url": "https://uu-circle20.firebaseapp.com",
             "itemListElement": [
@@ -73,7 +73,7 @@ export default {
                   "@id": "https://uu-circle20.firebaseapp.com/about/company",
                   "name": "協賛企業様一覧"
                 }
-              },
+              }
             ]
           }`,
           type: 'application/ld+json'
