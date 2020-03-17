@@ -295,6 +295,36 @@ export default {
           content: this.circle.name || this.circle.shortname
         },
         { hid: 'og:type', property: 'og:type', content: 'article' }
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "Circles",
+            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
+            "url": "https://uu-circle20.firebaseapp.com",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com",
+                  "name": "ビラ一覧"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com/circle/${this.$route.params.name}",
+                  "name": "${this.circle.name}"
+                }
+              },
+            ]
+          }`,
+          type: 'application/ld+json'
+        }
       ]
     }
   }

@@ -89,6 +89,33 @@ export default {
     }
   },
 
+  head() {
+    return {
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "Circles",
+            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
+            "url": "https://uu-circle20.firebaseapp.com",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com",
+                  "name": "ビラ一覧"
+                }
+              }
+            ]
+          }`,
+          type: 'application/ld+json'
+        }
+      ]
+    }
+  },
+
   computed: {
     ...mapGetters({
       original: 'circles'
