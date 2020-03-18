@@ -19,3 +19,13 @@
     font-size: 24px;
   }
 }
+
+.about-company-list {
+  .about-heading {
+    font-size: 24px;
+
+    @include mq(sm) {
+      font-size: 28px;
+    }
+  }
+}
