@@ -13,3 +13,13 @@
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
+
+.haifun {
+  &::before {
+    content: "- ";
+  }
+
+  &::after {
+    content: " -";
+  }
+}

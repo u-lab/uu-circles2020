@@ -4,63 +4,102 @@
     <intro-content />
 
     <!-- 検索 -->
-    <div class="d-flex justify-center mt-2">
-      <v-menu offset-y>
-        <template v-slot:activator="{ on }">
-          <v-btn dark v-on="on">
-            検索する
-          </v-btn>
-        </template>
+    <div class="d-flex justify-center align-center mt-2">
+      <div class="px-1">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn dark v-on="on">
+              系統検索
+            </v-btn>
+          </template>
 
-        <v-list>
-          <v-list-item @click="clearFilterCircle()">
-            <v-list-title>すべて</v-list-title>
-          </v-list-item>
+          <v-list>
+            <v-list-item @click="clearFilterCircle()">
+              <v-list-item-title v-text="'すべて'" />
+            </v-list-item>
 
-          <v-list-item
-            v-for="typeList in typeListForSearch"
-            :key="`type-${typeList.type}`"
-            @click="computedCircleByType(typeList.type)"
-          >
-            <v-list-title v-text="typeList.name" />
-          </v-list-item>
-        </v-list>
-      </v-menu>
+            <v-list-item
+              v-for="typeList in typeListForSearch"
+              :key="`type-${typeList.type}`"
+              @click="computedCircleByType(typeList.type)"
+            >
+              <v-list-item-title v-text="typeList.name" />
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+
+      <div class="px-1">
+        <v-text-field
+          v-model="searchBox"
+          append-icon="mdi-magnify"
+          label="検索"
+          solo
+          hide-details
+          @input="computedCircleBySearchBox()"
+        ></v-text-field>
+      </div>
     </div>
 
     <!-- ビラ一覧 -->
-    <v-row>
-      <v-col
-        v-for="(circle, key) in filterCirlce"
-        :key="'circle' + key"
-        cols="12"
-        xs="6"
-        sm="4"
-      >
-        <circle-item
-          v-if="circle.id && circle.image && circle.name"
-          :to="`/circles/${circle.id}`"
-          :src="circle.image"
-          :name="circle.shortname || circle.name"
-        />
-      </v-col>
-
-      <template v-if="loading">
-        <loading-animation
-          v-for="i in loadingAnimeNum"
-          :key="getLoadingKeyName(i)"
-        />
+    <v-row v-if="filterCirlce && filterCirlce.length > 0">
+      <template>
+        <v-col
+          v-for="(circle, key) in filterCirlce"
+          :key="'circle' + key"
+          cols="12"
+          xs="6"
+          sm="4"
+        >
+          <circle-item
+            v-if="circle.id && circle.image && circle.name"
+            :to="`/circles/${circle.id}`"
+            :src="circle.image"
+            :name="circle.shortname || circle.name"
+          />
+        </v-col>
       </template>
     </v-row>
+
+    <template v-else-if="loading">
+      <loading-animation
+        v-for="i in loadingAnimeNum"
+        :key="getLoadingKeyName(i)"
+      />
+    </template>
+
+    <template v-else>
+      <div class="d-flex justify-center my-4">
+        <div class="intro-background pa-6">
+          <p class="mb-0 text-center">
+            検索結果は存在しませんでした。別のキーワードで再検索してください。
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-center mb-4">
+        <v-btn dark @click="clearFilterCircle()">
+          検索リセット
+        </v-btn>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import sanitizeHTML from 'sanitize-html'
 import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
 import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
+
+function kanaToHira(str) {
+  return str.replace(/[\u30A1-\u30F6]/g, function(match) {
+    const chr = match.charCodeAt(0) - 0x60
+    return String.fromCharCode(chr)
+  })
+}
 
 export default {
   components: {
@@ -73,6 +112,7 @@ export default {
     return {
       loading: true,
       filterCirlce: this.circles,
+      searchBox: '',
       circles: [
         {
           date: '',
@@ -210,11 +250,45 @@ export default {
 
     clearFilterCircle() {
       this.filterCirlce = this.circles
+      this.searchBox = ''
     },
 
     computedCircleByType(type) {
+      this.searchBox = type
       this.filterCirlce = this.circles.filter(function(circle) {
         return circle.type === type
+      })
+    },
+
+    computedCircleBySearchBox() {
+      const search = sanitizeHTML(kanaToHira(this.searchBox.toLowerCase()))
+
+      /**
+       * 英数字大小区別なし ( 大文字英数字 → 小文字英数字 )
+       * ひらカナ区別なし ( カタカナ → ひらがな )
+       * サニタイズ
+       */
+      this.filterCirlce = this.circles.filter(function(circle) {
+        return (
+          ('name' in circle &&
+            ~sanitizeHTML(kanaToHira(circle.name.toLowerCase())).indexOf(
+              search
+            )) ||
+          ('shortname' in circle &&
+            ~sanitizeHTML(kanaToHira(circle.shortname.toLowerCase())).indexOf(
+              search
+            )) ||
+          ('id' in circle &&
+            ~sanitizeHTML(kanaToHira(circle.id.toLowerCase())).indexOf(
+              search
+            )) ||
+          ('kana' in circle &&
+            ~sanitizeHTML(kanaToHira(circle.kana.toLowerCase())).indexOf(
+              search
+            )) ||
+          ('type' in circle &&
+            sanitizeHTML(circle.type.toLowerCase()) === search)
+        )
       })
     }
   }
