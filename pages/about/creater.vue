@@ -2,7 +2,9 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <about-heading :num="1">このサイトについて</about-heading>
+        <about-heading :num="1">
+          <span class="haifun">このサイトについて</span>
+        </about-heading>
       </v-col>
 
       <v-col cols="12">
