@@ -137,33 +137,6 @@ export default {
     }
   },
 
-  head() {
-    return {
-      __dangerouslyDisableSanitizers: ['script'],
-      script: [
-        {
-          innerHTML: `{
-            "@context": "http://schema.org",
-            "@type": "BreadcrumbList",
-            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
-            "url": "https://uu-circle20.firebaseapp.com",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                  "@id": "https://uu-circle20.firebaseapp.com",
-                  "name": "ビラ一覧"
-                }
-              }
-            ]
-          }`,
-          type: 'application/ld+json'
-        }
-      ]
-    }
-  },
-
   computed: {
     ...mapGetters({
       original: 'circles'
@@ -299,29 +272,33 @@ export default {
         )
       })
     }
+  },
+
+  head() {
+    return {
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
+            "url": "https://uu-circle20.firebaseapp.com",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com",
+                  "name": "ビラ一覧"
+                }
+              }
+            ]
+          }`,
+          type: 'application/ld+json'
+        }
+      ]
+    }
   }
 }
 </script>
-
-<style>
-.circle-name {
-  font-size: 1rem;
-  line-height: 1.8;
-  padding: 8px;
-}
-
-.circle-name::before {
-  content: '';
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
-.circle-light-blue::before {
-  background-color: #4926c7;
-}
-
-.circle-light-green::before {
-  background-color: #84fa33;
-}
-</style>
