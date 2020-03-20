@@ -1,7 +1,7 @@
 {
   "name": "uu-circle2020",
   "version": "1.0.0",
-  "description": "My divine Nuxt.js project",
+  "description": "宇都宮大学のサークルビラ一覧",
   "author": "u-lab",
   "private": true,
   "scripts": {
