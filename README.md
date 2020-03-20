@@ -1,15 +1,33 @@
 # 宇都宮大学のサークルビラ一覧
 
-[https://uu-circle20.firebaseapp.com/](https://uu-circle20.firebaseapp.com/)
+<div class="text-center">
+</div>
 
-このプロジェクトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができるサイトのソースコードです。  
+<div class="d-md-flex">
+  <div>
+    <div class="d-flex align-center">
+      <img src="./static/icon.png" style="width: 50px; margin-right: 16px">
+      <a href="https://uu-circle20.firebaseapp.com/">
+        https://uu-circle20.firebaseapp.com/
+      </a>
+    </div>
 
-宇都宮大学生の参加大歓迎です！！
+  このプロジェクトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができるサイトのソースコードです。  
+
+  宇都宮大学生の参加大歓迎です！！
+  </div>
+
+  <div class="text-center">
+    <a href="https://uu-circle20.firebaseapp.com/">
+      <img src="./.github/image/toppage-screenshot.png" width="500px">
+    </a>
+  </div>
+</div>
 
 ## 環境
 
 - Vue.js
-- Nuxt.js
+- Nuxt.js v2.12
 - Firebase
 
 ## 環境構築
@@ -59,3 +77,15 @@ Google Formより参加希望とご記載ください。
 ### Google Form
 
 [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform)
+
+<style>
+.align-center { align-items: center; }
+
+.d-flex { display: flex; }
+
+.text-center { text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .d-md-flex { display: flex; }
+}
+</style>
