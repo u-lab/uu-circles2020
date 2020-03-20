@@ -9,10 +9,6 @@
 
   宇都宮大学生の参加大歓迎です！！
 
-  <a href="https://uu-circle20.firebaseapp.com/">
-    <img src="./.github/image/toppage-screenshot.png">
-  </a>
-
 ## 環境
 
 - Vue.js
@@ -66,3 +62,8 @@ Google Formより参加希望とご記載ください。
 ### Google Form
 
 [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfMvRk2LLZvzfAsGYGRbLrSFB56n59J3YJAojhLk-xPi2DRIA/viewform)
+
+## 画面のスクリーンショット
+  <a href="https://uu-circle20.firebaseapp.com/">
+    <img src="./.github/image/toppage-screenshot.png">
+  </a>
