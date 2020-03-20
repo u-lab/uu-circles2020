@@ -1,25 +1,17 @@
 # 宇都宮大学のサークルビラ一覧
 
-<div style="display: flex;">
-  <div>
-    <div style="display: flex; align-items: center;">
-      <img src="./static/favicon-32x32.png" style="width: 50px; margin-right: 16px">
-      <a href="https://uu-circle20.firebaseapp.com/">
-        https://uu-circle20.firebaseapp.com/
-      </a>
-    </div>
+  <img src="./static/favicon-32x32.png" style="width: 50px; margin-right: 16px">
+  <a href="https://uu-circle20.firebaseapp.com/">
+    https://uu-circle20.firebaseapp.com/
+  </a>
 
   このプロジェクトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができるサイトのソースコードです。  
 
   宇都宮大学生の参加大歓迎です！！
-  </div>
 
-  <div style="text-align: center;">
-    <a href="https://uu-circle20.firebaseapp.com/">
-      <img src="./.github/image/toppage-screenshot.png" style="width: 300px">
-    </a>
-  </div>
-</div>
+  <a href="https://uu-circle20.firebaseapp.com/">
+    <img src="./.github/image/toppage-screenshot.png">
+  </a>
 
 ## 環境
 
