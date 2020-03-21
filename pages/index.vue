@@ -97,17 +97,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import sanitizeHTML from 'sanitize-html'
+import { kanaToHira } from '@/util/kanaToHira'
 import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
 import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
-
-function kanaToHira(str) {
-  return str.replace(/[\u30A1-\u30F6]/g, function(match) {
-    const chr = match.charCodeAt(0) - 0x60
-    return String.fromCharCode(chr)
-  })
-}
 
 export default {
   components: {
