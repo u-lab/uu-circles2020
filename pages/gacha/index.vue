@@ -1,14 +1,21 @@
 <template>
-  <div>
+  <div class="mb-4">
     <div class="d-flex justify-center">
       <div>
-        <v-img src="/gacha-with-intro2.png" max-width="300px" alt="ガチャ" />
+        <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />
       </div>
     </div>
 
     <div class="text-center py-4">
       <v-btn color="#4dbfff" dark @click="gachaDraw()">
         ガチャる
+      </v-btn>
+    </div>
+
+    <div class="d-flex justify-center mb-2">
+      <v-btn to="/" nuxt color="#0b2157" dark>
+        <v-icon small>mdi-format-align-justify</v-icon>
+        <span class="ml-2">一覧を見る</span>
       </v-btn>
     </div>
   </div>

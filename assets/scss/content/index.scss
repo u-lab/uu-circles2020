@@ -29,3 +29,11 @@
     font-size: 2.5rem;
   }
 }
+
+.index-gacha-intro {
+  font-family: fot-klee-pro, sans-serif !important;
+
+  &::before {
+    content: "▲";
+  }
+}

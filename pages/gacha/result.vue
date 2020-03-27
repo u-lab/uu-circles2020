@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-4">
     <div class="d-flex justify-center px-2 mb-2">
       <v-card>
         <v-img src="/gacha-logo.png" alt="ガチャのロゴ" max-width="300px" />
@@ -28,6 +28,13 @@
     <div class="text-center py-4">
       <v-btn color="#4dbfff" dark to="/gacha">
         もう一度回す
+      </v-btn>
+    </div>
+
+    <div class="d-flex justify-center mb-2">
+      <v-btn to="/" nuxt color="#0b2157" dark>
+        <v-icon small>mdi-format-align-justify</v-icon>
+        <span class="ml-2">一覧を見る</span>
       </v-btn>
     </div>
   </div>

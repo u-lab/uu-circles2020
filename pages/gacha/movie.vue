@@ -2,13 +2,61 @@
   <div>
     <div class="d-flex justify-center">
       <youtube
+        v-if="isYellow"
         ref="youtube"
-        :video-id="videoId"
+        :video-id="videoIds.yellow"
         :player-vars="{
-          autoplay: 1,
+          // autoplay: 1,
           controls: 0,
           modestbranding: 1,
-          mute: 1,
+          playsinline: 1
+        }"
+        :controls="0"
+        @playing="playing"
+        @paused="paused"
+        @ended="ended"
+      />
+
+      <youtube
+        v-else-if="isBlue"
+        ref="youtube"
+        :video-id="videoIds.blue"
+        :player-vars="{
+          // autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          playsinline: 1
+        }"
+        :controls="0"
+        @playing="playing"
+        @paused="paused"
+        @ended="ended"
+      />
+
+      <youtube
+        v-else-if="isPink"
+        ref="youtube"
+        :video-id="videoIds.pink"
+        :player-vars="{
+          // autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          playsinline: 1
+        }"
+        :controls="0"
+        @playing="playing"
+        @paused="paused"
+        @ended="ended"
+      />
+
+      <youtube
+        v-else
+        ref="youtube"
+        :video-id="videoIds.grey"
+        :player-vars="{
+          // autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
           playsinline: 1
         }"
         :controls="0"
@@ -17,25 +65,36 @@
         @ended="ended"
       />
     </div>
+
+    <div class="text-right mt-2">
+      <nuxt-link class="text-right" to="/gacha/result">skip</nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 
+function isClub(name) {
+  return ~name.indexOf('部')
+}
+
 export default {
   middleware: 'gacha',
-
-  data() {
-    return {
-      videoId: 'sXY6L-Ompng'
-    }
-  },
 
   computed: {
     ...mapGetters({
       gachaResult: 'gacha/circles'
     }),
+
+    videoIds() {
+      return {
+        blue: 'xE5z_5g0Un0',
+        grey: 'r-UyKBwLtkk',
+        pink: 'imdevLeQog4',
+        yellow: 'PogDpBdSVm0'
+      }
+    },
 
     getType() {
       const type =
@@ -43,21 +102,50 @@ export default {
       return type
     },
 
-    isYellow() {
-      return this.getType === 'public'
+    isBlue() {
+      return this.getType === 'student'
     },
+
+    // isGrey() {
+    //   return !this.isYellow && !this.isPink && !this.isBlue
+    // },
 
     isPink() {
       return this.getType === 'private'
     },
 
-    isBlue() {
-      return this.getType === 'send' || this.getType === 'student'
+    isYellow() {
+      const circle = this.gachaResult[0]
+      return (
+        ('name' in circle && isClub(circle.name)) ||
+        ('shortname' in circle && isClub(circle.shortname))
+      )
+    },
+
+    player() {
+      return this.$refs.youtube.player
     }
+  },
+
+  // created() {
+  //   if (this.isBlue) {
+  //     this.videoId = this.videoIds.blue
+  //   } else if (this.isPink) {
+  //     this.videoId = this.videoIds.pink
+  //   } else if (this.isYellow) {
+  //     this.videoId = this.videoIds.yellow
+  //   } else {
+  //     this.videoId = this.videoIds.grey
+  //   }
+  // },
+
+  mounted() {
+    this.playVideo()
   },
 
   methods: {
     playVideo() {
+      this.player.mute()
       this.player.playVideo()
     },
 
