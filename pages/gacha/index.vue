@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- <div class="d-flex justify-center">
+    <div class="d-flex justify-center">
       <div>
         <v-img src="/gacha-with-intro2.png" max-width="300px" alt="ガチャ" />
       </div>
-    </div> -->
+    </div>
 
     <div class="text-center py-4">
       <v-btn color="#4dbfff" dark @click="gachaDraw()">

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- <div class="d-flex justify-center px-2 mb-2">
+    <div class="d-flex justify-center px-2 mb-2">
       <v-card>
         <v-img src="/gacha-logo.png" alt="ガチャのロゴ" max-width="300px" />
       </v-card>
-    </div> -->
+    </div>
 
     <about-heading :num="1"><span class="haifun">結果</span></about-heading>
 

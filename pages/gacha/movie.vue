@@ -8,6 +8,7 @@
           autoplay: 1,
           controls: 0,
           modestbranding: 1,
+          mute: 1,
           playsinline: 1
         }"
         :controls="0"
