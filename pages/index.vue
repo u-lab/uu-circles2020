@@ -98,7 +98,6 @@
 import { mapGetters } from 'vuex'
 import sanitizeHTML from 'sanitize-html'
 import { kanaToHira } from '@/util/kanaToHira'
-import { shuffleArr } from '@/util/shuffleArr'
 import CircleItem from '@/components/CircleItem.vue'
 import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
@@ -110,30 +109,24 @@ export default {
     LoadingAnimation
   },
 
+  async fetch({ app, store }) {
+    await store.dispatch('fetchCircles', {
+      fireStore: app.$fireStore,
+      fireStorage: app.$fireStorage
+    })
+  },
+
   data() {
     return {
       loading: true,
       filterCirlce: this.circles,
-      searchBox: '',
-      circles: [
-        {
-          date: '',
-          description: '',
-          id: 'u-lab',
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/circles%2Fu-lab.jpg?alt=media&token=bb41f324-65ea-49bc-8f00-3b71879bfbf7',
-          name: '宇都宮大学情報デザインサークル',
-          public: 'student',
-          shortname: 'U-lab',
-          sns: ''
-        }
-      ]
+      searchBox: ''
     }
   },
 
   computed: {
     ...mapGetters({
-      original: 'circles'
+      circles: 'circles'
     }),
 
     loadingAnimeNum() {
@@ -156,73 +149,12 @@ export default {
     }
   },
 
-  async mounted() {
-    const circles = this.original
-
-    if (circles === null) {
-      await this.getCirclesByFirebase()
-    } else {
-      this.circles = circles
-    }
-
+  mounted() {
     this.filterCirlce = this.circles
     this.loading = false
   },
 
   methods: {
-    async getCirclesByFirebase() {
-      // firestoreからDataの回収
-      const collection = this.$fireStore.collection('circles')
-      const docs = await collection.get()
-      const storageRef = this.$fireStorage.ref()
-
-      // 戻り値の生成
-      let items = []
-      const docsLen = docs.docs.length
-      const promise = []
-      let UlabNum = 0
-      for (let i = 0; i < docsLen; i++) {
-        const _doc = docs.docs[i]
-        const _data = _doc.data()
-        _data.id = _doc.id
-        if (_data.image) {
-          // 画像のURLの生成
-          try {
-            promise.push(
-              storageRef.child(`circles/${_data.image}`).getDownloadURL()
-            )
-          } catch (e) {}
-        }
-
-        if (_data.id === 'u-lab') {
-          this.circles[0] = _data
-          UlabNum = i
-        } else {
-          items.push(_data)
-        }
-      }
-
-      // 画像のURLをまとめて取得
-      const urls = await Promise.all(promise)
-
-      this.circles[0].image = urls[UlabNum]
-      for (let i = 0, j = 0; i < items.length; i++, j++) {
-        if (i === UlabNum) {
-          j++
-        }
-
-        if (items[i] && Object.keys(items[i]).includes('image')) {
-          items[i].image = urls[j]
-        } else {
-          items[i].image = '/no-image.jpg'
-        }
-      }
-
-      items = shuffleArr(items)
-      this.circles = [...this.circles, ...items]
-      this.$store.commit('SET_CIRCLES', this.circles)
-    },
-
     clearFilterCircle() {
       this.filterCirlce = this.circles
       this.searchBox = ''
