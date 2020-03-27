@@ -4,7 +4,7 @@
       width="100vw"
       height="100vh"
       src="/main-background-1800.jpg"
-      srcset="/main-background-480.jpg 480w, /main-background-640.jpg 640w,
+      srcset="/main-background-480-min.jpg 480w, /main-background-640-min.jpg 640w,
     /main-background-960.jpg 960w, /main-background-1200.jpg 1200w"
     />
 
