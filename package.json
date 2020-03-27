@@ -29,7 +29,8 @@
     "core-js": "^2.6.11",
     "firebase": "^7.12.0",
     "nuxt": "^2.12.0",
-    "sanitize-html": "^1.22.1"
+    "sanitize-html": "^1.22.1",
+    "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",

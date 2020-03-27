@@ -4,7 +4,7 @@
     <intro-content />
 
     <!-- 検索 -->
-    <div class="d-flex justify-center align-center mt-2">
+    <div class="d-flex justify-center align-center my-2">
       <div class="px-1">
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
@@ -38,6 +38,17 @@
           hide-details
           @input="computedCircleBySearchBox()"
         ></v-text-field>
+      </div>
+    </div>
+
+    <div class="d-flex justify-center px-2 mb-2">
+      <div>
+        <v-card to="/gacha" class="mb-1">
+          <v-img src="/gacha-logo.png" alt="ガチャを回す" max-width="300px" />
+        </v-card>
+        <p class="text-center index-gacha-intro mb-0">
+          サークルが選べない新入生へ
+        </p>
       </div>
     </div>
 
