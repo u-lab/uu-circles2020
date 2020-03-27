@@ -15,6 +15,7 @@
 
       <v-col cols="12">
         <div>
+          <p class="text-center">AGCL(株)</p>
           <p class="text-center">泉工業(株)</p>
           <p class="text-center">伊勢元酒店</p>
           <p class="text-center">お米ひろばさとう</p>
