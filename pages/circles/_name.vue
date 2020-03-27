@@ -74,11 +74,8 @@
         <div class="pt-4">
           <h3 class="circle-name-title3">新歓日程</h3>
           <div class="date-border">
-            <v-list v-if="circle.date">
-              <v-list-item
-                v-for="(date, key) in circle.date"
-                :key="'date' + key"
-              >
+            <v-list v-if="getDate">
+              <v-list-item v-for="(date, key) in getDate" :key="'date' + key">
                 {{ date }}
               </v-list-item>
             </v-list>
@@ -165,9 +162,15 @@ export default {
     }
   },
 
-  computed: mapGetters({
-    circles: 'circles'
-  }),
+  computed: {
+    ...mapGetters({
+      circles: 'circles'
+    }),
+
+    getDate() {
+      return this.circle.date || this.circle.data
+    }
+  },
 
   created() {
     let count
