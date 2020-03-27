@@ -127,18 +127,6 @@ export default {
     }
   },
 
-  // created() {
-  //   if (this.isBlue) {
-  //     this.videoId = this.videoIds.blue
-  //   } else if (this.isPink) {
-  //     this.videoId = this.videoIds.pink
-  //   } else if (this.isYellow) {
-  //     this.videoId = this.videoIds.yellow
-  //   } else {
-  //     this.videoId = this.videoIds.grey
-  //   }
-  // },
-
   mounted() {
     this.playVideo()
   },
