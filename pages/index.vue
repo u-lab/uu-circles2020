@@ -144,12 +144,13 @@ export default {
         { name: '運動系', type: 'sports' },
         { name: '音楽系', type: 'music' },
         { name: '文化系', type: 'culture' },
-        { name: '製作系', type: 'mono' }
+        { name: '製作系', type: 'mono' },
+        { name: '農業系', type: 'agri' }
       ]
     }
   },
 
-  mounted() {
+  created() {
     this.filterCirlce = this.circles
     this.loading = false
   },
