@@ -1,8 +1,12 @@
 <template>
   <div class="mb-4">
     <div class="d-flex justify-center">
-      <div>
+      <div style="max-width: 300px">
         <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />
+
+        <div class="cactus">
+          <nuxt-link to="/circles/cactus"><span>協力 Cactus</span></nuxt-link>
+        </div>
       </div>
     </div>
 
@@ -118,3 +122,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.cactus {
+  text-align: right;
+  margin-top: 2px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  span {
+    padding: 2px;
+
+    &::before {
+      content: '(';
+    }
+
+    &::after {
+      content: ')';
+    }
+  }
+}
+</style>
