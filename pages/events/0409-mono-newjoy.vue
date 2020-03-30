@@ -11,6 +11,7 @@
       <p class="text-center">
         webライブ配信、アーカイブ動画の投稿も予定しているので、アーカイブ動画だけを見るのも大歓迎！
       </p>
+      <p class="text-center"><b>要ライブ視聴推奨</b></p>
 
       <div class="d-flex justify-center">
         <v-img
