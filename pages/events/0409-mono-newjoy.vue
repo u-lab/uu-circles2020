@@ -72,6 +72,24 @@
       </div>
     </div>
 
+    <div class="mb-4">
+      <about-heading :num="2" class="text-center">
+        ライブ配信について
+      </about-heading>
+
+      <p class="text-center">
+        ライブ配信は公式LINEを追加していただくことで、詳しいライブ情報を通知します。
+      </p>
+
+      <about-heading :num="2" class="text-center">
+        公式LINE
+      </about-heading>
+
+      <div class="d-flex justify-center">
+        <line-icon class="ml-4" href="https://lin.ee/8c4a72t" />
+      </div>
+    </div>
+
     <p class="text-center" style="font-size: 80%">
       <span class="kome">
         新型コロナウイルスに対して運営側はマスク、アルコール消毒などの対策に努めます。また新型コロナウイルスを考慮しご飯会などは行いません
@@ -107,11 +125,13 @@
 import AboutHeading from '@/components/about/AboutHeading'
 import CircleListBtn from '@/components/util/CircleListBtn'
 import MainImg from '@/assets/img/events/0409-mono-newjoy1.jpg'
+import LineIcon from '@/components/util/LineIcon'
 
 export default {
   components: {
     AboutHeading,
-    CircleListBtn
+    CircleListBtn,
+    LineIcon
   },
 
   computed: {
