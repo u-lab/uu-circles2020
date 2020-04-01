@@ -9,7 +9,26 @@
     <about-heading :num="1"><span class="haifun">結果</span></about-heading>
 
     <div class="d-flex justify-center">
+      <v-container v-if="gachaResult.length === 5">
+        <v-row justify="center">
+          <v-col v-for="gr in gachaResult" :key="gr.id" cols="6" sm="4" md="2">
+            <v-card :to="`/circles/${gr.id}`">
+              <v-img :src="gr.image" :alt="`ガチャ結果-${gr.name}`" />
+
+              <div class="d-flex justify-center">
+                <about-heading :num="2">
+                  <span class="font-gacha-result">
+                    {{ gr.shortname || gr.name }}
+                  </span>
+                </about-heading>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+
       <v-card
+        v-else
         :to="`/circles/${gachaResult[0].id}`"
         class="pa-2"
         max-width="300px"

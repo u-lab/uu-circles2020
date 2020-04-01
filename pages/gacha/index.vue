@@ -1,14 +1,24 @@
 <template>
   <div class="mb-4">
     <div class="d-flex justify-center">
-      <div>
+      <div style="max-width: 300px">
         <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />
+
+        <div class="cactus">
+          <nuxt-link to="/circles/cactus"><span>協力 Cactus</span></nuxt-link>
+        </div>
       </div>
     </div>
 
-    <div class="text-center py-4">
+    <div class="text-center pt-4 pb-2">
       <v-btn color="#4dbfff" dark @click="gachaDraw()">
         ガチャる
+      </v-btn>
+    </div>
+
+    <div class="text-center pb-4">
+      <v-btn color="#70b8d1" dark @click="gachaDraw(5)">
+        5連ガチャ
       </v-btn>
     </div>
 
@@ -118,3 +128,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.cactus {
+  text-align: right;
+  margin-top: 2px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  span {
+    padding: 2px;
+
+    &::before {
+      content: '(';
+    }
+
+    &::after {
+      content: ')';
+    }
+  }
+}
+</style>

@@ -2,7 +2,23 @@
   <div>
     <div class="d-flex justify-center">
       <youtube
-        v-if="isYellow"
+        v-if="gachaResult.length === 5"
+        ref="youtube"
+        :video-id="videoIds.five"
+        :player-vars="{
+          // autoplay: 1,
+          controls: 0,
+          modestbranding: 1,
+          playsinline: 1
+        }"
+        :controls="0"
+        @playing="playing"
+        @paused="paused"
+        @ended="ended"
+      />
+
+      <youtube
+        v-else-if="isYellow"
         ref="youtube"
         :video-id="videoIds.yellow"
         :player-vars="{
@@ -92,7 +108,8 @@ export default {
         blue: 'xE5z_5g0Un0',
         grey: 'r-UyKBwLtkk',
         pink: 'imdevLeQog4',
-        yellow: 'PogDpBdSVm0'
+        yellow: 'PogDpBdSVm0',
+        five: 'bMYQ8JhCpwg'
       }
     },
 
