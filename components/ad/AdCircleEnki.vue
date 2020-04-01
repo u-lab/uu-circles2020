@@ -1,9 +1,7 @@
 <template>
   <ad-base
-    to="https://www.utsunomiya-u.ac.jp/important/essential/008205.php"
+    href="https://www.utsunomiya-u.ac.jp/important/essential/008205.php"
     :src="logo"
-    target="_blank"
-    rel="noopener"
   />
 </template>
 
