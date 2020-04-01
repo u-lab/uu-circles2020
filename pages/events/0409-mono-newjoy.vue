@@ -6,6 +6,10 @@
 
     <div class="py-4">
       <p class="text-center">
+        <b style="color: red">本イベントは延期になりました。</b>
+      </p>
+
+      <p class="text-center">
         新入生に宇都宮大学で活動するものづくりサークルのことを知ってもらえれば嬉しいです
       </p>
       <p class="text-center">
@@ -36,7 +40,19 @@
         </about-heading>
 
         <p class="text-center">
-          <span class="zenkaku">4月9日</span>18:00-20:00
+          <del><span class="zenkaku">4月9日</span>18:00-20:00</del>
+        </p>
+
+        <p class="text-center">
+          課外活動が禁止となり、本イベントは延期となりました。
+        </p>
+        <p class="text-center">
+          <a
+            href="https://www.utsunomiya-u.ac.jp/important/essential/008205.php"
+            target="_blank"
+            rel="noopener"
+            >宇都宮大学 新型コロナウイルスへの対応について
+          </a>
         </p>
       </div>
 
