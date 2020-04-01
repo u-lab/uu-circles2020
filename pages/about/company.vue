@@ -18,6 +18,7 @@
           <p class="text-center">AGCL(株)</p>
           <p class="text-center">泉工業(株)</p>
           <p class="text-center">伊勢元酒店</p>
+          <p class="text-center">宇都宮大学消費生活協同組合</p>
           <p class="text-center">お米ひろばさとう</p>
           <p class="text-center">Future Rise</p>
           <p class="text-center">
