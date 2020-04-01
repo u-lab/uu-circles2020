@@ -10,9 +10,15 @@
       </div>
     </div>
 
-    <div class="text-center py-4">
+    <div class="text-center pt-4 pb-2">
       <v-btn color="#4dbfff" dark @click="gachaDraw()">
         ガチャる
+      </v-btn>
+    </div>
+
+    <div class="text-center pb-4">
+      <v-btn color="#70b8d1" dark @click="gachaDraw(5)">
+        5連ガチャ
       </v-btn>
     </div>
 

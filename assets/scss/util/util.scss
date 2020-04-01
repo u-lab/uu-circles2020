@@ -23,3 +23,11 @@
     content: " -";
   }
 }
+
+.font-gacha-result {
+  font-size: 14px;
+
+  @include mq(sm) {
+    font-size: 16px;
+  }
+}
