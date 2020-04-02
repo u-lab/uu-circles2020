@@ -15,7 +15,7 @@
         ガチャる
       </v-btn>
 
-      <v-btn color="#ff8be5" dark @click="gachaDraw(5)">
+      <v-btn color="#70b8d1" dark @click="gachaDraw(5)">
         5連ガチャ
       </v-btn>
     </div>
