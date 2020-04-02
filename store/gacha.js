@@ -1,4 +1,4 @@
-import { getRandomArr } from '@/util/getRandomArr'
+import { getRandArr } from '@/util/arrayHelper'
 
 // state
 export const state = () => ({
@@ -30,7 +30,7 @@ export const actions = {
 
   gachaDraw({ commit }, { circles, times }) {
     // ガチャを引く(ランダムな配列を返す)
-    const randomCircles = getRandomArr(circles, times)
+    const randomCircles = getRandArr(circles, times)
 
     commit('SET_CIRCLES', randomCircles)
   }

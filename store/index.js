@@ -1,4 +1,4 @@
-import { shuffleArr } from '@/util/shuffleArr'
+import { shuffleArr } from '@/util/arrayHelper'
 import { fixedCircleById } from '@/util/circles/fixedCircle'
 import {
   fetchCircleImageAll,
