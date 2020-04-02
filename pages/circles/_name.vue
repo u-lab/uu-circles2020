@@ -130,7 +130,7 @@
 import { mapGetters } from 'vuex'
 import GroupBadge from '@/components/util/GroupBadge'
 import IconGroup from '@/components/circle/IconGroup'
-import { getArrayAfter, getArrayBefore } from '@/util/arrayHelper'
+import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
 
 export default {
   components: {
@@ -221,8 +221,8 @@ export default {
 
     this.circle = circle
     this.count = count
-    this.beforeCircle = getArrayBefore(this.circles, this.count) // 一つ前のサークル情報取得
-    this.nextCircle = getArrayAfter(this.circles, this.count) // 一つ後のサークル情報取得
+    this.beforeCircle = getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
+    this.nextCircle = getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
     this.loading = false
   },
 

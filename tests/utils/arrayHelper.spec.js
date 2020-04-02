@@ -20,34 +20,31 @@ describe('util/arrayHelper', () => {
     ]
   })
 
-  describe('getArrayBefore', () => {
+  describe('getArrBefore', () => {
     it('3番目を取得する(正常系)', () => {
       const expectObj = exampleArr[1]
-      const resultObj = arrayHelpers.getArrayBefore(exampleArr, 2)
+      const resultObj = arrayHelpers.getArrBefore(exampleArr, 2)
 
       expect(resultObj).toEqual(expectObj)
     })
 
     it('一番最初を取得する(正常系)', () => {
-      const resultObj = arrayHelpers.getArrayBefore(exampleArr, 0)
+      const resultObj = arrayHelpers.getArrBefore(exampleArr, 0)
 
       expect(resultObj).toBeNull()
     })
   })
 
-  describe('getArrayAfter', () => {
+  describe('getArrAfter', () => {
     it('3番目を取得する(正常系)', () => {
       const expectObj = exampleArr[3]
-      const resultObj = arrayHelpers.getArrayAfter(exampleArr, 2)
+      const resultObj = arrayHelpers.getArrAfter(exampleArr, 2)
 
       expect(resultObj).toEqual(expectObj)
     })
 
     it('一番最後を取得する(正常系)', () => {
-      const resultObj = arrayHelpers.getArrayAfter(
-        exampleArr,
-        exampleArr.length
-      )
+      const resultObj = arrayHelpers.getArrAfter(exampleArr, exampleArr.length)
 
       expect(resultObj).toBeNull()
     })

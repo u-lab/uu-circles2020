@@ -6,7 +6,7 @@ import { randNum } from '@/util/numberHelper'
  * @param {Array} arr 配列
  * @param {Number} idx 配列番号
  */
-export function getArrayBefore(arr, idx) {
+export function getArrBefore(arr, idx) {
   return arr[idx - 1] || null
 }
 
@@ -16,7 +16,7 @@ export function getArrayBefore(arr, idx) {
  * @param {Array} arr
  * @param {Number} idx 配列番号
  */
-export function getArrayAfter(arr, idx) {
+export function getArrAfter(arr, idx) {
   return arr[idx + 1] || null
 }
 
