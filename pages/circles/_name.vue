@@ -74,7 +74,7 @@
         <div class="pt-4">
           <h3 class="circle-name-title3">新歓日程</h3>
           <div class="date-border">
-            <v-list v-if="getDate">
+            <v-list v-if="getDate.length !== 0">
               <v-list-item v-for="(date, key) in getDate" :key="'date' + key">
                 {{ date }}
               </v-list-item>
@@ -180,7 +180,29 @@ export default {
     }),
 
     getDate() {
-      return this.circle.date || this.circle.data
+      const date = this.circle.date || this.circle.data
+      if (date) {
+        const searches = ['食事', '飯', 'ごはん', '飲み']
+
+        for (let i = 4; i <= 19; i++) {
+          searches.push('4/' + i)
+          searches.push('4月' + i)
+        }
+
+        const fileterDate = date.filter(function(_date) {
+          for (const search of searches) {
+            if (~_date.indexOf(search)) {
+              return false
+            }
+          }
+
+          return true
+        })
+
+        return fileterDate
+      }
+
+      return []
     }
   },
 
