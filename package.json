@@ -10,7 +10,8 @@
     "analyze": "nuxt build --analyze",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "test": "jest --config jest.config.js"
   },
   "lint-staged": {
     "*.{js,vue}": "npm run lint"
@@ -37,13 +38,20 @@
     "@nuxtjs/eslint-module": "^1.1.0",
     "@nuxtjs/google-analytics": "^2.2.3",
     "@nuxtjs/vuetify": "^1.11.0",
+    "@vue/test-utils": "^1.0.0-beta.32",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.2.6",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.2.6",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1"
+    "lodash.clonedeep": "^4.5.0",
+    "prettier": "^1.19.1",
+    "vue-jest": "^3.0.5"
   }
 }
