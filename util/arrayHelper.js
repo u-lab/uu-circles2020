@@ -1,4 +1,4 @@
-import { randNum } from '@/util/numberHelper'
+import { randInt } from '@/util/numberHelper'
 
 /**
  * 一つ前の配列を取得
@@ -37,11 +37,11 @@ export function getRandArr(arr, times = 1) {
   }
 
   for (let time = 0; time < times; time++) {
-    let rand = randNum(length)
+    let rand = randInt(length)
 
     // uniqueにする
     while (randNumbers.includes(rand)) {
-      rand = randNum(length)
+      rand = randInt(length)
     }
     randNumbers[time] = rand
     retArr[time] = arr[rand]
@@ -57,7 +57,7 @@ export function getRandArr(arr, times = 1) {
  */
 export function shuffleArr(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
-    swapArr(arr, i, randNum(i))
+    swapArr(arr, i, randInt(i))
   }
   return arr
 }
