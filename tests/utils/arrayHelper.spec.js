@@ -83,7 +83,28 @@ describe('util/arrayHelper', () => {
       // deepcopyしないとexampleArrも変化してしまう
       const resultArr = arrayHelpers.shuffleArr(cloneDeep(exampleArr))
       expect(resultArr).toHaveLength(exampleArr.length)
+      expect(resultArr).not.toContain(undefined)
       expect(resultArr).not.toEqual(exampleArr) // 1/10!を引いたらドンマイ!!
+    })
+
+    it('配列の最後を確認し、すべて一致しないことを確認(正常系)', () => {
+      const lastArr = []
+      const maxLoop = 10
+      for (let i = 0; i < maxLoop; i++) {
+        const resultArr = arrayHelpers.shuffleArr(cloneDeep(exampleArr))
+        lastArr.push(resultArr[resultArr.length - 1])
+      }
+
+      let loopNum = 0
+      let equalNum = 0
+      for (let i = 0; i < maxLoop; i++) {
+        for (let j = 0; j < i; j++, loopNum++) {
+          if (lastArr[i] === lastArr[j]) {
+            equalNum++
+          }
+        }
+      }
+      expect(equalNum).not.toBe(loopNum)
     })
 
     it('配列が1つのとき同じ配列が返却されるか(正常系)', () => {

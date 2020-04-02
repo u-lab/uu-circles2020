@@ -57,7 +57,7 @@ export function getRandArr(arr, times = 1) {
  */
 export function shuffleArr(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
-    swapArr(arr, i, randNum(i + 1))
+    swapArr(arr, i, randNum(i))
   }
   return arr
 }
