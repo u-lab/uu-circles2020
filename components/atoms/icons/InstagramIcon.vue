@@ -1,9 +1,9 @@
 <template>
-  <base-icon :href="href" :src="src" :width="width" />
+  <base-icon :href="href" :src="iconSrc" :width="width" />
 </template>
 
 <script>
-import BaseIcon from '@/components/atoms/icons'
+import BaseIcon from '@/components/atoms/icons/BaseIcon'
 
 export default {
   components: {
@@ -18,7 +18,7 @@ export default {
 
     src: {
       type: String,
-      default: null,
+      default: '',
       required: false
     },
 
@@ -35,7 +35,7 @@ export default {
     },
 
     iconSrc() {
-      return this.src || baseIconSrc
+      return this.src || this.baseIconSrc
     }
   }
 }

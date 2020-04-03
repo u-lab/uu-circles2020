@@ -14,7 +14,7 @@ export default {
 
     src: {
       type: String,
-      default: null,
+      default: '',
       required: false
     },
 
