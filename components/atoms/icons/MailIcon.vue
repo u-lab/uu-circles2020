@@ -4,7 +4,7 @@
     class="text-decoration-none"
     light
   >
-    <v-icon :size="width">mdi-email</v-icon>
+    <v-icon :size="width" v-text="'mdi-email'" />
   </a>
 </template>
 
