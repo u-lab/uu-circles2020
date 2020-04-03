@@ -13,7 +13,11 @@
         <v-row style="width: 320px">
           <v-col cols="4" sm="4" class="d-flex justify-end">
             <p style="width: 60px; padding-top: 16px">
-              <img src="/icon.png" width="60px" style="border-radius: 10px" />
+              <v-img
+                src="/icon-60x60.png"
+                width="60px"
+                style="border-radius: 10px"
+              />
             </p>
           </v-col>
 

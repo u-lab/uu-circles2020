@@ -35,6 +35,10 @@ import { mapGetters } from 'vuex'
 export default {
   async fetch({ store }) {
     await store.dispatch('fetchCircles')
+    await store.dispatch('fetchCircleImageAll', {
+      startNum: store.getters.cmpCircleNum,
+      endNum: store.getters.circles.length
+    })
   },
 
   data() {
