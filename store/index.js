@@ -34,11 +34,11 @@ export const mutations = {
 
 // actions
 export const actions = {
-  async fetchCircles({ commit, getters }, { fireStore, fireStorage }) {
+  async fetchCircles({ commit, getters }) {
     if (!getters.check) {
-      const storageRef = fireStorage.ref()
+      const storageRef = this.$fireStorage.ref()
 
-      let circles = await fetchCirclesByFireStore(fireStore)
+      let circles = await fetchCirclesByFireStore(this.$fireStore)
 
       circles = await fetchCircleImageAll(circles, storageRef)
 
@@ -50,11 +50,15 @@ export const actions = {
     }
   },
 
-  async fetchSubImage({ commit, getters }, { fireStorage, circleId }) {
+  async fetchSubImage({ commit, getters }, { circleId }) {
     let circles = getters.circles
 
     // 画像のURLの取得(サブ画像付き)
-    circles = await fetchCircleImageById(circles, circleId, fireStorage.ref())
+    circles = await fetchCircleImageById(
+      circles,
+      circleId,
+      this.$fireStorage.ref()
+    )
 
     commit('SET_CIRCLES', circles)
   }

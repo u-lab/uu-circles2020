@@ -120,11 +120,8 @@ export default {
     LoadingAnimation
   },
 
-  async fetch({ app, store }) {
-    await store.dispatch('fetchCircles', {
-      fireStore: app.$fireStore,
-      fireStorage: app.$fireStorage
-    })
+  async fetch({ store }) {
+    await store.dispatch('fetchCircles')
   },
 
   data() {
