@@ -38,14 +38,14 @@ export const actions = {
     if (!getters.check) {
       const storageRef = this.$fireStorage.ref()
 
-      let circles = await fetchCirclesByFireStore(this.$fireStore)
+      const circles = await fetchCirclesByFireStore(this.$fireStore)
 
-      circles = await fetchCircleImageAll(circles, storageRef)
+      await fetchCircleImageAll(circles, storageRef)
 
       // サークルのシャッフル
-      circles = shuffleArr(circles)
+      shuffleArr(circles)
       // サークルの上位表示の固定
-      circles = fixedCircleById(circles, 'u-lab', 0)
+      fixedCircleById(circles, 'u-lab', 0)
       commit('SET_CIRCLES', circles)
     }
   },
