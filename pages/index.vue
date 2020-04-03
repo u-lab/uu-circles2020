@@ -108,7 +108,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import sanitizeHTML from 'sanitize-html'
-import { kanaToHira } from '@/util/kanaToHira'
+import { kanaToHira } from '@/util/stringHelper'
 import CircleItem from '@/components/CircleItem.vue'
 import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
