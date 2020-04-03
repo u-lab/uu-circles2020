@@ -1,6 +1,6 @@
 <template>
   <div v-if="$route.name === 'index'">
-    <div class="main-background">
+    <div v-once class="main-background">
       <v-img
         width="100vw"
         height="100vh"
@@ -48,7 +48,7 @@
     </div>
 
     <!-- 広告 -->
-    <ad-block />
+    <ad-block v-once />
   </div>
 </template>
 

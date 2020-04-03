@@ -1,10 +1,11 @@
 <template>
   <div>
     <!-- 紹介文 -->
-    <intro-content />
+    <intro-content v-cloak />
 
     <!-- 検索 -->
     <div
+      v-cloak
       v-if="endImageNum == circles.length"
       class="d-flex justify-center align-center my-2"
     >
@@ -98,7 +99,7 @@
       </div>
     </template>
 
-    <div class="d-flex justify-center my-4">
+    <div v-cloak class="d-flex justify-center my-4">
       <div class="intro-background pa-6">
         <p class="mb-0 text-center">
           掲載団体数: <span style="font-size: 24px">{{ circles.length }}</span>
