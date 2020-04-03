@@ -138,17 +138,13 @@ export default {
     IconGroup
   },
 
-  async fetch({ app, store, params, error }) {
-    await store.dispatch('fetchCircles', {
-      fireStore: app.$fireStore,
-      fireStorage: app.$fireStorage
-    })
+  async fetch({ store, params, error }) {
+    await store.dispatch('fetchCircles')
 
     const circles = store.state.circles
     for (const circle of circles) {
       if (circle.id === params.name) {
         await store.dispatch('fetchSubImage', {
-          fireStorage: app.$fireStorage,
           circleId: params.name
         })
 

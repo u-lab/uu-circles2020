@@ -108,7 +108,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import sanitizeHTML from 'sanitize-html'
-import { kanaToHira } from '@/util/kanaToHira'
+import { kanaToHira } from '@/util/stringHelper'
 import CircleItem from '@/components/CircleItem.vue'
 import IntroContent from '@/components/index/IntroContent'
 import LoadingAnimation from '@/components/index/LoadingAnimation'
@@ -120,11 +120,8 @@ export default {
     LoadingAnimation
   },
 
-  async fetch({ app, store }) {
-    await store.dispatch('fetchCircles', {
-      fireStore: app.$fireStore,
-      fireStorage: app.$fireStorage
-    })
+  async fetch({ store }) {
+    await store.dispatch('fetchCircles')
   },
 
   data() {
