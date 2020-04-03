@@ -140,6 +140,10 @@ export default {
 
   async fetch({ store, params, error }) {
     await store.dispatch('fetchCircles')
+    await store.dispatch('fetchCircleImageAll', {
+      startNum: store.getters.cmpCircleNum,
+      endNum: store.getters.circles.length
+    })
 
     const circles = store.state.circles
     for (const circle of circles) {

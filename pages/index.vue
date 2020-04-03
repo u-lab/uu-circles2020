@@ -1,10 +1,14 @@
 <template>
   <div>
     <!-- 紹介文 -->
-    <intro-content />
+    <intro-content v-cloak />
 
     <!-- 検索 -->
-    <div class="d-flex justify-center align-center my-2">
+    <div
+      v-cloak
+      v-if="endImageNum == circles.length"
+      class="d-flex justify-center align-center my-2"
+    >
       <div class="px-1">
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
@@ -95,7 +99,7 @@
       </div>
     </template>
 
-    <div class="d-flex justify-center my-4">
+    <div v-cloak class="d-flex justify-center my-4">
       <div class="intro-background pa-6">
         <p class="mb-0 text-center">
           掲載団体数: <span style="font-size: 24px">{{ circles.length }}</span>
@@ -106,7 +110,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import sanitizeHTML from 'sanitize-html'
 import { kanaToHira } from '@/util/stringHelper'
 import CircleItem from '@/components/CircleItem.vue'
@@ -122,21 +125,23 @@ export default {
 
   async fetch({ store }) {
     await store.dispatch('fetchCircles')
+    await store.dispatch('fetchCircleImageAll', {
+      startNum: store.getters.cmpCircleNum,
+      endNum: store.getters.cmpCircleNum + 3
+    })
   },
 
   data() {
     return {
+      circles: '',
       loading: true,
       filterCirlce: this.circles,
-      searchBox: ''
+      searchBox: '',
+      endImageNum: this.$store.getters.cmpCircleNum
     }
   },
 
   computed: {
-    ...mapGetters({
-      circles: 'circles'
-    }),
-
     loadingAnimeNum() {
       return 2
     },
@@ -159,13 +164,41 @@ export default {
   },
 
   created() {
-    this.filterCirlce = this.circles
+    this.circles = this.$store.getters.circles
+    this.clearFilterCircle()
     this.loading = false
+  },
+
+  mounted() {
+    if (!this.$store.getters.isCmp) {
+      const fetchImage = setInterval(async () => {
+        await this.$store.dispatch('fetchCircleImageAll', {
+          startNum: this.endImageNum,
+          endNum:
+            this.circles.length > this.endImageNum + 6
+              ? this.endImageNum + 6
+              : this.circles.length
+        })
+
+        this.circles = this.$store.getters.circles
+        this.clearFilterCircle()
+        this.endImageNum =
+          this.circles.length > this.endImageNum + 6
+            ? this.endImageNum + 6
+            : this.circles.length
+
+        if (this.endImageNum > this.circles.length) {
+          clearInterval(fetchImage)
+        }
+      }, 300)
+    }
   },
 
   methods: {
     clearFilterCircle() {
-      this.filterCirlce = this.circles
+      this.filterCirlce = this.circles.filter(function(circle) {
+        return circle.image && circle.image.match('https:')
+      })
       this.searchBox = ''
     },
 

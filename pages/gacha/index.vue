@@ -1,6 +1,6 @@
 <template>
   <div class="mb-4">
-    <div class="d-flex justify-center">
+    <div v-once class="d-flex justify-center">
       <div style="max-width: 300px">
         <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />
 
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="text-center py-4">
+    <div v-once class="text-center py-4">
       <v-btn color="#4dbfff" dark @click="gachaDraw()">
         ガチャる
       </v-btn>
@@ -35,6 +35,10 @@ import { mapGetters } from 'vuex'
 export default {
   async fetch({ store }) {
     await store.dispatch('fetchCircles')
+    await store.dispatch('fetchCircleImageAll', {
+      startNum: store.getters.cmpCircleNum,
+      endNum: store.getters.circles.length
+    })
   },
 
   data() {

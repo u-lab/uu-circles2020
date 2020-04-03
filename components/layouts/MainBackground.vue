@@ -1,6 +1,6 @@
 <template>
   <div v-if="$route.name === 'index'">
-    <div class="main-background">
+    <div v-once class="main-background">
       <v-img
         width="100vw"
         height="100vh"
@@ -13,7 +13,11 @@
         <v-row style="width: 320px">
           <v-col cols="4" sm="4" class="d-flex justify-end">
             <p style="width: 60px; padding-top: 16px">
-              <img src="/icon.png" width="60px" style="border-radius: 10px" />
+              <v-img
+                src="/icon-60x60.png"
+                width="60px"
+                style="border-radius: 10px"
+              />
             </p>
           </v-col>
 
@@ -44,7 +48,7 @@
     </div>
 
     <!-- 広告 -->
-    <ad-block />
+    <ad-block v-once />
   </div>
 </template>
 
