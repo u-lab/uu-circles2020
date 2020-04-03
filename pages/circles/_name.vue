@@ -87,7 +87,7 @@
 
         <div class="py-4">
           <template v-if="circle.sns">
-            <icon-group :sns="circle.sns" />
+            <inline-icons :sns="circle.sns" />
           </template>
         </div>
 
@@ -129,13 +129,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import GroupBadge from '@/components/util/GroupBadge'
-import IconGroup from '@/components/circle/IconGroup'
+import InlineIcons from '@/components/organisms/icons/InlineIcons'
 import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
 
 export default {
   components: {
     GroupBadge,
-    IconGroup
+    InlineIcons
   },
 
   async fetch({ store, params, error }) {
