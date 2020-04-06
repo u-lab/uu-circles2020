@@ -74,34 +74,41 @@ export async function fetchInterviewsContentImageAll(
   const promise = []
 
   let interview
-  for (const _interview of interviews) {
+  let idx = 0
+  for (idx = 0; idx < interviews.length; i++) {
+    const _interview = interviews[idx]
     if (_interview.id === id) {
       interview = _interview
-      return
+      break
     }
   }
 
   // promiseのためのimageデータの作成
   for (const content of interview.contents) {
-    if (!checkCompleteImage(content)) {
-      try {
-        promise.push(
-          storageRef.child(`circles/${content.image}`).getDownloadURL()
-        )
-      } catch (e) {}
+    if (content.image) {
+      if (!checkCompleteImage(content)) {
+        try {
+          promise.push(
+            storageRef.child(`circles/${content.image}`).getDownloadURL()
+          )
+        } catch (e) {}
+      }
     }
   }
 
   // 画像のURLをまとめて取得
   const urls = await Promise.all(promise)
-
-  for (let i = 0; i < interview.contents.length; i++) {
-    interview.contents[i].image = !checkCompleteImage(interview.contents[i])
-      ? urls[i]
-      : '/no-image.jpg'
+  for (let i = 0, u = 0; i < interview.contents.length; i++) {
+    if (interview.contents[i].image) {
+      interview.contents[i].image = !checkCompleteImage(interview.contents[i])
+        ? urls[u]
+        : '/no-image.jpg'
+      u++
+    }
   }
 
-  return interview.contents
+  interviews[idx] = interview
+  return interviews
 }
 
 // 完成形のURLか

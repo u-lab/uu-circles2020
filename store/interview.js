@@ -1,7 +1,9 @@
+import cloneDeep from 'lodash.clonedeep'
 import {
   fetchFromFireStore,
   fetchInterviewsImageAll,
-  fetchAuthorsImageAll
+  fetchAuthorsImageAll,
+  fetchInterviewsContentImageAll
 } from '@/util/fireStore/fetch'
 
 // state
@@ -45,21 +47,25 @@ export const actions = {
 
   async fetchInterviews({ commit, getters }) {
     if (!getters.isInterviews) {
-      const interviews = await fetchFromFireStore(this.$fireStore, 'interviews')
+      let interviews = await fetchFromFireStore(this.$fireStore, 'interviews')
 
-      await fetchInterviewsImageAll(interviews, this.$fireStorage.ref())
+      interviews = await fetchInterviewsImageAll(
+        interviews,
+        this.$fireStorage.ref()
+      )
 
       commit('SET_INTERVIEWS', interviews)
     }
+  },
+
+  async fetchInterviewsImage({ commit, getters }, interviewId) {
+    console.log(getters.interviews)
+    const interviews = await fetchInterviewsContentImageAll(
+      cloneDeep(getters.interviews),
+      this.$fireStorage.ref(),
+      interviewId
+    )
+
+    commit('SET_INTERVIEWS', interviews)
   }
-
-  // async fetchInterviewsImage({ commit, getters }, interviewId) {
-  //   const interviews = await fetchInterviewsImageAll(
-  //     cloneDeep(getters.interviews),
-  //     this.$fireStore.ref(),
-  //     interviewId
-  //   )
-
-  //   commit('SET_INTERVIEWS', interviews)
-  // }
 }
