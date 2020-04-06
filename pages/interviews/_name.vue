@@ -1,23 +1,17 @@
 <template>
   <div>
-    <div>
-      <v-img :src="interview.image" />
+    <div class="d-flex justify-center">
+      <v-img max-width="600px" :src="interview.image" />
     </div>
 
     <v-container>
-      <interview-heading class="mb-4" :text="interview.title" />
-
-      <div class="d-flex justify-space-between align-center mb-4">
-        <author-link
-          :name="author.name"
-          :src="author.image"
-          :to="`/authors/${author.id}`"
-        />
-
-        <div>
-          {{ getDate(interview.date.seconds) }}
-        </div>
-      </div>
+      <interview-header
+        :author-image="author.image"
+        :author-name="author.name"
+        :date="interview.date"
+        :to-author="`/authors/${author.id}`"
+        :title="interview.title"
+      />
 
       <div v-if="interview.description" class="pb-2">
         <p
@@ -34,14 +28,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AuthorLink from '@/components/molecules/link/AuthorLink'
-import InterviewHeading from '@/components/atoms/heading/InterviewHeading'
+import InterviewHeader from '@/components/organisms/interview/InterviewHeader'
 import QAndAList from '@/components/organisms/field/QAndAList'
 
 export default {
   components: {
-    AuthorLink,
-    InterviewHeading,
+    InterviewHeader,
     QAndAList
   },
 
@@ -78,17 +70,6 @@ export default {
         this.author = author
         break
       }
-    }
-  },
-
-  methods: {
-    getDate(date) {
-      const fDate = new Date(date * 1000)
-      const year = fDate.getFullYear()
-      const month = fDate.getMonth() + 1
-      const day = fDate.getDate()
-
-      return year + '年' + month + '月' + day + '日'
     }
   }
 }

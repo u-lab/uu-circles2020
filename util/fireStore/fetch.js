@@ -111,6 +111,10 @@ export async function fetchInterviewsContentImageAll(
   return interviews
 }
 
+export function convertToDate(timestamp) {
+  return new Date(timestamp.seconds * 1000)
+}
+
 // 完成形のURLか
 function checkCompleteImage(circle) {
   return circle.image && circle.image.match('https:')

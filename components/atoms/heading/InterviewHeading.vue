@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-heading {
-  color: darken(pink, 10%);
+  color: #dc3971;
   font-size: 28px;
 }
 </style>
