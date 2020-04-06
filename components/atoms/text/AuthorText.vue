@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex align-center">
-    <v-avatar>
+    <v-avatar class="mr-2">
       <v-img :src="src" width="50px" />
     </v-avatar>
 
-    <p class="mb-0" v-text="name" />
+    <p class="mb-0 text--black" v-text="name" />
   </div>
 </template>
 
@@ -35,3 +35,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+// .text--black {
+//   color: black;
+
+// }
+</style>

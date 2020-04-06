@@ -1,10 +1,10 @@
 <template>
   <div>
-    <a v-if="href" :href="href">
+    <a v-if="href" :href="href" class="a-none">
       <author-text :name="name" :src="src" />
     </a>
 
-    <nuxt-link v-else-if="to" :to="to">
+    <nuxt-link v-else-if="to" :to="to" class="a-none">
       <author-text :name="name" :src="src" />
     </nuxt-link>
 
@@ -47,3 +47,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.a-none {
+  color: rgba(0, 0, 0, 0.87);
+
+  text-decoration: none;
+}
+</style>
