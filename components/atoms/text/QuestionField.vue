@@ -1,8 +1,8 @@
 <template>
   <div class="question">
-    <p class="mb-0" v-text="text"></p>
+    <p class="mb-0" v-text="text" />
 
-    <div class="question-mark"></div>
+    <div v-if="isMark" class="question-mark" />
   </div>
 </template>
 
@@ -13,6 +13,12 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+
+    isMark: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   }
 }
@@ -21,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .question {
   position: relative;
-  background: rgba(pink, 0.5);
+  background: #fef4fb;
   padding: 1rem 2.5rem 1rem 1.5rem;
   border-radius: 12px;
 }
@@ -30,7 +36,7 @@ export default {
   position: absolute;
   top: -1rem;
   left: 0.5rem;
-  color: darken(red, 10%);
+  color: #dc3971;
   font-size: 1.5rem;
   font-weight: 900;
 

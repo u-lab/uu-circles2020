@@ -7,7 +7,7 @@
       <p class="mb-0" v-text="t" />
     </template>
 
-    <div class="answer-mark"></div>
+    <div v-if="isMark" class="answer-mark"></div>
   </div>
 </template>
 
@@ -18,6 +18,12 @@ export default {
       type: [String, Array],
       required: false,
       default: ''
+    },
+
+    isMark: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
 
@@ -34,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .answer {
   position: relative;
-  background: rgba(lightgreen, 0.5);
+  background: #ecfcea;
   padding: 1rem 2.5rem 1rem 1.5rem;
   border-radius: 12px;
 }
@@ -43,7 +49,7 @@ export default {
   position: absolute;
   top: -1rem;
   left: 0.5rem;
-  color: darken(green, 10%);
+  color: #03640e;
   font-size: 1.5rem;
   font-weight: 900;
 

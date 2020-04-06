@@ -1,10 +1,8 @@
 <template>
   <div class="mb-4">
-    <question-field v-if="qText" class="mb-4" :text="qText" />
-    <question-field v-else class="mb-4" text="なし" />
+    <question-field class="mb-4" :text="getQText" :a-is-mark="aIsMark" />
 
-    <answer-field v-if="aText" :text="aText" />
-    <answer-field v-else text="なし" />
+    <answer-field :text="getAText" :q-is-mark="qIsMark" />
   </div>
 </template>
 
@@ -19,6 +17,18 @@ export default {
   },
 
   props: {
+    aIsMark: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+
+    qIsMark: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+
     aText: {
       type: [String, Array],
       required: false,
@@ -29,6 +39,16 @@ export default {
       type: String,
       required: false,
       default: null
+    }
+  },
+
+  computed: {
+    getAText() {
+      return this.aText || 'なし'
+    },
+
+    getQText() {
+      return this.qText || 'なし'
     }
   }
 }
