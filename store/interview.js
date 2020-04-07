@@ -9,7 +9,8 @@ import {
 // state
 export const state = () => ({
   authors: null,
-  interviews: null
+  interviews: null,
+  isContentsImages: []
 })
 
 // getters
@@ -17,6 +18,7 @@ export const getters = {
   authors: (state) => state.authors,
   interviews: (state) => state.interviews,
   isAuthors: (state) => state.authors !== null,
+  isContentsImages: (state) => state.isContentsImages,
   isInterviews: (state) => state.interviews !== null
 }
 
@@ -28,9 +30,14 @@ export const mutations = {
 
   SET_INTERVIEWS(state, interviews) {
     state.interviews = interviews
+  },
+
+  SET_IS_CONTENTS_IMAGES(state, id) {
+    state.isContentsImages[id] = true
   }
 }
 
+// actions
 export const actions = {
   async fetchAuthors({ commit, getters }) {
     if (!getters.isAuthors) {
@@ -59,13 +66,15 @@ export const actions = {
   },
 
   async fetchInterviewsImage({ commit, getters }, interviewId) {
-    console.log(getters.interviews)
-    const interviews = await fetchInterviewsContentImageAll(
-      cloneDeep(getters.interviews),
-      this.$fireStorage.ref(),
-      interviewId
-    )
+    if (!getters.isContentsImages[interviewId]) {
+      const interviews = await fetchInterviewsContentImageAll(
+        cloneDeep(getters.interviews),
+        this.$fireStorage.ref(),
+        interviewId
+      )
 
-    commit('SET_INTERVIEWS', interviews)
+      commit('SET_INTERVIEWS', interviews)
+      commit('SET_IS_CONTENTS_IMAGES', interviewId)
+    }
   }
 }
