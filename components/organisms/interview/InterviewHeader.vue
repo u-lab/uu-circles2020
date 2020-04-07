@@ -12,7 +12,7 @@
 
 <script>
 import AuthorLink from '@/components/molecules/link/AuthorLink'
-import FormatYyyyMmDd from '@/components/atoms/Date/FormatYyyyMmDd'
+import FormatYyyyMmDd from '@/components/atoms/date/FormatYyyyMmDd'
 import InterviewHeading from '@/components/atoms/heading/InterviewHeading'
 import { convertToDate } from '@/util/fireStore/fetch'
 

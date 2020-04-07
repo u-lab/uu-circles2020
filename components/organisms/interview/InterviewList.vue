@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h2>記事一覧</h2>
+    <div class="text-center">
+      <h2>記事一覧</h2>
+    </div>
 
     <v-row v-for="(interview, key) in interviews" :key="key" justify="center">
       <v-col cols="12" sm="6" md="4">

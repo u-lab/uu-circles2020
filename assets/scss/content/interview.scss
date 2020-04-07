@@ -1,0 +1,11 @@
+.interview-heading {
+  background-color: #3d00c7;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 24px;
+
+  @include mq(sm) {
+    font-size: 28px;
+  }
+}
