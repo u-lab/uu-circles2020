@@ -1,8 +1,8 @@
 <template>
   <div class="mb-4">
-    <question-field class="mb-4" :text="getQText" :a-is-mark="aIsMark" />
+    <question-field class="mb-4" :text="getQText" :is-mark="aIsMark" />
 
-    <answer-field :text="getAText" :q-is-mark="qIsMark" />
+    <answer-field :text="getAText" :is-mark="qIsMark" />
   </div>
 </template>
 

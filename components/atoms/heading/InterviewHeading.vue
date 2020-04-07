@@ -18,6 +18,10 @@ export default {
 <style lang="scss" scoped>
 .main-heading {
   color: #dc3971;
-  font-size: 28px;
+  font-size: 20px;
+
+  @include mq(sm) {
+    font-size: 28px;
+  }
 }
 </style>

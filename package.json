@@ -27,6 +27,7 @@
     "@nuxtjs/firebase": "^5.0.6",
     "@nuxtjs/pwa": "^3.0.0-0",
     "@nuxtjs/sitemap": "^2.0.1",
+    "@nuxtjs/style-resources": "^1.0.0",
     "core-js": "^2.6.11",
     "firebase": "^7.13.2",
     "nuxt": "^2.12.2",

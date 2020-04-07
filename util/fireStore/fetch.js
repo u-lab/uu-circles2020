@@ -22,7 +22,7 @@ export async function fetchAuthorsImageAll(circles, storageRef) {
     if (!checkCompleteImage(circle)) {
       try {
         promise.push(
-          storageRef.child(`circles/${circle.image}`).getDownloadURL()
+          storageRef.child(`authors/${circle.image}`).getDownloadURL()
         )
       } catch (e) {}
     }
@@ -48,7 +48,7 @@ export async function fetchInterviewsImageAll(interviews, storageRef) {
     if (!checkCompleteImage(interview)) {
       try {
         promise.push(
-          storageRef.child(`circles/${interview.image}`).getDownloadURL()
+          storageRef.child(`/interviews/${interview.image}`).getDownloadURL()
         )
       } catch (e) {}
     }
@@ -89,7 +89,7 @@ export async function fetchInterviewsContentImageAll(
       if (!checkCompleteImage(content)) {
         try {
           promise.push(
-            storageRef.child(`circles/${content.image}`).getDownloadURL()
+            storageRef.child(`interviews/${content.image}`).getDownloadURL()
           )
         } catch (e) {}
       }

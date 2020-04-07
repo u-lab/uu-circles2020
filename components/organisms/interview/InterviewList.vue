@@ -9,8 +9,8 @@
         <interview-card
           :title="interview.title"
           :name="getAuthorName(interview.author)"
-          :to-author="`authors/${interview.author}`"
-          :to-interview="`interviews/${interview.id}`"
+          :to-author="`/authors/${interview.author}`"
+          :to-interview="`/interviews/${interview.id}`"
           :src-author="getAuthorSrc(interview.author)"
           :src-interview="interview.image"
         />
