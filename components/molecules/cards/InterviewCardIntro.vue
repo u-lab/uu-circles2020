@@ -1,10 +1,10 @@
 <template>
   <div>
-    <a v-if="href" :href="href">
+    <a v-if="href" :href="href" class="text-decoration-none">
       <interview-intro :title="title" :src="src" />
     </a>
 
-    <nuxt-link v-else-if="to" :to="to">
+    <nuxt-link v-else-if="to" :to="to" class="text-decoration-none">
       <interview-intro :title="title" :src="src" />
     </nuxt-link>
 
@@ -47,3 +47,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-decoration-none {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+}
+</style>

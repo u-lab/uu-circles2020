@@ -4,6 +4,7 @@
       :title="title"
       :to="toInterview"
       :src="srcInterview"
+      class="mb-4"
     />
 
     <interview-card-author :name="name" :to="toAuthor" :src="srcAuthor" />

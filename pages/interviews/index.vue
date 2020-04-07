@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <v-container>
     <h1>インタビュー</h1>
 
     <interview-list :interviews="interviews" :authors="authors" />
-  </div>
+  </v-container>
 </template>
 
 <script>

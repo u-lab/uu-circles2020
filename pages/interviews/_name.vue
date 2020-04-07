@@ -22,6 +22,12 @@
       </div>
 
       <q-and-a-list :contents="interview.contents" />
+
+      <div class="d-flex justify-center">
+        <navy-blue-button to="/interviews">
+          記事一覧へ
+        </navy-blue-button>
+      </div>
     </v-container>
   </div>
 </template>
@@ -30,10 +36,12 @@
 import { mapGetters } from 'vuex'
 import InterviewHeader from '@/components/organisms/interview/InterviewHeader'
 import QAndAList from '@/components/organisms/field/QAndAList'
+import NavyBlueButton from '@/components/atoms/buttons/NavyBlueButton'
 
 export default {
   components: {
     InterviewHeader,
+    NavyBlueButton,
     QAndAList
   },
 
