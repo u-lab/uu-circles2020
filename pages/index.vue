@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid class="px-6 pb-1">
     <!-- 紹介文 -->
     <intro-content v-cloak />
 
@@ -106,7 +106,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -175,16 +175,16 @@ export default {
         await this.$store.dispatch('fetchCircleImageAll', {
           startNum: this.endImageNum,
           endNum:
-            this.circles.length > this.endImageNum + 6
-              ? this.endImageNum + 6
+            this.circles.length > this.endImageNum + 18
+              ? this.endImageNum + 18
               : this.circles.length
         })
 
         this.circles = this.$store.getters.circles
         this.clearFilterCircle()
         this.endImageNum =
-          this.circles.length > this.endImageNum + 6
-            ? this.endImageNum + 6
+          this.circles.length > this.endImageNum + 18
+            ? this.endImageNum + 18
             : this.circles.length
 
         if (this.endImageNum > this.circles.length) {

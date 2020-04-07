@@ -67,3 +67,17 @@ Google Formより参加希望とご記載ください。
   <a href="https://uu-circle20.firebaseapp.com/">
     <img src="./.github/image/toppage-screenshot.png">
   </a>
+
+## テーブル定義
+
+### circles
+
+![circles定義](./.github/image/circles_table.png "circles定義")
+
+### interviews
+
+![interviews定義](./.github/image/interviews_table.png "interviews定義")
+
+### interviews_authors
+
+![interviews_authors定義](./.github/image/interviews_authors_table.png "interviews_authors定義")

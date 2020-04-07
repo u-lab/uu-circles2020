@@ -126,7 +126,8 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/sitemap',
-    '@nuxtjs/firebase'
+    '@nuxtjs/firebase',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Axios module configuration
@@ -207,6 +208,10 @@ export default {
 
       return urls
     }
+  },
+
+  styleResources: {
+    scss: ['~/assets/scss/functions/*.scss']
   },
 
   googleAnalytics: {
