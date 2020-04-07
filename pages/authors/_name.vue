@@ -72,6 +72,50 @@ export default {
       statusCode: 404,
       message: 'Page Not Found'
     })
+  },
+
+  head() {
+    return {
+      title: this.author.name,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.author.name
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' }
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: `{
+            "@context": "http://schema.org",
+            "@type": "BreadcrumbList",
+            "name": "宇都宮大学の部活動・サークル・学生団体のビラ一覧",
+            "url": "https://uu-circle20.firebaseapp.com",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com",
+                  "name": "ビラ一覧"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://uu-circle20.firebaseapp.com/authors/${this.$route.params.name}",
+                  "name": "${this.author.name}"
+                }
+              }
+            ]
+          }`,
+          type: 'application/ld+json'
+        }
+      ]
+    }
   }
 }
 </script>
