@@ -38,7 +38,7 @@ export default {
     },
 
     isDisplay2() {
-      return this.rand >= 1 || this.rand <= 6
+      return this.rand > 1 || this.rand <= 6
     },
 
     isDisplay3() {
