@@ -1,22 +1,22 @@
 <template>
   <v-container>
     <div class="px-4">
-      <v-row class="mb-4">
-        <v-col cols="6">
+      <v-row class="mb-4" align="center">
+        <v-col cols="6" class="d-flex justify-center">
           <v-avatar size="150px">
             <v-img :src="author.image" />
           </v-avatar>
         </v-col>
         <v-col cols="6">
           <div class="text-center">
-            <h1 v-text="author.name" />
-            <p v-text="author.job" />
+            <h1 class="main-title" v-text="author.name" />
+            <p class="mb-0" v-text="author.job" />
           </div>
         </v-col>
       </v-row>
 
       <div class="mb-4">
-        <h2>新入生に向けて一言</h2>
+        <h2 class="description">新入生に向けて一言</h2>
         <div class="radius pa-2" style="border: 1px solid #000">
           <p
             v-for="(description, key) in author.description"
@@ -119,3 +119,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.description {
+  font-size: 20px;
+
+  @include mq(sm) {
+    font-size: 24px;
+  }
+}
+
+.main-title {
+  font-size: 1.75rem;
+
+  @include mq(sm) {
+    font-size: 2rem;
+  }
+}
+</style>
