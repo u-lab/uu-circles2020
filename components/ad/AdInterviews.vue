@@ -4,7 +4,7 @@
 
 <script>
 import AdBase from '@/components/ad/AdBase'
-import Logo from '@/assets/img/go-to-interviews.jpg'
+import Logo from '@/assets/img/go-to-interviews2.png'
 
 export default {
   components: {
