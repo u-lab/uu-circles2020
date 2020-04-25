@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Navbar from '@/components/layouts/Navbar'
-import MainBackground from '@/components/layouts/MainBackground'
-import UuFooter from '@/components/layouts/UuFooter'
+const Navbar = () => import('@/components/layouts/Navbar')
+const MainBackground = () => import('@/components/layouts/MainBackground')
+const UuFooter = () => import('@/components/layouts/UuFooter')
 
 export default {
   components: {
