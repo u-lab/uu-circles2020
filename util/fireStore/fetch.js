@@ -75,7 +75,7 @@ export async function fetchInterviewsContentImageAll(
 
   let interview
   let idx = 0
-  for (idx = 0; idx < interviews.length; i++) {
+  for (idx = 0; idx < interviews.length; idx++) {
     const _interview = interviews[idx]
     if (_interview.id === id) {
       interview = _interview
