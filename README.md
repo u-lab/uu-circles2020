@@ -1,9 +1,12 @@
 # 宇都宮大学のサークルビラ一覧
-
+[![CodeFactor](https://www.codefactor.io/repository/github/u-lab/uu-circles2020/badge)](https://www.codefactor.io/repository/github/u-lab/uu-circles2020)
+  
   <img src="./static/favicon-32x32.png" style="width: 50px; margin-right: 16px">
   <a href="https://uu-circle20.firebaseapp.com/">
     https://uu-circle20.firebaseapp.com/
   </a>
+  
+
 
   このプロジェクトは新入生の新生活を応援したいという思いから、有志によって作られた、宇都宮大学のサークル・部活のビラを一覧で見ることができるサイトのソースコードです。  
 
