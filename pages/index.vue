@@ -110,11 +110,11 @@
 </template>
 
 <script>
+import sanitizeHTML from 'sanitize-html'
 import { kanaToHira } from '@/util/stringHelper'
 const CircleItem = () => import('@/components/CircleItem.vue')
 const IntroContent = () => import('@/components/index/IntroContent')
 const LoadingAnimation = () => import('@/components/index/LoadingAnimation')
-const sanitizeHTML = () => import('sanitize-html')
 
 export default {
   components: {
