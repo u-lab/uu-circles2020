@@ -37,7 +37,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import NavyBlueButton from '@/components/atoms/buttons/NavyBlueButton'
+const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
   components: {

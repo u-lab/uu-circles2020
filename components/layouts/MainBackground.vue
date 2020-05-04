@@ -61,3 +61,58 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.main-background {
+  position: relative;
+  font-family: fot-klee-pro, sans-serif !important;
+}
+
+.main-background-content-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.main-background-content {
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  @include mq(sm) {
+    color: #333;
+    background: rgba(#fff, 0.7);
+  }
+}
+
+.main-background-icon-container {
+  position: relative;
+}
+
+.main-background-bottom {
+  position: absolute;
+  max-width: 500px;
+  bottom: 0;
+  margin: 0 !important;
+
+  &-l {
+    background: grey;
+    color: #fff;
+    padding: 10px !important;
+  }
+
+  &-r {
+    background: rgba(#fff, 0.7);
+    padding: 15px !important;
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+}
+</style>

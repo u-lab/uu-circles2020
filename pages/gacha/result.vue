@@ -61,7 +61,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AboutHeading from '@/components/about/AboutHeading'
+const AboutHeading = () => import('@/components/about/AboutHeading')
 
 export default {
   middleware: 'gacha',
@@ -121,3 +121,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.font-gacha-result {
+  font-size: 14px;
+
+  @include mq(sm) {
+    font-size: 16px;
+  }
+}
+</style>

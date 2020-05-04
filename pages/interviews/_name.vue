@@ -36,9 +36,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import InterviewHeader from '@/components/organisms/interview/InterviewHeader'
-import QAndAList from '@/components/organisms/field/QAndAList'
-import NavyBlueButton from '@/components/atoms/buttons/NavyBlueButton'
+const InterviewHeader = () =>
+  import('@/components/organisms/interview/InterviewHeader')
+const QAndAList = () => import('@/components/organisms/field/QAndAList')
+const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
   components: {

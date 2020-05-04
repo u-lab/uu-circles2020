@@ -92,7 +92,7 @@ export default {
       },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' }
     ],
-    script: [{ src: 'https://use.typekit.net/hir7vbf.js' }]
+    script: [{ src: 'https://use.typekit.net/hir7vbf.js', rel: 'preload' }]
   },
   /*
    ** Customize the progress-bar color

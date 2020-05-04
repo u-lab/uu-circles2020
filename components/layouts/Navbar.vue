@@ -13,3 +13,30 @@
     </div>
   </header>
 </template>
+
+<style lang="scss" scoped>
+.app-bar {
+  background-image: url('/header-background.png');
+  background-size: cover;
+  font-family: fot-klee-pro, sans-serif !important;
+}
+
+.header-subheading {
+  font-size: 14px;
+  color: #fff;
+
+  @include mq(sm) {
+    font-size: 20px;
+  }
+}
+
+.header-heading {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0 !important;
+  @include mq(sm) {
+    font-size: 30px;
+  }
+}
+</style>
