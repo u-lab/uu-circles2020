@@ -128,9 +128,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GroupBadge from '@/components/util/GroupBadge'
-import InlineIcons from '@/components/organisms/icons/InlineIcons'
 import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
+const GroupBadge = () => import('@/components/util/GroupBadge')
+const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
 
 export default {
   components: {

@@ -61,7 +61,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AboutHeading from '@/components/about/AboutHeading'
+const AboutHeading = () => import('@/components/about/AboutHeading')
 
 export default {
   middleware: 'gacha',

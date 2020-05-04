@@ -22,3 +22,25 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.tap-intro-content {
+  font-weight: bold;
+}
+
+.tap-intro-content-detail {
+  font-size: 1.1rem;
+
+  @include mq(sm) {
+    font-size: 1.5rem;
+  }
+}
+
+.tap-intro-content-tap {
+  font-size: 2rem;
+
+  @include mq(sm) {
+    font-size: 2.5rem;
+  }
+}
+</style>

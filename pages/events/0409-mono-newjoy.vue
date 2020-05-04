@@ -138,10 +138,10 @@
 </template>
 
 <script>
-import AboutHeading from '@/components/about/AboutHeading'
-import CircleListBtn from '@/components/util/CircleListBtn'
 import MainImg from '@/assets/img/events/0409-mono-newjoy1.jpg'
-import LineIcon from '@/components/atoms/icons/LineIcon'
+const AboutHeading = () => import('@/components/about/AboutHeading')
+const CircleListBtn = () => import('@/components/util/CircleListBtn')
+const LineIcon = () => import('@/components/atoms/icons/LineIcon')
 
 export default {
   components: {

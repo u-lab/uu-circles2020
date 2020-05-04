@@ -21,7 +21,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import InterviewList from '@/components/organisms/interview/InterviewList'
+const InterviewList = () =>
+  import('@/components/organisms/interview/InterviewList')
 
 export default {
   components: {
