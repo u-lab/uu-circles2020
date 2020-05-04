@@ -17,15 +17,15 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, generate
-      run: |
-           npm install
-           npm run build
+    - name: npm install
+      run: npm install
+    - name: npm run build
+      run: npm run build
     - name: deploy to Firebase Hosting
       uses: w9jds/firebase-action@master
       with:
