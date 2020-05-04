@@ -270,3 +270,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.index-gacha-intro {
+  font-family: fot-klee-pro, sans-serif !important;
+
+  &::before {
+    content: '▲';
+  }
+}
+</style>

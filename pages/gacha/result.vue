@@ -121,3 +121,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.font-gacha-result {
+  font-size: 14px;
+
+  @include mq(sm) {
+    font-size: 16px;
+  }
+}
+</style>
