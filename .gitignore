@@ -93,3 +93,5 @@ sw.*
 .env.prod
 .env.production
 .firebase
+
+circles.json

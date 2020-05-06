@@ -5,9 +5,10 @@
   "author": "u-lab",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
+    "dev": "npm run create-circle && nuxt",
+    "build": "npm run create-circle && nuxt build",
     "analyze": "nuxt build --analyze",
+    "create-circle": "node ./scripts/createCircleJson.js",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -32,7 +33,8 @@
     "firebase": "^7.13.2",
     "nuxt": "^2.12.2",
     "sanitize-html": "^1.22.1",
-    "vue-youtube": "^1.4.0"
+    "vue-youtube": "^1.4.0",
+    "xhr2": "^0.2.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",
