@@ -6,6 +6,7 @@ import {
   fetchCircleImageById,
   fetchCirclesByFireStore
 } from '@/util/circles/fetchCircle'
+import circlesJson from '@/assets/json/circles.json'
 
 // state
 export const state = () => ({
@@ -54,7 +55,12 @@ export const mutations = {
 export const actions = {
   async fetchCircles({ commit, getters }) {
     if (!getters.check) {
-      const circles = await fetchCirclesByFireStore(this.$fireStore)
+      const circles =
+        circlesJson || (await fetchCirclesByFireStore(this.$fireStore))
+
+      if (circles) {
+        commit('UPDATE_CMPCIRCIRCLENUM', circles.length)
+      }
 
       // サークルのシャッフル
       shuffleArr(circles)
