@@ -1,111 +1,116 @@
 <template>
   <v-container fluid class="px-6 pb-1">
-    <!-- 紹介文 -->
-    <intro-content v-cloak />
+    <v-lazy>
+      <!-- 紹介文 -->
+      <intro-content v-cloak />
 
-    <!-- 検索 -->
-    <div
-      v-cloak
-      v-if="endImageNum == circles.length"
-      class="d-flex justify-center align-center my-2"
-    >
-      <div class="px-1">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-btn dark v-on="on">
-              系統検索
-            </v-btn>
-          </template>
+      <!-- 検索 -->
+      <div
+        v-cloak
+        v-if="endImageNum == circles.length"
+        class="d-flex justify-center align-center my-2"
+      >
+        <div class="px-1">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on }">
+              <v-btn dark v-on="on">
+                系統検索
+              </v-btn>
+            </template>
 
-          <v-list>
-            <v-list-item @click="clearFilterCircle()">
-              <v-list-item-title v-text="'すべて'" />
-            </v-list-item>
+            <v-list>
+              <v-list-item @click="clearFilterCircle()">
+                <v-list-item-title v-text="'すべて'" />
+              </v-list-item>
 
-            <v-list-item
-              v-for="typeList in typeListForSearch"
-              :key="`type-${typeList.type}`"
-              @click="computedCircleByType(typeList.type)"
-            >
-              <v-list-item-title v-text="typeList.name" />
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </div>
+              <v-list-item
+                v-for="typeList in typeListForSearch"
+                :key="`type-${typeList.type}`"
+                @click="computedCircleByType(typeList.type)"
+              >
+                <v-list-item-title v-text="typeList.name" />
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
 
-      <div class="px-1">
-        <v-text-field
-          v-model="searchBox"
-          append-icon="mdi-magnify"
-          label="検索"
-          solo
-          hide-details
-          @input="computedCircleBySearchBox()"
-        ></v-text-field>
-      </div>
-    </div>
-
-    <div class="d-flex justify-center px-2 mb-2">
-      <div>
-        <v-card to="/gacha" class="mb-1">
-          <v-img src="/gacha-logo.png" alt="ガチャを回す" max-width="300px" />
-        </v-card>
-        <p class="text-center index-gacha-intro mb-0">
-          サークルが選べない新入生へ
-        </p>
-      </div>
-    </div>
-
-    <!-- ビラ一覧 -->
-    <v-row v-if="filterCirlce && filterCirlce.length > 0">
-      <template>
-        <v-col
-          v-for="(circle, key) in filterCirlce"
-          :key="'circle' + key"
-          cols="12"
-          xs="6"
-          sm="4"
-        >
-          <circle-item
-            v-if="circle.id && circle.image && circle.name"
-            :to="`/circles/${circle.id}`"
-            :src="circle.image"
-            :name="circle.shortname || circle.name"
-          />
-        </v-col>
-      </template>
-    </v-row>
-
-    <template v-else-if="loading">
-      <loading-animation
-        v-for="i in loadingAnimeNum"
-        :key="getLoadingKeyName(i)"
-      />
-    </template>
-
-    <template v-else>
-      <div class="d-flex justify-center my-4">
-        <div class="intro-background pa-6">
-          <p class="mb-0 text-center">
-            検索結果は存在しませんでした。別のキーワードで再検索してください。
-          </p>
+        <div class="px-1">
+          <v-text-field
+            v-model="searchBox"
+            append-icon="mdi-magnify"
+            label="検索"
+            solo
+            hide-details
+            @input="computedCircleBySearchBox()"
+          ></v-text-field>
         </div>
       </div>
 
-      <div class="d-flex justify-center mb-4">
-        <v-btn dark @click="clearFilterCircle()">
-          検索リセット
-        </v-btn>
+      <div class="d-flex justify-center px-2 mb-2">
+        <div>
+          <v-card to="/gacha" class="mb-1">
+            <v-img src="/gacha-logo.png" alt="ガチャを回す" max-width="300px" />
+          </v-card>
+          <p class="text-center index-gacha-intro mb-0">
+            サークルが選べない新入生へ
+          </p>
+        </div>
       </div>
-    </template>
+    </v-lazy>
 
-    <div v-cloak class="d-flex justify-center my-4">
-      <div class="intro-background pa-6">
-        <p class="mb-0 text-center">
-          掲載団体数: <span style="font-size: 24px">{{ circles.length }}</span>
-        </p>
+    <!-- ビラ一覧 -->
+    <v-lazy>
+      <v-row v-if="filterCirlce && filterCirlce.length > 0">
+        <template>
+          <v-col
+            v-for="(circle, key) in filterCirlce"
+            :key="'circle' + key"
+            cols="12"
+            xs="6"
+            sm="4"
+          >
+            <circle-item
+              v-if="circle.id && circle.image && circle.name"
+              :to="`/circles/${circle.id}`"
+              :src="circle.image"
+              :name="circle.shortname || circle.name"
+            />
+          </v-col>
+        </template>
+      </v-row>
+
+      <template v-else-if="loading">
+        <loading-animation
+          v-for="i in loadingAnimeNum"
+          :key="getLoadingKeyName(i)"
+        />
+      </template>
+
+      <template v-else>
+        <div class="d-flex justify-center my-4">
+          <div class="intro-background pa-6">
+            <p class="mb-0 text-center">
+              検索結果は存在しませんでした。別のキーワードで再検索してください。
+            </p>
+          </div>
+        </div>
+
+        <div class="d-flex justify-center mb-4">
+          <v-btn dark @click="clearFilterCircle()">
+            検索リセット
+          </v-btn>
+        </div>
+      </template>
+
+      <div v-cloak class="d-flex justify-center my-4">
+        <div class="intro-background pa-6">
+          <p class="mb-0 text-center">
+            掲載団体数:
+            <span style="font-size: 24px">{{ circles.length }}</span>
+          </p>
+        </div>
       </div>
-    </div>
+    </v-lazy>
   </v-container>
 </template>
 
