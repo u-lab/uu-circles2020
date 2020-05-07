@@ -58,7 +58,7 @@ export const actions = {
       const circles =
         circlesJson || (await fetchCirclesByFireStore(this.$fireStore))
 
-      if (circles) {
+      if (circlesJson) {
         commit('UPDATE_CMPCIRCIRCLENUM', circles.length)
       }
 
