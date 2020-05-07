@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run create-circle && nuxt",
+    "dev:o": "nuxt",
     "build": "npm run create-circle && nuxt build",
     "analyze": "nuxt build --analyze",
     "create-circle": "node ./scripts/createCircleJson.js",
