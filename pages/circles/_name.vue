@@ -9,7 +9,7 @@
             :size="70"
             :width="7"
             class="loading-circle"
-          ></v-progress-circular>
+          />
         </template>
         <v-carousel
           v-else-if="circle.subImage"
@@ -72,48 +72,17 @@
         </div>
 
         <div class="pt-4">
-          <h3 class="circle-name-title3">新歓日程</h3>
-          <div class="date-border">
-            <v-list v-if="getDate.length !== 0">
-              <v-list-item v-for="(date, key) in getDate" :key="'date' + key">
-                {{ date }}
-              </v-list-item>
-            </v-list>
-            <v-list v-else>
-              <v-list-item>なし</v-list-item>
-            </v-list>
-          </div>
+          <circle-date-field :dates="getDate" />
         </div>
 
         <div class="py-4">
-          <template v-if="circle.sns">
-            <inline-icons :sns="circle.sns" />
-          </template>
+          <inline-icons v-if="circle.sns" :sns="circle.sns" />
         </div>
 
-        <div class="d-flex justify-center mb-4">
-          <v-btn
-            v-if="beforeCircle"
-            :to="`/circles/${beforeCircle.id}`"
-            nuxt
-            color="#0b2157"
-            dark
-          >
-            <v-icon dark>mdi-menu-left</v-icon>
-            <span class="ml-2">前を見る</span>
-          </v-btn>
-
-          <v-btn
-            v-if="nextCircle"
-            :to="`/circles/${nextCircle.id}`"
-            nuxt
-            color="#0b2157"
-            dark
-          >
-            <span class="ml-2">次を見る</span>
-            <v-icon dark>mdi-menu-right</v-icon>
-          </v-btn>
-        </div>
+        <circle-to-before-next-btn-group
+          :to-before="`/circles/${beforeCircle.id}`"
+          :to-next="`/circles/${nextCircle.id}`"
+        />
 
         <div class="d-flex justify-center">
           <v-btn to="/" nuxt color="#0b2157" dark>
@@ -129,37 +98,23 @@
 <script>
 import { mapGetters } from 'vuex'
 import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
+const CircleToBeforeNextBtnGroup = () =>
+  import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
+const CircleDateField = () =>
+  import('@/components/molecules/field/CircleDateField')
 const GroupBadge = () => import('@/components/util/GroupBadge')
 const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
 
 export default {
   components: {
+    CircleToBeforeNextBtnGroup,
+    CircleDateField,
     GroupBadge,
     InlineIcons
   },
 
-  async fetch({ store, params, error }) {
-    await store.dispatch('fetchCircles')
-    await store.dispatch('fetchCircleImageAll', {
-      startNum: store.getters.cmpCircleNum,
-      endNum: store.getters.circles.length
-    })
-
-    const circles = store.state.circles
-    for (const circle of circles) {
-      if (circle.id === params.name) {
-        await store.dispatch('fetchSubImage', {
-          circleId: params.name
-        })
-
-        return
-      }
-    }
-
-    return error({
-      statusCode: 404,
-      message: 'Page Not Found'
-    })
+  fetch({ store, params, error }) {
+    store.dispatch('fetchCircles')
   },
 
   data() {
@@ -219,6 +174,12 @@ export default {
       }
     }
 
+    if (!circle) {
+      return this.$nuxt.error({
+        statusCode: 404,
+        message: 'Page Not Found'
+      })
+    }
     this.circle = circle
     this.count = count
     this.beforeCircle = getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
