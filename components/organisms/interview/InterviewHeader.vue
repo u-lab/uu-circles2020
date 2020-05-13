@@ -5,7 +5,7 @@
     <div class="d-flex justify-space-between align-center mb-4">
       <author-link :name="authorName" :src="authorImage" :to="toAuthor" />
 
-      <format-yyyy-mm-dd :date="convertToDate(date)" />
+      <format-yyyy-mm-dd v-if="date" :date="convertToDate(date)" />
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 import AuthorLink from '@/components/molecules/link/AuthorLink'
 import FormatYyyyMmDd from '@/components/atoms/date/FormatYyyyMmDd'
 import InterviewHeading from '@/components/atoms/heading/InterviewHeading'
-import { convertToDate } from '@/util/fireStore/fetch'
+import { convertToDate } from '@/util/date'
 
 export default {
   components: {
