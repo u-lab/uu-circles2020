@@ -4,12 +4,14 @@
       <v-img
         width="100vw"
         height="100vh"
-        src="https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-1200.jpg?alt=media&token=ed46bc17-f10c-4d87-bebf-49ef1f5260c0"
-        srcset="https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-480-min.jpg?alt=media&token=0a66dbe8-e420-42fc-9dbb-9d9744c7daaa 480w, https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-640-min.jpg?alt=media&token=6d8bef01-d4a8-41f3-b745-a8ef37cb7fff 640w,
-    https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-960.jpg?alt=media&token=aeb45493-044d-4765-a6c6-e6c3a864a91d 960w, https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-1200.jpg?alt=media&token=ed46bc17-f10c-4d87-bebf-49ef1f5260c0 1200w"
+        src="/main-background-pc.jpg"
+        srcset="https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-480-min.jpg?alt=media&token=0a66dbe8-e420-42fc-9dbb-9d9744c7daaa
+      480w,
+      https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-640-min.jpg?alt=media&token=6d8bef01-d4a8-41f3-b745-a8ef37cb7fff
+      600w, /main-background-pc.jpg 960w, /main-background-pc.jpg 1200w"
       />
 
-      <div class="main-background-content-container">
+      <div class="main-background-content-container d-sm-none">
         <v-row style="width: 320px">
           <v-col cols="4" sm="4" class="d-flex justify-end">
             <p style="width: 60px; padding-top: 16px">
