@@ -80,8 +80,8 @@
         </div>
 
         <circle-to-before-next-btn-group
-          :to-before="`/circles/${beforeCircle.id}`"
-          :to-next="`/circles/${nextCircle.id}`"
+          :to-before="toBefore"
+          :to-next="toNext"
         />
 
         <div class="d-flex justify-center">
@@ -96,7 +96,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
 const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
@@ -113,7 +112,7 @@ export default {
     InlineIcons
   },
 
-  fetch({ store, params, error }) {
+  fetch({ store }) {
     store.dispatch('fetchCircles')
   },
 
@@ -129,9 +128,9 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      circles: 'circles'
-    }),
+    circles() {
+      return this.$store.getters.circles
+    },
 
     getDate() {
       const date = this.circle.date || this.circle.data
@@ -157,6 +156,14 @@ export default {
       }
 
       return []
+    },
+
+    toNext() {
+      return this.nextCircle ? `/circles/${this.nextCircle.id}` : undefined
+    },
+
+    toBefore() {
+      return this.beforeCircle ? `/circles/${this.beforeCircle.id}` : undefined
     }
   },
 
