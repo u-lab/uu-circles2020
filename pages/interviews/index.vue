@@ -29,9 +29,9 @@ export default {
     InterviewList
   },
 
-  async fetch({ store }) {
-    await store.dispatch('interview/fetchAuthors')
-    await store.dispatch('interview/fetchInterviews')
+  fetch({ store }) {
+    store.dispatch('interview/fetchAuthors')
+    store.dispatch('interview/fetchInterviews')
   },
 
   computed: {

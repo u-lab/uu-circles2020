@@ -1,6 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-import Firebase from 'firebase'
-import 'firebase/firestore'
+import circleJson from './assets/json/circles.json'
 require('dotenv').config()
 
 export default {
@@ -126,7 +125,6 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     '@nuxtjs/sitemap',
-    '@nuxtjs/firebase',
     '@nuxtjs/style-resources'
   ],
   /*
@@ -134,27 +132,6 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
-  firebase: {
-    // options
-    config: {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-      databaseURL: process.env.FIREBASE_DB_URL,
-      projectId: process.env.FIREBASE_PROJECTID,
-      storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-      appId: process.env.FIREBASE_APP_ID,
-      measurementId: process.env.FIREBASE_MEASUREMENT_ID
-    },
-    services: {
-      firestore: true,
-      storage: true
-    }
-  },
 
   vuetify: {
     customVariables: ['~/assets/scss/variables.scss'],
@@ -177,32 +154,13 @@ export default {
   sitemap: {
     hostname: 'https://uu-circle20.firebaseapp.com',
 
-    async routes() {
-      // ここで動的ページの出力をする
-      // firestoreの準備
-      const config = {
-        apiKey: process.env.FIREBASE_API_KEY,
-        authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-        databaseURL: process.env.FIREBASE_DB_URL,
-        projectId: process.env.FIREBASE_PROJECTID,
-        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-        messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-        appId: process.env.FIREBASE_APP_ID,
-        measurementId: process.env.FIREBASE_MEASUREMENT_ID
-      }
-      const firebaseApp = Firebase.initializeApp(config)
-      const firestore = firebaseApp.firestore()
-      firestore.settings({ timestampsInSnapshots: true })
-      // firestoreからDataの回収
-      const collection = firestore.collection('circles')
-      const docs = await collection.get()
+    routes() {
+      const json = circleJson
 
       // 戻り値の生成
       const urls = []
-      const docsLen = docs.docs.length
-      for (let i = 0; i < docsLen; i++) {
-        const _doc = docs.docs[i]
-        const url = `circles/${_doc.id}`
+      for (let i = 0; i < json.length; i++) {
+        const url = `circles/${json.id}`
         urls.push(url)
       }
 
