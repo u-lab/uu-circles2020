@@ -21,8 +21,8 @@ export const mutations = {
     state.authors = authors
   },
 
-  SET_IS_CONTENTS_IMAGES(state, id) {
-    state.isContentsImages[id] = true
+  SET_INTERVIEWS(state, interviews) {
+    state.interviews = interviews
   }
 }
 
