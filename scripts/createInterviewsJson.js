@@ -22,11 +22,10 @@ const storageRef = firebaseApp.storage().ref()
 const create = async () => {
   try {
     let datas = await getData()
-    datas = await fetchCircleImageAll(datas)
-    datas = await subimage(datas)
+    datas = await fetchImageAll(datas)
 
     return fs.writeFileSync(
-      './assets/json/circles.json',
+      './assets/json/interviews.json',
       JSON.stringify(datas, null, ''),
       (err) => {
         if (err) {
@@ -41,7 +40,7 @@ const create = async () => {
 
 const getData = async () => {
   // firestoreからDataの回収
-  const collection = firestore.collection('circles')
+  const collection = firestore.collection('interviews')
   const docs = await collection.get()
 
   // 戻り値の生成
@@ -55,61 +54,40 @@ const getData = async () => {
   return datas
 }
 
-const fetchCircleImageAll = async (circles) => {
+const fetchImageAll = async (interviews) => {
   const promise = []
 
-  // promiseのためのimageデータの作成
-  for (const circle of circles) {
-    if (!checkCompleteImage(circle)) {
-      try {
-        promise.push(
-          storageRef.child(`circles/${circle.image}`).getDownloadURL()
-        )
-      } catch (e) {}
-    }
-  }
+  for (let idx = 0; idx < interviews.length; idx++) {
+    const interview = interviews[idx]
 
-  // 画像のURLをまとめて取得
-  const urls = await Promise.all(promise)
-
-  for (let i = 0; i < circles.length; i++) {
-    circles[i].image = !checkCompleteImage(circles[i])
-      ? urls[i]
-      : '/no-image.jpg'
-  }
-
-  return circles
-}
-
-const subimage = async (circles) => {
-  for (let circleIdx = 0; circleIdx < circles.length; circleIdx++) {
-    const circle = circles[circleIdx]
-
-    // サブイメージ
-    if (circle.subImage) {
-      const promise = []
-
-      if (!circle.subImage[0].match('https:')) {
-        for (const subImage of circle.subImage) {
+    // promiseのためのimageデータの作成
+    for (const content of interview.contents) {
+      if (content.image) {
+        if (!checkCompleteImage(content)) {
           try {
             promise.push(
-              storageRef.child(`circles/${subImage}`).getDownloadURL()
+              storageRef.child(`interviews/${content.image}`).getDownloadURL()
             )
           } catch (e) {}
         }
       }
-
-      // 画像のURLをまとめて取得
-      const urls = await Promise.all(promise)
-
-      for (let idx = 0; idx < urls.length; idx++, idx++) {
-        circle.subImage[idx] = urls[idx]
-      }
-
-      circles[circleIdx] = circle
     }
+
+    // 画像のURLをまとめて取得
+    const urls = await Promise.all(promise)
+    for (let i = 0, u = 0; i < interview.contents.length; i++) {
+      if (interview.contents[i].image) {
+        interview.contents[i].image = !checkCompleteImage(interview.contents[i])
+          ? urls[u]
+          : '/no-image.jpg'
+        u++
+      }
+    }
+
+    interviews[idx] = interview
   }
-  return circles
+
+  return interviews
 }
 
 // 完成形のURLか
