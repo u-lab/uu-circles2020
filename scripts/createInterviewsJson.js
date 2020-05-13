@@ -22,6 +22,7 @@ const storageRef = firebaseApp.storage().ref()
 const create = async () => {
   try {
     let datas = await getData()
+    datas = await fetchInterviewsImageAll(datas)
     datas = await fetchImageAll(datas)
 
     return fs.writeFileSync(
@@ -52,6 +53,32 @@ const getData = async () => {
   }
 
   return datas
+}
+
+const fetchInterviewsImageAll = async (interviews) => {
+  const promise = []
+
+  // promiseのためのimageデータの作成
+  for (const interview of interviews) {
+    if (!checkCompleteImage(interview)) {
+      try {
+        promise.push(
+          storageRef.child(`/interviews/${interview.image}`).getDownloadURL()
+        )
+      } catch (e) {}
+    }
+  }
+
+  // 画像のURLをまとめて取得
+  const urls = await Promise.all(promise)
+
+  for (let i = 0; i < interviews.length; i++) {
+    interviews[i].image = !checkCompleteImage(interviews[i])
+      ? urls[i]
+      : '/no-image.jpg'
+  }
+
+  return interviews
 }
 
 const fetchImageAll = async (interviews) => {

@@ -44,8 +44,8 @@ export default {
     NavyBlueButton
   },
 
-  async fetch({ store }) {
-    await store.dispatch('interview/fetchAuthors')
+  fetch({ store }) {
+    store.dispatch('interview/fetchAuthors')
   },
 
   data() {

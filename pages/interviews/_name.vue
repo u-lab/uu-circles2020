@@ -48,10 +48,9 @@ export default {
     QAndAList
   },
 
-  async fetch({ store, params }) {
-    await store.dispatch('interview/fetchAuthors')
-    await store.dispatch('interview/fetchInterviews')
-    await store.dispatch('interview/fetchInterviewsImage', params.name)
+  fetch({ store, params }) {
+    store.dispatch('interview/fetchAuthors')
+    store.dispatch('interview/fetchInterviews')
   },
 
   data() {

@@ -1,10 +1,5 @@
-import cloneDeep from 'lodash.clonedeep'
-import {
-  fetchFromFireStore,
-  fetchInterviewsImageAll,
-  fetchAuthorsImageAll,
-  fetchInterviewsContentImageAll
-} from '@/util/fireStore/fetch'
+import interviewsJson from '@/assets/json/interviews.json'
+import authorsJson from '@/assets/json/authors.json'
 
 // state
 export const state = () => ({
@@ -39,42 +34,15 @@ export const mutations = {
 
 // actions
 export const actions = {
-  async fetchAuthors({ commit, getters }) {
+  fetchAuthors({ commit, getters }) {
     if (!getters.isAuthors) {
-      let authors = await fetchFromFireStore(
-        this.$fireStore,
-        'interviews_authors'
-      )
-
-      authors = await fetchAuthorsImageAll(authors, this.$fireStorage.ref())
-
-      commit('SET_AUTHORS', authors)
+      commit('SET_AUTHORS', authorsJson)
     }
   },
 
-  async fetchInterviews({ commit, getters }) {
+  fetchInterviews({ commit, getters }) {
     if (!getters.isInterviews) {
-      let interviews = await fetchFromFireStore(this.$fireStore, 'interviews')
-
-      interviews = await fetchInterviewsImageAll(
-        interviews,
-        this.$fireStorage.ref()
-      )
-
-      commit('SET_INTERVIEWS', interviews)
-    }
-  },
-
-  async fetchInterviewsImage({ commit, getters }, interviewId) {
-    if (!getters.isContentsImages[interviewId]) {
-      const interviews = await fetchInterviewsContentImageAll(
-        cloneDeep(getters.interviews),
-        this.$fireStorage.ref(),
-        interviewId
-      )
-
-      commit('SET_INTERVIEWS', interviews)
-      commit('SET_IS_CONTENTS_IMAGES', interviewId)
+      commit('SET_INTERVIEWS', interviewsJson)
     }
   }
 }
