@@ -4,8 +4,7 @@ import authorsJson from '@/assets/json/authors.json'
 // state
 export const state = () => ({
   authors: null,
-  interviews: null,
-  isContentsImages: []
+  interviews: null
 })
 
 // getters
@@ -13,7 +12,6 @@ export const getters = {
   authors: (state) => state.authors,
   interviews: (state) => state.interviews,
   isAuthors: (state) => state.authors !== null,
-  isContentsImages: (state) => state.isContentsImages,
   isInterviews: (state) => state.interviews !== null
 }
 
@@ -21,10 +19,6 @@ export const getters = {
 export const mutations = {
   SET_AUTHORS(state, authors) {
     state.authors = authors
-  },
-
-  SET_INTERVIEWS(state, interviews) {
-    state.interviews = interviews
   },
 
   SET_IS_CONTENTS_IMAGES(state, id) {
