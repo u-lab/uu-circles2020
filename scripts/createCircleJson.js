@@ -23,6 +23,7 @@ const create = async () => {
   try {
     let datas = await getData()
     datas = await fetchCircleImageAll(datas)
+    datas = await subimage(datas)
 
     return fs.writeFileSync(
       './assets/json/circles.json',
@@ -77,6 +78,37 @@ const fetchCircleImageAll = async (circles) => {
       : '/no-image.jpg'
   }
 
+  return circles
+}
+
+const subimage = async (circles) => {
+  for (let circleIdx = 0; circleIdx < circles.length; circleIdx++) {
+    const circle = circles[circleIdx]
+
+    // サブイメージ
+    if (circle.subImage) {
+      const promise = []
+
+      if (!circle.subImage[0].match('https:')) {
+        for (const subImage of circle.subImage) {
+          try {
+            promise.push(
+              storageRef.child(`circles/${subImage}`).getDownloadURL()
+            )
+          } catch (e) {}
+        }
+      }
+
+      // 画像のURLをまとめて取得
+      const urls = await Promise.all(promise)
+
+      for (let idx = 0; idx < urls.length; idx++, idx++) {
+        circle.subImage[idx] = urls[idx]
+      }
+
+      circles[circleIdx] = circle
+    }
+  }
   return circles
 }
 
