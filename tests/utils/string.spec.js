@@ -1,6 +1,6 @@
-import * as stringHelpers from '@/util/stringHelper'
+import * as stringHelpers from '@/util/string'
 
-describe('util/stringHelper', () => {
+describe('util/string', () => {
   describe('kanaToHira', () => {
     it('カタカナをひらがなに変換できる(正常系)', () => {
       const resultStr = stringHelpers.kanaToHira('アイウエオ')

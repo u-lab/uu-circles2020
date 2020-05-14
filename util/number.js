@@ -4,6 +4,5 @@
  *
  * @param {Number} len
  */
-export function randInt(len) {
-  return len > 0 ? Math.floor(Math.random() * len) + 1 : 0
-}
+export const randInt = (len) =>
+  len > 0 ? Math.floor(Math.random() * len) + 1 : 0
