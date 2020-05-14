@@ -6,9 +6,7 @@ import { randInt } from '@/util/numberHelper'
  * @param {Array} arr 配列
  * @param {Number} idx 配列番号
  */
-export const getArrBefore = (arr, idx) => {
-  return arr[idx - 1] || null
-}
+export const getArrBefore = (arr, idx) => arr[idx - 1] || null
 
 /**
  * 一つ後の配列を取得
@@ -16,9 +14,7 @@ export const getArrBefore = (arr, idx) => {
  * @param {Array} arr
  * @param {Number} idx 配列番号
  */
-export const getArrAfter = (arr, idx) => {
-  return arr[idx + 1] || null
-}
+export const getArrAfter = (arr, idx) => arr[idx + 1] || null
 
 /**
  * ランダムに配列を取得
