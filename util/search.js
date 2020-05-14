@@ -1,18 +1,15 @@
 import sanitizeHTML from 'sanitize-html'
 import { kanaToHira } from '@/util/string'
 
+const convertToSearchStr = (str) => sanitizeHTML(kanaToHira(str.toLowerCase()))
+
 const isDisplay = (circle, search) => {
   return (
-    ('name' in circle &&
-      ~sanitizeHTML(kanaToHira(circle.name.toLowerCase())).indexOf(search)) ||
+    ('name' in circle && ~convertToSearchStr(circle.name).indexOf(search)) ||
     ('shortname' in circle &&
-      ~sanitizeHTML(kanaToHira(circle.shortname.toLowerCase())).indexOf(
-        search
-      )) ||
-    ('id' in circle &&
-      ~sanitizeHTML(kanaToHira(circle.id.toLowerCase())).indexOf(search)) ||
-    ('kana' in circle &&
-      ~sanitizeHTML(kanaToHira(circle.kana.toLowerCase())).indexOf(search)) ||
+      ~convertToSearchStr(circle.shortname).indexOf(search)) ||
+    ('id' in circle && ~convertToSearchStr(circle.id).indexOf(search)) ||
+    ('kana' in circle && ~convertToSearchStr(circle.kana).indexOf(search)) ||
     ('type' in circle && sanitizeHTML(circle.type.toLowerCase()) === search)
   )
 }
@@ -23,8 +20,6 @@ const isDisplay = (circle, search) => {
  * サニタイズ
  */
 export const filterCircle = (circles, search) => {
-  sanitizeHTML(kanaToHira(search.toLowerCase()))
-  return circles.filter((circle) => {
-    return isDisplay(circle, search)
-  })
+  search = convertToSearchStr(search)
+  return circles.filter((circle) => isDisplay(circle, search))
 }
