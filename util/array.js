@@ -1,4 +1,4 @@
-import { randInt } from '@/util/numberHelper'
+import { randInt } from '@/util/number'
 
 /**
  * 一つ前の配列を取得

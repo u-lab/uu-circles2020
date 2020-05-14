@@ -1,6 +1,6 @@
-import * as numberHelpers from '@/util/numberHelper'
+import * as numberHelpers from '@/util/number'
 
-describe('util/numberHelper', () => {
+describe('util/number', () => {
   describe('randInt', () => {
     it('0か1を返す(正常系)', () => {
       for (let i = 0; i < 10; i++) {
