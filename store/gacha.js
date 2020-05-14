@@ -1,4 +1,4 @@
-import { getRandArr } from '@/util/arrayHelper'
+import { getRandArr } from '@/util/array'
 
 // state
 export const state = () => ({

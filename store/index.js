@@ -1,4 +1,4 @@
-import { shuffleArr } from '@/util/arrayHelper'
+import { shuffleArr } from '@/util/array'
 import { fixedCircleById } from '@/util/circles/fixedCircle'
 import circlesJson from '@/assets/json/circles.json'
 

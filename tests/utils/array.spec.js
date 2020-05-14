@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash.clonedeep'
-import * as arrayHelpers from '@/util/arrayHelper'
+import * as arrayHelpers from '@/util/array'
 
-describe('util/arrayHelper', () => {
+describe('util/array', () => {
   let exampleArr = null
 
   // mockのVueインスタンスを生成

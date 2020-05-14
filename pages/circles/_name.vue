@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import { getArrAfter, getArrBefore } from '@/util/arrayHelper'
+import { getArrAfter, getArrBefore } from '@/util/array'
 const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
 const CircleDateField = () =>

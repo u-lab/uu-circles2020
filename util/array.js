@@ -6,7 +6,7 @@ import { randInt } from '@/util/numberHelper'
  * @param {Array} arr 配列
  * @param {Number} idx 配列番号
  */
-export function getArrBefore(arr, idx) {
+export const getArrBefore = (arr, idx) => {
   return arr[idx - 1] || null
 }
 
@@ -16,7 +16,7 @@ export function getArrBefore(arr, idx) {
  * @param {Array} arr
  * @param {Number} idx 配列番号
  */
-export function getArrAfter(arr, idx) {
+export const getArrAfter = (arr, idx) => {
   return arr[idx + 1] || null
 }
 
@@ -26,9 +26,11 @@ export function getArrAfter(arr, idx) {
  * @param {Array} arr
  * @param {Number} times
  */
-export function getRandArr(arr, times = 1) {
-  const randNumbers = new Array(times) // 抽選された数の配列
-  const retArr = new Array(times) // 返却値
+export const getRandArr = (arr, times = 1) => {
+  /**
+   * @type Number[]
+   */
+  const randNumbers = [] // 抽選された数の配列
   const length = arr.length
 
   // 無限ループしないように除外
@@ -36,18 +38,17 @@ export function getRandArr(arr, times = 1) {
     return []
   }
 
-  for (let time = 0; time < times; time++) {
+  while (times--) {
     let rand = randInt(length)
 
     // uniqueにする
     while (randNumbers.includes(rand)) {
       rand = randInt(length)
     }
-    randNumbers[time] = rand
-    retArr[time] = arr[rand]
+    randNumbers.push(rand)
   }
 
-  return retArr
+  return randNumbers.map((num) => arr[num])
 }
 
 /**
@@ -55,7 +56,7 @@ export function getRandArr(arr, times = 1) {
  *
  * @param {Array} arr
  */
-export function shuffleArr(arr) {
+export const shuffleArr = (arr) => {
   for (let i = arr.length - 1; i > 0; i--) {
     swapArr(arr, i, randInt(i))
   }
@@ -69,7 +70,7 @@ export function shuffleArr(arr) {
  * @param {Number} num1
  * @param {Number} num2
  */
-export function swapArr(arr, num1, num2) {
+export const swapArr = (arr, num1, num2) => {
   arr[num1] = [arr[num2], (arr[num2] = arr[num1])][0]
   return arr
 }
