@@ -1,5 +1,5 @@
 import sanitizeHTML from 'sanitize-html'
-import { kanaToHira } from '@/util/stringHelper'
+import { kanaToHira } from '@/util/string'
 
 const isDisplay = (circle, search) => {
   return (
