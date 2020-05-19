@@ -10,7 +10,7 @@
     </div>
 
     <div class="d-flex justify-center align-start">
-      <div class="tap-intro-content text-center pt-2">
+      <div class="font-weight-bold text-center pt-2">
         <p class="tap-intro-content-detail mb-0">気になるサークルがあったら</p>
         <p class="tap-intro-content-tap mb-0 d-md-none">Tap!!</p>
         <p class="tap-intro-content-tap mb-0 d-none d-md-block">Click!!</p>
@@ -24,10 +24,6 @@
 </template>
 
 <style lang="scss" scoped>
-.tap-intro-content {
-  font-weight: bold;
-}
-
 .tap-intro-content-detail {
   font-size: 1.1rem;
 
