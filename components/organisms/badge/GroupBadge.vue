@@ -5,11 +5,11 @@
 </template>
 
 <script>
-const LightBlueBadge = () => import('@/components/atoms/badge/LightBlueBadge')
 const BlueBadge = () => import('@/components/atoms/badge/BlueBadge')
-const PinkBadge = () => import('@/components/atoms/badge/PinkBadge')
-const LightGreenBadge = () => import('@/components/atoms/badge/LightGreenBadge')
 const GreyBadge = () => import('@/components/atoms/badge/GreyBadge')
+const LightBlueBadge = () => import('@/components/atoms/badge/LightBlueBadge')
+const LightGreenBadge = () => import('@/components/atoms/badge/LightGreenBadge')
+const PinkBadge = () => import('@/components/atoms/badge/PinkBadge')
 
 export default {
   components: {

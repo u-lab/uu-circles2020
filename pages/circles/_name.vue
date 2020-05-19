@@ -101,7 +101,7 @@ const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
 const CircleDateField = () =>
   import('@/components/molecules/field/CircleDateField')
-const GroupBadge = () => import('@/components/util/GroupBadge')
+const GroupBadge = () => import('@/components/organisms/badge/GroupBadge')
 const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
 
 export default {
