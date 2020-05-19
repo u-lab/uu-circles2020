@@ -93,7 +93,7 @@
 
 <script>
 import AboutHeading from '@/components/about/AboutHeading'
-import CircleListBtn from '@/components/util/CircleListBtn'
+import CircleListBtn from '@/components/molecules/buttons/CircleListBtn'
 
 export default {
   components: {
