@@ -54,8 +54,4 @@ export default {
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
-
-.main-background-icon-container {
-  position: relative;
-}
 </style>
