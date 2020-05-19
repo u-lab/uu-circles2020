@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex justify-center py-2">
-      <div class="intro-background pa-6">
+      <div class="font-klee intro-background pa-6">
         <p class="mb-0">
           このサイトは新入生の新生活を応援したいという思いから有志によって作られました
         </p>

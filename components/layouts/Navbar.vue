@@ -1,5 +1,5 @@
 <template>
-  <header class="app-bar text-center mt-4 py-3">
+  <header class="app-bar font-klee text-center mt-4 py-3">
     <site-title-text :element="titleElement" />
 
     <p class="mb-0 header-subheading white--text">企画・運営 U-lab</p>
@@ -26,7 +26,6 @@ export default {
 .app-bar {
   background-image: url('/header-background.png');
   background-size: cover;
-  font-family: fot-klee-pro, sans-serif !important;
 }
 
 .header-subheading {
