@@ -1,27 +1,25 @@
 <template>
-  <span v-if="is_public()" class="light-blue white--text pa-2 radius">
-    公認団体
-  </span>
-
-  <span v-else-if="is_send()" class="blue white--text pa-2 radius">
-    届出団体
-  </span>
-
-  <span v-else-if="is_private()" class="pink lighten-2 white--text pa-2 radius">
-    非公認団体
-  </span>
-
-  <span v-else-if="is_student()" class="light-green white--text pa-2 radius">
-    学生団体
-  </span>
-
-  <span v-else class="grey white--text pa-2 radius">
-    不明
-  </span>
+  <component :is="getComponentName">
+    {{ text }}
+  </component>
 </template>
 
 <script>
+const LightBlueBadge = () => import('@/components/atoms/badge/LightBlueBadge')
+const BlueBadge = () => import('@/components/atoms/badge/BlueBadge')
+const PinkBadge = () => import('@/components/atoms/badge/PinkBadge')
+const LightGreenBadge = () => import('@/components/atoms/badge/LightGreenBadge')
+const GreyBadge = () => import('@/components/atoms/badge/GreyBadge')
+
 export default {
+  components: {
+    BlueBadge,
+    GreyBadge,
+    LightGreenBadge,
+    LightBlueBadge,
+    PinkBadge
+  },
+
   props: {
     public: {
       type: String,
@@ -29,7 +27,47 @@ export default {
     }
   },
 
-  methods: {
+  computed: {
+    getComponentName() {
+      if (this.is_public) {
+        return 'LightBlueBadge'
+      }
+
+      if (this.is_private) {
+        return 'PinkBadge'
+      }
+
+      if (this.is_send) {
+        return 'BlueBadge'
+      }
+
+      if (this.is_student) {
+        return 'LightGreenBadge'
+      }
+
+      return 'GreyBadge'
+    },
+
+    text() {
+      if (this.is_public) {
+        return '公認団体'
+      }
+
+      if (this.is_private) {
+        return '非公認団体'
+      }
+
+      if (this.is_send) {
+        return '届出団体'
+      }
+
+      if (this.is_student) {
+        return '学生団体'
+      }
+
+      return '不明'
+    },
+
     is_public() {
       return this.public === 'public'
     },
