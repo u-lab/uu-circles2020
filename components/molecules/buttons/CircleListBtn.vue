@@ -1,5 +1,5 @@
 <template>
-  <navy-blue-button to="/">
+  <navy-blue-button to="/" large>
     サークルビラ一覧へ
   </navy-blue-button>
 </template>

@@ -27,7 +27,7 @@
       </div>
 
       <div class="d-flex justify-center">
-        <navy-blue-button to="/interviews">
+        <navy-blue-button to="/interviews" large>
           記事一覧へ
         </navy-blue-button>
       </div>
