@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" xs="12" sm="12" md="6" class="pos-relative">
+      <v-col cols="12" md="6" class="pos-relative">
         <v-carousel
           v-if="circle.subImage"
           cycle
@@ -33,7 +33,7 @@
         </a>
       </v-col>
 
-      <v-col cols="12" xs="12" sm="12" md="6">
+      <v-col cols="12" md="6">
         <circle-name-header :circle="circle" />
 
         <v-list v-if="circle.description">
@@ -98,16 +98,17 @@ export default {
 
   data() {
     return {
-      circle: '',
       count: '',
-      loading: true,
-      success: false,
       nextCircle: '',
       beforeCircle: ''
     }
   },
 
   computed: {
+    circle() {
+      return this.circles[this.count]
+    },
+
     circles() {
       return this.$store.getters.circles
     },
@@ -148,30 +149,20 @@ export default {
   },
 
   created() {
-    let count
-    let circle
-    const circles = this.circles
-    // パラメータに一致するサークルを探す
-    for (count = 0; count < circles.length; count++) {
-      const doc = circles[count]
+    const idx = this.circles.findIndex(
+      (circle) => circle.id === this.$route.params.name
+    )
 
-      if (doc.id === this.$route.params.name) {
-        circle = doc
-        break
-      }
-    }
-
-    if (!circle) {
+    if (idx === -1) {
       return this.$nuxt.error({
         statusCode: 404,
         message: 'Page Not Found'
       })
     }
-    this.circle = circle
-    this.count = count
+
+    this.count = idx
     this.beforeCircle = getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
     this.nextCircle = getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
-    this.loading = false
   },
 
   head() {
