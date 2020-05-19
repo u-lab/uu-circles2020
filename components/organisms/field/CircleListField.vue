@@ -26,15 +26,16 @@
         </v-menu>
       </div>
 
-      <v-text-field
-        v-model="searchBox"
-        append-icon="mdi-magnify"
-        class="mx-1"
-        label="検索"
-        solo
-        hide-details
-        @input="computedCircleBySearchBox()"
-      />
+      <div class="px-1">
+        <v-text-field
+          v-model="searchBox"
+          append-icon="mdi-magnify"
+          label="検索"
+          solo
+          hide-details
+          @input="computedCircleBySearchBox()"
+        />
+      </div>
     </div>
 
     <gacha-banner-field />
