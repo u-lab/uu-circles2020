@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import AboutHeading from '@/components/about/AboutHeading'
+import AboutHeading from '@/components/atoms/heading/AboutHeading'
 import CircleListBtn from '@/components/molecules/buttons/CircleListBtn'
 
 export default {

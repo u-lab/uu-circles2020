@@ -139,7 +139,7 @@
 
 <script>
 import MainImg from '@/assets/img/events/0409-mono-newjoy1.jpg'
-const AboutHeading = () => import('@/components/about/AboutHeading')
+const AboutHeading = () => import('@/components/atoms/heading/AboutHeading')
 const CircleListBtn = () =>
   import('@/components/molecules/buttons/CircleListBtn')
 const LineIcon = () => import('@/components/atoms/icons/LineIcon')
