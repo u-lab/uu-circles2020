@@ -1,5 +1,5 @@
 <template>
-  <v-container class="gosikku">
+  <v-container class="font-gosikku">
     <about-heading :num="1" class="about-company-list">
       <span class="haifun">製作系合同新歓説明会</span>
     </about-heading>
@@ -204,12 +204,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gosikku {
-  font-family: 'Hiragino Sans W3', 'Hiragino Kaku Gothic ProN',
-    'ヒラギノ角ゴ ProN W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic',
-    sans-serif;
-}
-
 .zenkaku {
   &::after {
     content: '  ';

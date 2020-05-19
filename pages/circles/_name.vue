@@ -1,18 +1,9 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" xs="12" sm="12" md="6" class="pos-relative">
-        <template v-if="loading">
-          <v-progress-circular
-            indeterminate
-            color="gray"
-            :size="70"
-            :width="7"
-            class="loading-circle"
-          />
-        </template>
+      <v-col cols="12" md="6" class="pos-relative">
         <v-carousel
-          v-else-if="circle.subImage"
+          v-if="circle.subImage"
           cycle
           dark
           hide-delimiter-background
@@ -42,34 +33,20 @@
         </a>
       </v-col>
 
-      <v-col cols="12" xs="12" sm="12" md="6">
-        <div>
-          <h2 class="circle-name-title">{{ circle.name }}</h2>
+      <v-col cols="12" md="6">
+        <circle-name-header :circle="circle" />
 
-          <div class="d-sm-flex justify-space-between pb-3">
-            <h3 v-show="circle.shortname" class="circle-name-title3">
-              {{ circle.shortname }}
-            </h3>
-            <div class="text-right">
-              <group-badge v-if="circle.public" :public="circle.public" />
-              <span v-else class="grey white--text pa-2 radius">
-                不明
-              </span>
-            </div>
-          </div>
-
-          <v-list v-if="circle.description">
-            <v-list-item
-              v-for="(text, key) in circle.description"
-              :key="'description' + key"
-            >
-              {{ text }}
-            </v-list-item>
-          </v-list>
-          <v-list v-else>
-            <v-list-item>なし</v-list-item>
-          </v-list>
-        </div>
+        <v-list v-if="circle.description">
+          <v-list-item
+            v-for="(text, key) in circle.description"
+            :key="'description' + key"
+          >
+            {{ text }}
+          </v-list-item>
+        </v-list>
+        <v-list v-else>
+          <v-list-item>なし</v-list-item>
+        </v-list>
 
         <div class="pt-4">
           <circle-date-field :dates="getDate" />
@@ -85,10 +62,10 @@
         />
 
         <div class="d-flex justify-center">
-          <v-btn to="/" nuxt color="#0b2157" dark>
+          <navy-blue-button to="/">
             <v-icon small>mdi-format-align-justify</v-icon>
             <span class="ml-2">一覧を見る</span>
-          </v-btn>
+          </navy-blue-button>
         </div>
       </v-col>
     </v-row>
@@ -101,15 +78,18 @@ const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
 const CircleDateField = () =>
   import('@/components/molecules/field/CircleDateField')
-const GroupBadge = () => import('@/components/organisms/badge/GroupBadge')
+const CircleNameHeader = () =>
+  import('@/components/organisms/field/CircleNameHeader')
 const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
+const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
   components: {
     CircleToBeforeNextBtnGroup,
     CircleDateField,
-    GroupBadge,
-    InlineIcons
+    CircleNameHeader,
+    InlineIcons,
+    NavyBlueButton
   },
 
   fetch({ store }) {
@@ -118,16 +98,17 @@ export default {
 
   data() {
     return {
-      circle: '',
       count: '',
-      loading: true,
-      success: false,
       nextCircle: '',
       beforeCircle: ''
     }
   },
 
   computed: {
+    circle() {
+      return this.circles[this.count]
+    },
+
     circles() {
       return this.$store.getters.circles
     },
@@ -168,30 +149,20 @@ export default {
   },
 
   created() {
-    let count
-    let circle
-    const circles = this.circles
-    // パラメータに一致するサークルを探す
-    for (count = 0; count < circles.length; count++) {
-      const doc = circles[count]
+    const idx = this.circles.findIndex(
+      (circle) => circle.id === this.$route.params.name
+    )
 
-      if (doc.id === this.$route.params.name) {
-        circle = doc
-        break
-      }
-    }
-
-    if (!circle) {
+    if (idx === -1) {
       return this.$nuxt.error({
         statusCode: 404,
         message: 'Page Not Found'
       })
     }
-    this.circle = circle
-    this.count = count
+
+    this.count = idx
     this.beforeCircle = getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
     this.nextCircle = getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
-    this.loading = false
   },
 
   head() {

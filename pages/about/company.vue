@@ -7,7 +7,7 @@
         </about-heading>
 
         <div class="d-flex justify-center">
-          <div class="intro-background mt-2 pa-4">
+          <div class="font-klee intro-background mt-2 pa-4">
             このサイトは協賛してくれている方々によって支えられています。
           </div>
         </div>

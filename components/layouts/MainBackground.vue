@@ -1,6 +1,6 @@
 <template>
   <div v-if="$route.name === 'index'">
-    <div class="main-background">
+    <div class="font-klee pos-relative">
       <div v-if="$device.isMobileOrTablet">
         <v-img
           width="100vw"
@@ -42,11 +42,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-background {
-  position: relative;
-  font-family: fot-klee-pro, sans-serif !important;
-}
-
 .main-background-content-container {
   position: absolute;
   top: 40%;
