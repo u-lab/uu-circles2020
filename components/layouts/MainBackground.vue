@@ -21,12 +21,12 @@
     </div>
 
     <!-- 広告 -->
-    <ad-block v-once />
+    <ad-block />
   </div>
 </template>
 
 <script>
-const AdBlock = () => import('@/components/index/AdBlock')
+const AdBlock = () => import('@/components/organisms/block/AdBlock')
 const MainBackgroundBottom = () =>
   import('@/components/organisms/field/MainBackgroundBottom')
 const MainBackgroundText = () =>

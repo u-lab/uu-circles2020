@@ -1,7 +1,9 @@
 <template>
   <v-container fluid class="px-6 pb-1">
     <!-- 紹介文 -->
-    <intro-content v-cloak />
+    <v-lazy>
+      <intro-content-field />
+    </v-lazy>
 
     <circle-list-field :circles="circles" />
 
@@ -19,14 +21,15 @@
 </template>
 
 <script>
-const IntroContent = () => import('@/components/index/IntroContent')
 const CircleListField = () =>
   import('@/components/organisms/field/CircleListField')
+const IntroContentField = () =>
+  import('@/components/organisms/field/IntroContentField')
 
 export default {
   components: {
-    IntroContent,
-    CircleListField
+    CircleListField,
+    IntroContentField
   },
 
   fetch({ store }) {
