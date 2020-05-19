@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" xs="12" sm="12" md="6" class="loading-col">
+      <v-col cols="12" xs="12" sm="12" md="6" class="pos-relative">
         <template v-if="loading">
           <v-progress-circular
             indeterminate
@@ -101,7 +101,7 @@ const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
 const CircleDateField = () =>
   import('@/components/molecules/field/CircleDateField')
-const GroupBadge = () => import('@/components/util/GroupBadge')
+const GroupBadge = () => import('@/components/organisms/badge/GroupBadge')
 const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
 
 export default {
@@ -239,3 +239,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.loading-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
+</style>

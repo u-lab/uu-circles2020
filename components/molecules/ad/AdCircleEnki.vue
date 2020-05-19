@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import AdBase from '@/components/ad/AdBase'
+import AdBase from '@/components/molecules/ad/AdBase'
 import Logo from '@/assets/img/circle-enki.jpg'
 
 export default {

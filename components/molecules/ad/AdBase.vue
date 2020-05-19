@@ -54,10 +54,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pos-relative {
-  position: relative;
-}
-
 .pos-topRight {
   position: absolute;
   top: 0;

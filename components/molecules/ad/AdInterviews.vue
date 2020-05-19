@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import AdBase from '@/components/ad/AdBase'
 import Logo from '@/assets/img/go-to-interviews2.png'
+const AdBase = () => import('@/components/molecules/ad/AdBase')
 
 export default {
   components: {

@@ -8,9 +8,8 @@
 export default {
   props: {
     to: {
-      type: String,
-      required: false,
-      default: null
+      type: [String, Object],
+      default: undefined
     }
   }
 }

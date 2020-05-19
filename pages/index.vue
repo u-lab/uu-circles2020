@@ -1,32 +1,29 @@
 <template>
   <v-container fluid class="px-6 pb-1">
     <!-- 紹介文 -->
-    <intro-content v-cloak />
+    <v-lazy>
+      <intro-content-field />
+    </v-lazy>
 
     <circle-list-field :circles="circles" />
 
-    <v-lazy>
-      <div class="d-flex justify-center my-4">
-        <div class="intro-background pa-6">
-          <p class="mb-0 text-center">
-            掲載団体数:
-            <span style="font-size: 24px">{{ circles.length }}</span>
-          </p>
-        </div>
-      </div>
-    </v-lazy>
+    <circle-length-field :length="circles.length" />
   </v-container>
 </template>
 
 <script>
-const IntroContent = () => import('@/components/index/IntroContent')
 const CircleListField = () =>
   import('@/components/organisms/field/CircleListField')
+const CircleLengthField = () =>
+  import('@/components/organisms/field/CircleLengthField')
+const IntroContentField = () =>
+  import('@/components/organisms/field/IntroContentField')
 
 export default {
   components: {
-    IntroContent,
-    CircleListField
+    CircleListField,
+    CircleLengthField,
+    IntroContentField
   },
 
   fetch({ store }) {

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AdBase from '@/components/ad/AdBase'
+import AdBase from '@/components/molecules/ad/AdBase'
 import Logo from '@/assets/img/events/0409-mono-newjoy-logo-postponent.jpg'
 
 export default {

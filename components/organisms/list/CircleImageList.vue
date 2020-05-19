@@ -3,7 +3,7 @@
   <v-row>
     <v-col v-for="(circle, key) in circles" :key="key" cols="12" xs="6" sm="4">
       <v-lazy>
-        <circle-item
+        <circle-card
           v-if="circle.id && circle.image && circle.name"
           :to="`/circles/${circle.id}`"
           :src="circle.image"
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-const CircleItem = () => import('@/components/CircleItem.vue')
+const CircleCard = () => import('@/components/organisms/cards/CircleCard')
 
 export default {
   components: {
-    CircleItem
+    CircleCard
   },
 
   props: {

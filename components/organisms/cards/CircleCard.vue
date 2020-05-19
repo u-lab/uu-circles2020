@@ -2,7 +2,7 @@
   <v-card
     :to="to"
     hover
-    class="circle-card"
+    class="pos-relative"
     ontouchstart=""
     @mouseover="TitleOn()"
     @mouseout="TitleDown()"
@@ -17,11 +17,9 @@
 
 <script>
 export default {
-  name: 'CircleItem',
-
   props: {
     to: {
-      type: String,
+      type: [String, Object],
       required: true
     },
 
@@ -55,10 +53,6 @@ export default {
 </script>
 
 <style>
-.circle-card {
-  position: relative;
-}
-
 .circle-title {
   position: absolute;
   top: 50%;
