@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import AdCircleEnki from '@/components/ad/AdCircleEnki'
-import AdInterviews from '@/components/ad/AdInterviews'
-import AdMononewjoy0409 from '@/components/ad/AdMononewjoy0409'
+import AdCircleEnki from '@/components/molecules/ad/AdCircleEnki'
+import AdInterviews from '@/components/molecules/ad/AdInterviews'
+import AdMononewjoy0409 from '@/components/molecules/ad/AdMononewjoy0409'
 
 function random(length = 2) {
   return Math.floor(Math.random() * length)
