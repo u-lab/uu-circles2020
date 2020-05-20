@@ -5,9 +5,11 @@
     </h1>
 
     <v-container class="mb-4">
-      <div class="px-4">
-        <interview-list :interviews="interviews" :authors="authors" />
-      </div>
+      <interview-list
+        class="px-4"
+        :interviews="interviews"
+        :authors="authors"
+      />
     </v-container>
 
     <div class="d-flex justify-center mb-4">
@@ -20,7 +22,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import interviewsJson from '@/assets/json/interviews.json'
+import authorsJson from '@/assets/json/authors.json'
 const InterviewList = () =>
   import('@/components/organisms/interview/InterviewList')
 
@@ -29,16 +32,11 @@ export default {
     InterviewList
   },
 
-  fetch({ store }) {
-    store.dispatch('interview/fetchAuthors')
-    store.dispatch('interview/fetchInterviews')
-  },
-
-  computed: {
-    ...mapGetters({
-      authors: 'interview/authors',
-      interviews: 'interview/interviews'
-    })
+  asyncData() {
+    return {
+      authors: authorsJson,
+      interviews: interviewsJson
+    }
   },
 
   head() {

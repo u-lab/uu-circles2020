@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import AuthorLink from '@/components/molecules/link/AuthorLink'
-import FormatYyyyMmDd from '@/components/atoms/date/FormatYyyyMmDd'
-import InterviewHeading from '@/components/atoms/heading/InterviewHeading'
 import { convertToDate } from '@/util/date'
+const AuthorLink = () => import('@/components/molecules/link/AuthorLink')
+const FormatYyyyMmDd = () => import('@/components/atoms/date/FormatYyyyMmDd')
+const InterviewHeading = () =>
+  import('@/components/atoms/heading/InterviewHeading')
 
 export default {
   components: {

@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 import circleJson from './assets/json/circles.json'
+import interviewJson from './assets/json/interviews.json'
+import authorJson from './assets/json/authors.json'
 require('dotenv').config()
 
 export default {
@@ -186,6 +188,28 @@ export default {
       Scope: '/',
       start_url: '/',
       splash_pages: null
+    }
+  },
+
+  generate: {
+    routes() {
+      let arr = interviewJson.map((obj) => {
+        return { route: `/interviews/${obj.id}` }
+      })
+
+      arr.push({ route: `/interviews` })
+
+      const authorArr = authorJson.map((obj) => {
+        return { route: `/authors/${obj.id}` }
+      })
+      arr = [...arr, ...authorArr]
+
+      const circleArr = circleJson.map((obj) => {
+        return { route: `/circles/${obj.id}` }
+      })
+      arr = [...arr, ...circleArr]
+
+      return arr
     }
   },
 
