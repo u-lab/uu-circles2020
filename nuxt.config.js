@@ -197,7 +197,7 @@ export default {
         return { route: `/interviews/${obj.id}` }
       })
 
-      arr.push({ route: `interviews` })
+      arr.push({ route: `/interviews` })
 
       const authorArr = authorJson.map((obj) => {
         return { route: `/authors/${obj.id}` }

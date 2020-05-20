@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import authorsJson from '@/assets/json/authors.json'
 const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
@@ -44,34 +44,11 @@ export default {
     NavyBlueButton
   },
 
-  fetch({ store }) {
-    store.dispatch('interview/fetchAuthors')
-  },
-
-  data() {
+  asyncData({ params }) {
+    const author = authorsJson.find((obj) => obj.id === params.name)
     return {
-      author: null
+      author
     }
-  },
-
-  computed: {
-    ...mapGetters({
-      authors: 'interview/authors'
-    })
-  },
-
-  created() {
-    for (const author of this.authors) {
-      if (this.$route.params.name === author.id) {
-        this.author = author
-        return
-      }
-    }
-
-    return this.error({
-      statusCode: 404,
-      message: 'Page Not Found'
-    })
   },
 
   head() {

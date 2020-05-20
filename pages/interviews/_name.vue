@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import interviewsJson from '@/assets/json/interviews.json'
+import authorsJson from '@/assets/json/authors.json'
 const InterviewHeader = () =>
   import('@/components/organisms/interview/InterviewHeader')
 const QAndAList = () => import('@/components/organisms/field/QAndAList')
@@ -48,38 +49,12 @@ export default {
     QAndAList
   },
 
-  fetch({ store, params }) {
-    store.dispatch('interview/fetchAuthors')
-    store.dispatch('interview/fetchInterviews')
-  },
-
-  data() {
+  asyncData({ params }) {
+    const interview = interviewsJson.find((obj) => obj.id === params.name)
+    const author = authorsJson.find((obj) => obj.id === interview.author)
     return {
-      author: null,
-      interview: null
-    }
-  },
-
-  computed: {
-    ...mapGetters({
-      authors: 'interview/authors',
-      interviews: 'interview/interviews'
-    })
-  },
-
-  created() {
-    for (const interview of this.interviews) {
-      if (interview.id === this.$route.params.name) {
-        this.interview = interview
-        break
-      }
-    }
-
-    for (const author of this.authors) {
-      if (author.id === this.interview.author) {
-        this.author = author
-        break
-      }
+      author,
+      interview
     }
   },
 
