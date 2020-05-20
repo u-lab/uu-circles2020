@@ -1,3 +1,1 @@
-export function convertToDate(timestamp) {
-  return new Date(timestamp.seconds * 1000)
-}
+export const convertToDate = (timestamp) => new Date(timestamp.seconds * 1000)

@@ -3,26 +3,21 @@
  *
  * @param {String} str
  */
-export function convertToSnsStr(str) {
-  return str.toLowerCase()
-}
+export const convertToSnsStr = (str) => str.toLowerCase()
 
 /**
  * Facebookかどうか
  *
  * @param {String} str
  */
-export function isFacebook(str) {
-  str = convertToSnsStr(str)
-  return str === 'facebook'
-}
+export const isFacebook = (str) => convertToSnsStr(str) === 'facebook'
 
 /**
  * FormかGoogle Formかどうか
  *
  * @param {String} str
  */
-export function isForm(str) {
+export const isForm = (str) => {
   str = convertToSnsStr(str)
   return str === 'form' || str === 'googleform'
 }
@@ -32,17 +27,14 @@ export function isForm(str) {
  *
  * @param {String} str
  */
-export function isGithub(str) {
-  str = convertToSnsStr(str)
-  return str === 'github'
-}
+export const isGithub = (str) => convertToSnsStr(str) === 'github'
 
 /**
  * HomeかHomePageかHpどうか
  *
  * @param {String} str
  */
-export function isHome(str) {
+export const isHome = (str) => {
   str = convertToSnsStr(str)
   return str === 'home' || str === 'homepage' || str === 'hp'
 }
@@ -52,7 +44,7 @@ export function isHome(str) {
  *
  * @param {String} str
  */
-export function isInstagram(str) {
+export const isInstagram = (str) => {
   str = convertToSnsStr(str)
   return str === 'instagram' || str === 'insta'
 }
@@ -62,17 +54,14 @@ export function isInstagram(str) {
  *
  * @param {String} str
  */
-export function isLine(str) {
-  str = convertToSnsStr(str)
-  return str === 'line'
-}
+export const isLine = (str) => convertToSnsStr(str) === 'line'
 
 /**
  * Mailかどうか
  *
  * @param {String} str
  */
-export function isMail(str) {
+export const isMail = (str) => {
   str = convertToSnsStr(str)
   return str === 'mail' || str === 'email'
 }
@@ -82,27 +71,18 @@ export function isMail(str) {
  *
  * @param {String} str
  */
-export function isPeing(str) {
-  str = convertToSnsStr(str)
-  return str === 'peing'
-}
+export const isPeing = (str) => convertToSnsStr(str) === 'peing'
 
 /**
  * Twitterかどうか
  *
  * @param {String} str
  */
-export function isTwitter(str) {
-  str = convertToSnsStr(str)
-  return str === 'twitter'
-}
+export const isTwitter = (str) => convertToSnsStr(str) === 'twitter'
 
 /**
  * Youtubeかどうか
  *
  * @param {String} str
  */
-export function isYoutube(str) {
-  str = convertToSnsStr(str)
-  return str === 'youtube'
-}
+export const isYoutube = (str) => convertToSnsStr(str) === 'youtube'
