@@ -204,6 +204,11 @@ export default {
       })
       arr = [...arr, ...authorArr]
 
+      const circleArr = circleJson.map((obj) => {
+        return { route: `/circles/${obj.id}` }
+      })
+      arr = [...arr, ...circleArr]
+
       return arr
     }
   },
