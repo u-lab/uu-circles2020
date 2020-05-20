@@ -6,21 +6,23 @@
 
     <v-row v-for="(interview, key) in interviews" :key="key" justify="center">
       <v-col cols="12" sm="6" md="4">
-        <interview-card
-          :title="interview.title"
-          :name="getAuthorName(interview.author)"
-          :to-author="`/authors/${interview.author}`"
-          :to-interview="`/interviews/${interview.id}`"
-          :src-author="getAuthorSrc(interview.author)"
-          :src-interview="interview.image"
-        />
+        <v-lazy>
+          <interview-card
+            :title="interview.title"
+            :name="getAuthorName(interview.author)"
+            :to-author="`/authors/${interview.author}`"
+            :to-interview="`/interviews/${interview.id}`"
+            :src-author="getAuthorSrc(interview.author)"
+            :src-interview="interview.image"
+          />
+        </v-lazy>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import InterviewCard from '@/components/molecules/cards/InterviewCard'
+const InterviewCard = () => import('@/components/molecules/cards/InterviewCard')
 
 export default {
   components: {
@@ -42,17 +44,12 @@ export default {
   computed: {
     getAuthor() {
       return function(authorId) {
-        const authors = this.authors
-        for (const author of authors) {
-          if (author.id === authorId) {
-            return author
+        return (
+          this.authors.find((obj) => obj.id === authorId) || {
+            name: '不明',
+            src: '/no-image.png'
           }
-        }
-
-        return {
-          name: '不明',
-          src: '/no-image.png'
-        }
+        )
       }
     }
   },

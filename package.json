@@ -9,6 +9,7 @@
     "dev:o": "nuxt",
     "before-build": "npm run create-circle && npm run create-interview && npm run create-author",
     "build": "npm run before-build && nuxt build",
+    "build:o": "nuxt build",
     "analyze": "nuxt build --analyze",
     "create-circle": "node ./scripts/createCircleJson.js",
     "create-interview": "node ./scripts/createInterviewsJson.js",
