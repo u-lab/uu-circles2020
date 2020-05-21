@@ -17,7 +17,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "jest --config jest.config.js"
+    "test": "jest --config jest.config.js",
+    "test:e2e": "jest --config ./tests/e2e-config.json",
+    "testServer": "nuxt build && nuxt start --port 3000"
   },
   "lint-staged": {
     "*.{js,vue}": "npm run lint"
@@ -56,11 +58,13 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^25.2.6",
     "husky": "^4.2.3",
+    "jest": "^25.2.6",
+    "jest-puppeteer": "^4.4.0",
     "lint-staged": "^10.0.8",
     "lodash.clonedeep": "^4.5.0",
     "prettier": "^1.19.1",
+    "puppeteer": "^3.1.0",
     "vue-jest": "^3.0.5"
   }
 }
