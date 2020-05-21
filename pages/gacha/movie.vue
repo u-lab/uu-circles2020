@@ -63,11 +63,11 @@ export default {
     },
 
     isBlue() {
-      return this.gachaResult[0].public === 'student'
+      return this.gachaResult[0].isStudent()
     },
 
     isPink() {
-      return this.gachaResult[0].public === 'private'
+      return this.gachaResult[0].isPrivate()
     },
 
     isYellow() {
