@@ -96,28 +96,12 @@ export default {
   },
 
   computed: {
-    loadingAnimeNum() {
-      return 2
-    },
-
-    getLoadingKeyName() {
-      return (num) => {
-        return `loading-${num}`
-      }
-    },
-
     typeListForSearch: () => TYPE_LIST
-  },
-
-  created() {
-    this.clearFilterCircle()
   },
 
   methods: {
     clearFilterCircle() {
-      this.filterCirlce = this.circles.filter((circle) => {
-        return circle.image && circle.image.match('https:')
-      })
+      this.filterCirlce = this.circles
       this.searchBox = ''
     },
 

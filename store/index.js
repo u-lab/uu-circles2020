@@ -1,6 +1,7 @@
 import { shuffleArr } from '@/util/array'
 import { fixedCircleById } from '@/util/circles/fixedCircle'
 import circlesJson from '@/assets/json/circles.json'
+import Circle from '~/type/Circle'
 
 // state
 export const state = () => ({
@@ -24,7 +25,7 @@ export const mutations = {
 export const actions = {
   fetchCircles({ commit, getters }) {
     if (!getters.check) {
-      const circles = circlesJson
+      const circles = circlesJson.map((obj) => new Circle(obj))
       // サークルのシャッフル
       shuffleArr(circles)
       // サークルの上位表示の固定

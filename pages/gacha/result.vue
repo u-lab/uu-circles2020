@@ -1,48 +1,19 @@
 <template>
   <div class="mb-4">
-    <div class="d-flex justify-center px-2 mb-2">
+    <v-row justify="center" class="pt-2 mb-2">
       <v-card>
         <v-img src="/gacha-logo.png" alt="ガチャのロゴ" max-width="300px" />
       </v-card>
-    </div>
+    </v-row>
 
     <about-heading :num="1"><span class="haifun">結果</span></about-heading>
 
-    <div class="d-flex justify-center">
-      <v-container v-if="gachaResult.length === 5">
-        <v-row justify="center">
-          <v-col v-for="gr in gachaResult" :key="gr.id" cols="6" sm="4" md="2">
-            <v-card :to="`/circles/${gr.id}`">
-              <v-img :src="gr.image" :alt="`ガチャ結果-${gr.name}`" />
+    <gacha-result-five-template
+      v-if="gachaResult.length === 5"
+      :circles="gachaResult"
+    />
 
-              <div class="d-flex justify-center">
-                <about-heading :num="2">
-                  <span class="font-gacha-result">
-                    {{ gr.shortname || gr.name }}
-                  </span>
-                </about-heading>
-              </div>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-
-      <v-card
-        v-else
-        :to="`/circles/${gachaResult[0].id}`"
-        class="pa-2"
-        max-width="300px"
-      >
-        <v-img
-          :src="gachaResult[0].image"
-          :alt="`ガチャ結果-${gachaResult[0].name}`"
-        />
-
-        <div class="d-flex justify-center">
-          <about-heading :num="2">{{ gachaResult[0].name }}</about-heading>
-        </div>
-      </v-card>
-    </div>
+    <gacha-result-one-template v-else :circle="gachaResult[0]" />
 
     <div class="text-center py-4">
       <v-btn color="#4dbfff" dark to="/gacha">
@@ -62,12 +33,18 @@
 <script>
 import { mapGetters } from 'vuex'
 const AboutHeading = () => import('@/components/atoms/heading/AboutHeading')
+const GachaResultOneTemplate = () =>
+  import('@/components/templates/GachaResultOneTemplate')
+const GachaResultFiveTemplate = () =>
+  import('@/components/templates/GachaResultFiveTemplate')
 
 export default {
   middleware: 'gacha',
 
   components: {
-    AboutHeading
+    AboutHeading,
+    GachaResultOneTemplate,
+    GachaResultFiveTemplate
   },
 
   computed: {
@@ -121,13 +98,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.font-gacha-result {
-  font-size: 14px;
-
-  @include mq(sm) {
-    font-size: 16px;
-  }
-}
-</style>

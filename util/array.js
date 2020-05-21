@@ -1,6 +1,24 @@
 import { randInt } from '@/util/number'
 
 /**
+ * 強制的に配列型にする
+ *
+ * @param {*} v
+ * @return { Array }
+ */
+export const convertToArr = (v) => {
+  if (!v) {
+    return []
+  }
+
+  if (isArray(v)) {
+    return v
+  }
+
+  return [v]
+}
+
+/**
  * 一つ前の配列を取得
  *
  * @param {Array} arr 配列
@@ -46,6 +64,13 @@ export const getRandArr = (arr, times = 1) => {
 
   return randNumbers.map((num) => arr[num])
 }
+
+/**
+ * 配列型であるか
+ *
+ * @param {*} v
+ */
+export const isArray = (v) => Array.isArray(v)
 
 /**
  * 配列のシャッフル関数
