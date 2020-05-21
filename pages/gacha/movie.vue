@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <div class="d-flex justify-center">
+  <v-container>
+    <v-row justify="center">
       <youtube
-        v-if="gachaResult.length === 5"
         ref="youtube"
-        :video-id="videoIds.five"
+        :video-id="getVideoId"
         :player-vars="{
           // autoplay: 1,
           controls: 0,
@@ -16,92 +15,24 @@
         @paused="paused"
         @ended="ended"
       />
-
-      <youtube
-        v-else-if="isYellow"
-        ref="youtube"
-        :video-id="videoIds.yellow"
-        :player-vars="{
-          // autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          playsinline: 1
-        }"
-        :controls="0"
-        @playing="playing"
-        @paused="paused"
-        @ended="ended"
-      />
-
-      <youtube
-        v-else-if="isBlue"
-        ref="youtube"
-        :video-id="videoIds.blue"
-        :player-vars="{
-          // autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          playsinline: 1
-        }"
-        :controls="0"
-        @playing="playing"
-        @paused="paused"
-        @ended="ended"
-      />
-
-      <youtube
-        v-else-if="isPink"
-        ref="youtube"
-        :video-id="videoIds.pink"
-        :player-vars="{
-          // autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          playsinline: 1
-        }"
-        :controls="0"
-        @playing="playing"
-        @paused="paused"
-        @ended="ended"
-      />
-
-      <youtube
-        v-else
-        ref="youtube"
-        :video-id="videoIds.grey"
-        :player-vars="{
-          // autoplay: 1,
-          controls: 0,
-          modestbranding: 1,
-          playsinline: 1
-        }"
-        :controls="0"
-        @playing="playing"
-        @paused="paused"
-        @ended="ended"
-      />
-    </div>
+    </v-row>
 
     <div class="text-right mt-2">
-      <nuxt-link class="text-right" to="/gacha/result">skip</nuxt-link>
+      <nuxt-link to="/gacha/result">skip</nuxt-link>
     </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
-function isClub(name) {
-  return ~name.indexOf('部')
-}
+const isClub = (name) => ~name.indexOf('部')
 
 export default {
   middleware: 'gacha',
 
   computed: {
-    ...mapGetters({
-      gachaResult: 'gacha/circles'
-    }),
+    gachaResult() {
+      return this.$store.getters['gacha/circles']
+    },
 
     videoIds() {
       return {
@@ -119,13 +50,29 @@ export default {
       return type
     },
 
+    getVideoId() {
+      if (this.isBlue) {
+        return this.videoIds.blue
+      }
+
+      if (this.isPink) {
+        return this.videoIds.pink
+      }
+
+      if (this.isYellow) {
+        return this.videoIds.yellow
+      }
+
+      if (this.gachaResult.length === 5) {
+        return this.videoIds.five
+      }
+
+      return this.videoIds.grey
+    },
+
     isBlue() {
       return this.getType === 'student'
     },
-
-    // isGrey() {
-    //   return !this.isYellow && !this.isPink && !this.isBlue
-    // },
 
     isPink() {
       return this.getType === 'private'
