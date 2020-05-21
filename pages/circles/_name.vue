@@ -44,9 +44,6 @@
             {{ text }}
           </v-list-item>
         </v-list>
-        <v-list v-else>
-          <v-list-item>なし</v-list-item>
-        </v-list>
 
         <div class="pt-4">
           <circle-date-field :dates="getDate" />

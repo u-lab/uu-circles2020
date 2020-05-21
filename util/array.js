@@ -70,7 +70,7 @@ export const getRandArr = (arr, times = 1) => {
  *
  * @param {*} v
  */
-export const isArray = (v) => Array.isArray()
+export const isArray = (v) => Array.isArray(v)
 
 /**
  * 配列のシャッフル関数
