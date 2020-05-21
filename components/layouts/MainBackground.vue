@@ -2,9 +2,8 @@
   <div v-if="$route.name === 'index'">
     <div class="font-klee pos-relative">
       <div v-if="$device.isMobileOrTablet">
-        <v-img
-          width="100vw"
-          height="100vh"
+        <img
+          style="width: 100vw; height:100vh"
           src="https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/o/image%2Fmain-background-480-min.jpg?alt=media&token=0a66dbe8-e420-42fc-9dbb-9d9744c7daaa"
         />
 
