@@ -24,8 +24,6 @@
 </template>
 
 <script>
-const isClub = (name) => ~name.indexOf('部')
-
 export default {
   middleware: 'gacha',
 
@@ -42,12 +40,6 @@ export default {
         yellow: 'PogDpBdSVm0',
         five: 'bMYQ8JhCpwg'
       }
-    },
-
-    getType() {
-      const type =
-        'public' in this.gachaResult[0] ? this.gachaResult[0].public : ''
-      return type
     },
 
     getVideoId() {
@@ -71,19 +63,15 @@ export default {
     },
 
     isBlue() {
-      return this.getType === 'student'
+      return this.gachaResult[0].public === 'student'
     },
 
     isPink() {
-      return this.getType === 'private'
+      return this.gachaResult[0].public === 'private'
     },
 
     isYellow() {
-      const circle = this.gachaResult[0]
-      return (
-        ('name' in circle && isClub(circle.name)) ||
-        ('shortname' in circle && isClub(circle.shortname))
-      )
+      return this.gachaResult[0].isClub()
     },
 
     player() {

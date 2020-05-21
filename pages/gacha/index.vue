@@ -33,27 +33,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  async fetch({ store }) {
-    await store.dispatch('fetchCircles')
-    await store.dispatch('fetchCircleImageAll', {
-      startNum: store.getters.cmpCircleNum,
-      endNum: store.getters.circles.length
-    })
-  },
-
-  data() {
-    return {
-      loading: true
-    }
+  fetch({ store }) {
+    store.dispatch('fetchCircles')
   },
 
   computed: mapGetters({
     circles: 'circles'
   }),
-
-  mounted() {
-    this.loading = false
-  },
 
   methods: {
     gachaDraw(times = 1) {

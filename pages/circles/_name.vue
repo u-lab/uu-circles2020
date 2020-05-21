@@ -46,7 +46,7 @@
         </v-list>
 
         <div class="pt-4">
-          <circle-date-field :dates="getDate" />
+          <circle-date-field :dates="circle.date" />
         </div>
 
         <div class="py-4">
@@ -108,32 +108,6 @@ export default {
 
     circles() {
       return this.$store.getters.circles
-    },
-
-    getDate() {
-      const date = this.circle.date || this.circle.data
-      if (date) {
-        const searches = ['食事', '飯', 'ごはん', '飲み']
-
-        for (let i = 4; i <= 19; i++) {
-          searches.push('4/' + i)
-          searches.push('4月' + i)
-        }
-
-        const fileterDate = date.filter(function(_date) {
-          for (const search of searches) {
-            if (~_date.indexOf(search)) {
-              return false
-            }
-          }
-
-          return true
-        })
-
-        return fileterDate
-      }
-
-      return []
     },
 
     toNext() {

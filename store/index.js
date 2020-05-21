@@ -26,7 +26,6 @@ export const actions = {
   fetchCircles({ commit, getters }) {
     if (!getters.check) {
       const circles = circlesJson.map((obj) => new Circle(obj))
-      console.log(circles)
       // サークルのシャッフル
       shuffleArr(circles)
       // サークルの上位表示の固定

@@ -6,29 +6,22 @@ const PUBLIC_LIST = {
   send: '届出団体'
 }
 
-// const TYPE_LIST = [
-//   { name: '運動系', type: 'sports' },
-//   { name: '音楽系', type: 'music' },
-//   { name: '文化系', type: 'culture' },
-//   { name: '製作系', type: 'mono' },
-//   { name: '農業系', type: 'agri' }
-// ]
-
 class Circle {
   constructor(circle) {
-    this.date = convertToArr(circle.date) ? convertToArr(circle.date) : ['なし']
     this.description = convertToArr(circle.description)
       ? convertToArr(circle.description)
       : ['なし']
     this.image = circle.image
     this.kana = circle.kana
     this._name = circle.name
-    this.public = circle.public
+    this.public = circle.public || undefined
     this._shortname = circle.shortname
     this.sns = circle.sns
     this.subImage = circle.subImage
     this.type = circle.type
     this.id = circle.id
+
+    this.setDate(circle)
   }
 
   /**
@@ -49,7 +42,7 @@ class Circle {
    * @return {String}
    */
   get publicName() {
-    return PUBLIC_LIST[this.public]
+    return this.public ? PUBLIC_LIST[this.public] : ''
   }
 
   /**
@@ -59,6 +52,49 @@ class Circle {
    */
   isClub() {
     return ~this.name.indexOf('部')
+  }
+
+  /**
+   * 公認団体か
+   */
+  isPublic() {
+    return this.public === 'public'
+  }
+
+  /**
+   * 非公認団体か
+   */
+  isPrivate() {
+    return this.public === 'private'
+  }
+
+  /**
+   * 届出団体か
+   */
+  isSend() {
+    return this.public === 'send'
+  }
+
+  /**
+   * 学生団体か
+   */
+  isStudent() {
+    return this.public === 'student'
+  }
+
+  setDate(circle) {
+    this.date = null
+    if (circle.date) {
+      this.date = convertToArr(circle.date)
+    }
+
+    if (circle.data) {
+      this.date = convertToArr(circle.data)
+    }
+
+    if (!this.date || this.date.length === 0) {
+      this.date = ['なし']
+    }
   }
 }
 
