@@ -29,3 +29,15 @@ jobs:
     - run: npm run test
       env:
         CI: true
+    - run: npm run test:e2e
+      env:
+        BASE_URL: https://uu-circle20.firebaseapp.com
+        CI: true
+        FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+        FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+        FIREBASE_DB_URL: ${{ secrets.FIREBASE_DB_URL }}
+        FIREBASE_PROJECTID: ${{ secrets.FIREBASE_PROJECTID }}
+        FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+        FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+        FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+        FIREBASE_MEASUREEMET_ID: ${{ secrets.FIREBASE_MEASUREEMET_ID }}

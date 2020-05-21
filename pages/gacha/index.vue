@@ -1,5 +1,7 @@
 <template>
   <div class="mb-4">
+    <h1 class="text-center about-heading">サークル・部活ガチャ</h1>
+
     <div v-once class="d-flex justify-center">
       <div style="max-width: 300px">
         <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />

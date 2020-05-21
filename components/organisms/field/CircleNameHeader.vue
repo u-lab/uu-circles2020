@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h2 class="circle-name-title">{{ circle.name }}</h2>
+    <h1 class="circle-name-title">{{ circle.name }}</h1>
 
     <div class="d-sm-flex justify-space-between pb-3">
-      <h3 v-show="circle.shortname" class="circle-name-title3">
+      <h2 v-show="circle.shortname" class="circle-name-title3">
         {{ circle.shortname }}
-      </h3>
+      </h2>
 
       <div class="text-right">
         <group-badge v-if="circle.public" :public="circle.public" />
