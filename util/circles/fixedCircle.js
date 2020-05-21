@@ -9,5 +9,5 @@ import { swapArr } from '@/util/array'
  */
 export const fixedCircleById = (circles, circleId, fixNum = 0) => {
   const idx = circles.findIndex((obj) => obj.id === circleId)
-  return idx !== -1 ? swapArr(circles, fixNum, idx) : circle
+  return idx !== -1 ? swapArr(circles, fixNum, idx) : circles
 }
