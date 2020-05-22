@@ -1,7 +1,7 @@
 import { shuffleArr } from '@/util/array'
-import { fixedCircleById } from '@/util/circles/fixedCircle'
+import { fixedCircleById } from '@/src/domains/services/CircleService'
 import circlesJson from '@/assets/json/circles.json'
-import Circle from '~/type/Circle'
+import Circle from '@/type/Circle'
 
 // state
 export const state = () => ({

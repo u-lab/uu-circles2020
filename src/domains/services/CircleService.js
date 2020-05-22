@@ -1,9 +1,13 @@
 import { swapArr } from '@/util/array'
 
 /**
+ * @typedef {import('@/type/Circle').default} Circle
+ */
+
+/**
  * 指定のcircleを特定の場所に固定する
  *
- * @param {Object[]} circles circleリスト
+ * @param {Circle[]} circles circleリスト
  * @param {String} circleId サークルID
  * @param {Number} fixNum 配列の番号
  */

@@ -21,7 +21,8 @@ export const convertToArr = (v) => {
 /**
  * 一つ前の配列を取得
  *
- * @param {Array} arr 配列
+ * @template T
+ * @param {Array<T>} arr 配列
  * @param {Number} idx 配列番号
  */
 export const getArrBefore = (arr, idx) => arr[idx - 1] || null
@@ -29,7 +30,8 @@ export const getArrBefore = (arr, idx) => arr[idx - 1] || null
 /**
  * 一つ後の配列を取得
  *
- * @param {Array} arr
+ * @template T
+ * @param {Array<T>} arr
  * @param {Number} idx 配列番号
  */
 export const getArrAfter = (arr, idx) => arr[idx + 1] || null
@@ -37,7 +39,8 @@ export const getArrAfter = (arr, idx) => arr[idx + 1] || null
 /**
  * ランダムに配列を取得
  *
- * @param {Array} arr
+ * @template T
+ * @param {Array<T>} arr
  * @param {Number} times
  */
 export const getRandArr = (arr, times = 1) => {
@@ -75,7 +78,8 @@ export const isArray = (v) => Array.isArray(v)
 /**
  * 配列のシャッフル関数
  *
- * @param {Array} arr
+ * @template T
+ * @param {Array<T>} arr
  */
 export const shuffleArr = (arr) => {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -87,9 +91,11 @@ export const shuffleArr = (arr) => {
 /**
  * 配列の入れ替え
  *
- * @param {Array} arr
+ * @template T
+ * @param {Array<T>} arr
  * @param {Number} num1
  * @param {Number} num2
+ * @returns {Array<T>}
  */
 export const swapArr = (arr, num1, num2) => {
   arr[num1] = [arr[num2], (arr[num2] = arr[num1])][0]
