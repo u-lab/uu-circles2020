@@ -94,6 +94,6 @@ sw.*
 .env.production
 .firebase
 
-circles.json
-authors.json
-interviews.json
+/assets/json/circles.json
+/assets/json/authors.json
+/assets/json/interviews.json
