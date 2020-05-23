@@ -35,8 +35,14 @@
 </template>
 
 <script>
-import AuthorsData from '@/src/infra/AuthorsData'
-import InterviewsData from '@/src/infra/InterviewsData'
+import {
+  findInterviewById,
+  getInterviews
+} from '@/src/domains/services/InterviewService'
+import {
+  findAuthorById,
+  getAuthors
+} from '@/src/domains/services/AuthorService'
 const InterviewHeader = () =>
   import('@/components/organisms/interview/InterviewHeader')
 const QAndAList = () => import('@/components/organisms/field/QAndAList')
@@ -50,8 +56,8 @@ export default {
   },
 
   asyncData({ params }) {
-    const interview = InterviewsData.find((obj) => obj.id === params.name)
-    const author = AuthorsData.find((obj) => obj.id === interview.author)
+    const interview = findInterviewById(getInterviews(), params.name)
+    const author = findAuthorById(getAuthors(), interview.author)
     return {
       author,
       interview

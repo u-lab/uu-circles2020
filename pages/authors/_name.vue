@@ -36,7 +36,10 @@
 </template>
 
 <script>
-import AuthorsData from '@/src/infra/AuthorsData'
+import {
+  getAuthors,
+  findAuthorById
+} from '@/src/domains/services/AuthorService'
 const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
@@ -45,7 +48,7 @@ export default {
   },
 
   asyncData({ params }) {
-    const author = AuthorsData.find((obj) => obj.id === params.name)
+    const author = findAuthorById(getAuthors(), params.name)
     return {
       author
     }

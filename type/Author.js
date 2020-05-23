@@ -5,7 +5,7 @@ import { convertToArr } from '@/util/array'
  *  image: String,
  *  name: String,
  *  job: String,
- *  id: String
+ *  id: String|Number
  * }} author
  */
 
