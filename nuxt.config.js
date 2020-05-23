@@ -113,10 +113,13 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics',
     '@nuxtjs/vuetify',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Nuxt.js modules
@@ -124,12 +127,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
     '@nuxtjs/device',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/pwa',
+    '@nuxtjs/sitemap'
   ],
   /*
    ** Axios module configuration
