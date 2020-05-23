@@ -5,13 +5,12 @@
     <div class="d-flex justify-space-between align-center mb-4">
       <author-link :name="authorName" :src="authorImage" :to="toAuthor" />
 
-      <format-yyyy-mm-dd v-if="date" :date="convertToDate(date)" />
+      <format-yyyy-mm-dd v-if="date" :date="date" />
     </div>
   </div>
 </template>
 
 <script>
-import { convertToDate } from '@/util/date'
 const AuthorLink = () => import('@/components/molecules/link/AuthorLink')
 const FormatYyyyMmDd = () => import('@/components/atoms/date/FormatYyyyMmDd')
 const InterviewHeading = () =>
@@ -36,8 +35,8 @@ export default {
     },
 
     date: {
-      type: Object,
-      required: true
+      type: Date,
+      default: undefined
     },
 
     toAuthor: {
@@ -48,14 +47,6 @@ export default {
     title: {
       type: String,
       required: true
-    }
-  },
-
-  computed: {
-    convertToDate() {
-      return function(timestamp) {
-        return convertToDate(timestamp)
-      }
     }
   }
 }

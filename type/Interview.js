@@ -1,8 +1,13 @@
 import { convertToArr } from '@/util/array'
+import { convertToDate } from '@/util/date'
 /**
  * @typedef {{
  *  author: String|Number,
  *  contents: interviewContent[],
+ *  date: {
+ *    seconds: Number,
+ *    nanoseconds: Number
+ *  }
  *  description: String|String[],
  *  title: String,
  *  image: String,
@@ -20,6 +25,7 @@ class Interview {
   constructor(interview) {
     this.author = interview.author
     this.contents = interview.contents.map((o) => new InterviewContent(o))
+    this.date = interview.date && convertToDate(interview.date)
     this.description = convertToArr(interview.description)
     this.image = interview.image
     this.title = interview.title
