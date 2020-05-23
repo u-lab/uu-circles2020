@@ -1,14 +1,15 @@
 import colors from 'vuetify/es5/util/colors'
-import circleJson from './assets/json/circles.json'
-import interviewJson from './assets/json/interviews.json'
-import authorJson from './assets/json/authors.json'
+import AuthorsData from './src/infra/AuthorsData'
+import CircleData from './src/infra/CircleData'
+import InterviewsData from './src/infra/InterviewsData'
 require('dotenv').config()
 
 export default {
   mode: 'spa',
 
   env: {
-    appUrl: process.env.BASE_URL
+    appUrl: process.env.BASE_URL,
+    NODE_ENV: process.env.NODE_ENV
   },
   /*
    ** Headers of the page
@@ -112,10 +113,13 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/google-analytics',
     '@nuxtjs/vuetify',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Nuxt.js modules
@@ -123,12 +127,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
     '@nuxtjs/device',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/pwa',
+    '@nuxtjs/sitemap'
   ],
   /*
    ** Axios module configuration
@@ -158,7 +159,7 @@ export default {
     hostname: 'https://uu-circle20.firebaseapp.com',
 
     routes() {
-      const json = circleJson
+      const json = CircleData
 
       // 戻り値の生成
       const urls = []
@@ -193,18 +194,18 @@ export default {
 
   generate: {
     routes() {
-      let arr = interviewJson.map((obj) => {
+      let arr = InterviewsData.map((obj) => {
         return { route: `/interviews/${obj.id}` }
       })
 
       arr.push({ route: `/interviews` })
 
-      const authorArr = authorJson.map((obj) => {
+      const authorArr = AuthorsData.map((obj) => {
         return { route: `/authors/${obj.id}` }
       })
       arr = [...arr, ...authorArr]
 
-      const circleArr = circleJson.map((obj) => {
+      const circleArr = CircleData.map((obj) => {
         return { route: `/circles/${obj.id}` }
       })
       arr = [...arr, ...circleArr]

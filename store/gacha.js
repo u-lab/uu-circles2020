@@ -1,5 +1,9 @@
 import { getRandArr } from '@/util/array'
 
+/**
+ * @typedef {import('@/type/Circle').default} Circle
+ */
+
 // state
 export const state = () => ({
   circles: null
@@ -28,6 +32,11 @@ export const actions = {
     commit('CLEAR_CIRCLES')
   },
 
+  /**
+   *
+   * @param {*} param0
+   * @param {{ circles: Circle[], times: Number }} param1
+   */
   gachaDraw({ commit }, { circles, times }) {
     // ガチャを引く(ランダムな配列を返す)
     const randomCircles = getRandArr(circles, times)

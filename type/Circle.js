@@ -6,8 +6,28 @@ const PUBLIC_LIST = {
   send: '届出団体'
 }
 
+/**
+ * @typedef {{
+ *  date: String|String[]
+ *  description: String|String[],
+ *  kana: String|null,
+ *  image: String,
+ *  name: String,
+ *  public: String,
+ *  shortname: String,
+ *  sns: Object,
+ *  subImage: String[]
+ *  type: String,
+ *  id: String
+ * }} circle
+ */
+
 class Circle {
+  /**
+   * @param { circle } circle
+   */
   constructor(circle) {
+    /** @type String[] */
     this.description = convertToArr(circle.description)
       ? convertToArr(circle.description)
       : ['なし']
@@ -82,7 +102,11 @@ class Circle {
     return this.public === 'student'
   }
 
+  /**
+   * @param {circle} circle
+   */
   setDate(circle) {
+    /** @type String[] */
     this.date = null
     if (circle.date) {
       this.date = convertToArr(circle.date)

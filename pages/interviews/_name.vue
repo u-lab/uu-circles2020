@@ -1,57 +1,27 @@
 <template>
-  <div>
-    <div class="d-flex justify-center pt-2">
-      <v-img width="100%" max-width="600px" :src="interview.image" />
-    </div>
-
-    <v-container>
-      <div class="px-4">
-        <interview-header
-          :author-image="author.image"
-          :author-name="author.name"
-          :date="interview.date"
-          :to-author="`/authors/${author.id}`"
-          :title="interview.title"
-        />
-
-        <div v-if="interview.description" class="pb-2">
-          <p
-            v-for="(text, key) in interview.description"
-            :key="key"
-            v-text="text"
-          />
-        </div>
-
-        <q-and-a-list :contents="interview.contents" />
-
-        <div class="d-flex justify-center">
-          <navy-blue-button to="/interviews">
-            記事一覧へ
-          </navy-blue-button>
-        </div>
-      </div>
-    </v-container>
-  </div>
+  <interview-name-template :author="author" :interview="interview" />
 </template>
 
 <script>
-import interviewsJson from '@/assets/json/interviews.json'
-import authorsJson from '@/assets/json/authors.json'
-const InterviewHeader = () =>
-  import('@/components/organisms/interview/InterviewHeader')
-const QAndAList = () => import('@/components/organisms/field/QAndAList')
-const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
+import {
+  findInterviewById,
+  getInterviews
+} from '@/src/domains/services/InterviewService'
+import {
+  findAuthorById,
+  getAuthors
+} from '@/src/domains/services/AuthorService'
+const InterviewNameTemplate = () =>
+  import('@/components/templates/InterviewNameTemplate')
 
 export default {
   components: {
-    InterviewHeader,
-    NavyBlueButton,
-    QAndAList
+    InterviewNameTemplate
   },
 
   asyncData({ params }) {
-    const interview = interviewsJson.find((obj) => obj.id === params.name)
-    const author = authorsJson.find((obj) => obj.id === interview.author)
+    const interview = findInterviewById(getInterviews(), params.name)
+    const author = findAuthorById(getAuthors(), interview.author)
     return {
       author,
       interview

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import interviewsJson from '@/assets/json/interviews.json'
-import authorsJson from '@/assets/json/authors.json'
+import { getAuthors } from '@/src/domains/services/AuthorService'
+import { getInterviews } from '@/src/domains/services/InterviewService'
 const InterviewList = () =>
   import('@/components/organisms/interview/InterviewList')
 
@@ -34,8 +34,8 @@ export default {
 
   asyncData() {
     return {
-      authors: authorsJson,
-      interviews: interviewsJson
+      authors: getAuthors(),
+      interviews: getInterviews()
     }
   },
 
