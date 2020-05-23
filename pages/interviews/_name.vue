@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import interviewsJson from '@/assets/json/interviews.json'
-import authorsJson from '@/assets/json/authors.json'
+import AuthorsData from '@/src/infra/AuthorsData'
+import InterviewsData from '@/src/infra/InterviewsData'
 const InterviewHeader = () =>
   import('@/components/organisms/interview/InterviewHeader')
 const QAndAList = () => import('@/components/organisms/field/QAndAList')
@@ -50,8 +50,8 @@ export default {
   },
 
   asyncData({ params }) {
-    const interview = interviewsJson.find((obj) => obj.id === params.name)
-    const author = authorsJson.find((obj) => obj.id === interview.author)
+    const interview = InterviewsData.find((obj) => obj.id === params.name)
+    const author = AuthorsData.find((obj) => obj.id === interview.author)
     return {
       author,
       interview
