@@ -3,8 +3,9 @@ import { randInt } from '@/util/number'
 /**
  * 強制的に配列型にする
  *
- * @param {*} v
- * @return { Array }
+ * @template T
+ * @param {T} v
+ * @return {T|Array<T>}
  */
 export const convertToArr = (v) => {
   if (!v) {
