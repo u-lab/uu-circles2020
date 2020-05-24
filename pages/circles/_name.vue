@@ -1,92 +1,20 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" md="6" class="pos-relative">
-        <v-carousel
-          v-if="circle.subImage"
-          cycle
-          dark
-          hide-delimiter-background
-          show-arrows-on-hover
-        >
-          <v-carousel-item
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <a :href="circle.image" target="_blank" rel="noopener">
-              <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
-            </a>
-          </v-carousel-item>
-          <v-carousel-item
-            v-for="(image, key) in circle.subImage"
-            :key="image + key + 'sub'"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <a :href="image" target="_blank" rel="noopener">
-              <v-img :src="image" :alt="`${circle.name}${key} - 宇大ビラ`" />
-            </a>
-          </v-carousel-item>
-        </v-carousel>
-        <a v-else :href="circle.image" target="_blank" rel="noopener">
-          <v-img :src="circle.image" :alt="`${circle.name} - 宇大ビラ`" />
-        </a>
-      </v-col>
-
-      <v-col cols="12" md="6">
-        <circle-name-header :circle="circle" />
-
-        <v-list v-if="circle.description">
-          <v-list-item
-            v-for="(text, key) in circle.description"
-            :key="'description' + key"
-          >
-            {{ text }}
-          </v-list-item>
-        </v-list>
-
-        <div class="pt-4">
-          <circle-date-field :dates="circle.date" />
-        </div>
-
-        <div class="py-4">
-          <inline-icons v-if="circle.sns" :sns="circle.sns" />
-        </div>
-
-        <circle-to-before-next-btn-group
-          :to-before="toBefore"
-          :to-next="toNext"
-        />
-
-        <div class="d-flex justify-center">
-          <navy-blue-button to="/">
-            <v-icon small>mdi-format-align-justify</v-icon>
-            <span class="ml-2">一覧を見る</span>
-          </navy-blue-button>
-        </div>
-      </v-col>
-    </v-row>
-  </v-container>
+  <circle-name-template
+    :circle="circle"
+    :circles="circles"
+    :before-circle="beforeCircle"
+    :next-circle="nextCircle"
+  />
 </template>
 
 <script>
 import { getArrAfter, getArrBefore } from '@/util/array'
-const CircleToBeforeNextBtnGroup = () =>
-  import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
-const CircleDateField = () =>
-  import('@/components/molecules/field/CircleDateField')
-const CircleNameHeader = () =>
-  import('@/components/organisms/field/CircleNameHeader')
-const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
-const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
+const CircleNameTemplate = () =>
+  import('@/components/templates/CircleNameTemplate')
 
 export default {
   components: {
-    CircleToBeforeNextBtnGroup,
-    CircleDateField,
-    CircleNameHeader,
-    InlineIcons,
-    NavyBlueButton
+    CircleNameTemplate
   },
 
   fetch({ store }) {
@@ -95,13 +23,15 @@ export default {
 
   data() {
     return {
-      count: '',
-      nextCircle: '',
-      beforeCircle: ''
+      count: ''
     }
   },
 
   computed: {
+    beforeCircle() {
+      return getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
+    },
+
     circle() {
       return this.circles[this.count]
     },
@@ -110,12 +40,8 @@ export default {
       return this.$store.getters.circles
     },
 
-    toNext() {
-      return this.nextCircle ? `/circles/${this.nextCircle.id}` : undefined
-    },
-
-    toBefore() {
-      return this.beforeCircle ? `/circles/${this.beforeCircle.id}` : undefined
+    nextCircle() {
+      return getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
     }
   },
 
@@ -132,8 +58,6 @@ export default {
     }
 
     this.count = idx
-    this.beforeCircle = getArrBefore(this.circles, this.count) // 一つ前のサークル情報取得
-    this.nextCircle = getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
   },
 
   head() {
@@ -181,13 +105,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.loading-circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  -webkit-transform: translateY(-50%) translateX(-50%);
-}
-</style>

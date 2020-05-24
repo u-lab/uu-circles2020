@@ -34,7 +34,7 @@
       </v-col>
 
       <v-col cols="12" class="d-flex justify-center">
-        <circle-list-btn />
+        <circle-list-btn large />
       </v-col>
     </v-row>
   </v-container>

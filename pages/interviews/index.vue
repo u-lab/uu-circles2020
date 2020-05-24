@@ -1,35 +1,16 @@
 <template>
-  <div class="pt-2">
-    <h1 class="interview-heading mb-4">
-      ビラだけじゃわからない<br />サークルの魅力を知れ！
-    </h1>
-
-    <v-container class="mb-4">
-      <interview-list
-        class="px-4"
-        :interviews="interviews"
-        :authors="authors"
-      />
-    </v-container>
-
-    <div class="d-flex justify-center mb-4">
-      <v-btn to="/" nuxt color="#0b2157" dark>
-        <v-icon small>mdi-format-align-justify</v-icon>
-        <span class="ml-2">ビラ一覧へ</span>
-      </v-btn>
-    </div>
-  </div>
+  <interview-index-template :authors="authors" :interviews="interviews" />
 </template>
 
 <script>
 import { getAuthors } from '@/src/domains/services/AuthorService'
 import { getInterviews } from '@/src/domains/services/InterviewService'
-const InterviewList = () =>
-  import('@/components/organisms/interview/InterviewList')
+const InterviewIndexTemplate = () =>
+  import('@/components/templates/InterviewIndexTemplate')
 
 export default {
   components: {
-    InterviewList
+    InterviewIndexTemplate
   },
 
   asyncData() {
@@ -96,17 +77,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.interview-heading {
-  background-color: #3d00c7;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 8vw;
-
-  @include mq(sm) {
-    font-size: 2rem;
-  }
-}
-</style>

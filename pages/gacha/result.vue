@@ -22,10 +22,7 @@
     </div>
 
     <div class="d-flex justify-center mb-2">
-      <v-btn to="/" nuxt color="#0b2157" dark>
-        <v-icon small>mdi-format-align-justify</v-icon>
-        <span class="ml-2">一覧を見る</span>
-      </v-btn>
+      <circle-list-btn />
     </div>
   </div>
 </template>
@@ -33,6 +30,8 @@
 <script>
 import { mapGetters } from 'vuex'
 const AboutHeading = () => import('@/components/atoms/heading/AboutHeading')
+const CircleListBtn = () =>
+  import('@/components/molecules/buttons/CircleListBtn')
 const GachaResultOneTemplate = () =>
   import('@/components/templates/GachaResultOneTemplate')
 const GachaResultFiveTemplate = () =>
@@ -43,6 +42,7 @@ export default {
 
   components: {
     AboutHeading,
+    CircleListBtn,
     GachaResultOneTemplate,
     GachaResultFiveTemplate
   },
