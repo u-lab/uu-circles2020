@@ -59,10 +59,7 @@
         />
 
         <div class="d-flex justify-center">
-          <navy-blue-button to="/">
-            <v-icon small>mdi-format-align-justify</v-icon>
-            <span class="ml-2">一覧を見る</span>
-          </navy-blue-button>
+          <circle-list-btn />
         </div>
       </v-col>
     </v-row>
@@ -71,6 +68,8 @@
 
 <script>
 import { getArrAfter, getArrBefore } from '@/util/array'
+const CircleListBtn = () =>
+  import('@/components/molecules/buttons/CircleListBtn')
 const CircleToBeforeNextBtnGroup = () =>
   import('@/components/organisms/btnGroup/CircleToBeforeNextBtnGroup')
 const CircleDateField = () =>
@@ -78,15 +77,14 @@ const CircleDateField = () =>
 const CircleNameHeader = () =>
   import('@/components/organisms/field/CircleNameHeader')
 const InlineIcons = () => import('@/components/organisms/icons/InlineIcons')
-const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
   components: {
-    CircleToBeforeNextBtnGroup,
     CircleDateField,
+    CircleToBeforeNextBtnGroup,
+    CircleListBtn,
     CircleNameHeader,
-    InlineIcons,
-    NavyBlueButton
+    InlineIcons
   },
 
   fetch({ store }) {
