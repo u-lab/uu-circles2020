@@ -66,6 +66,10 @@ const SearchResultEmptyText = () =>
 const CircleImageList = () =>
   import('@/components/organisms/list/CircleImageList')
 
+/**
+ * @typedef {import('@/type/Circle').default} Circle
+ */
+
 const TYPE_LIST = [
   { name: '運動系', type: 'sports' },
   { name: '音楽系', type: 'music' },
@@ -81,6 +85,11 @@ export default {
     SearchResultEmptyText
   },
 
+  /**
+   * @typedef {Object<string, any>} Props
+   * @property {Array<Circle>} circles
+   */
+  /** @type {import("vue/types/options").RecordPropsDefinition<Props>} */
   props: {
     circles: {
       type: Array,
@@ -107,9 +116,7 @@ export default {
 
     computedCircleByType(type) {
       this.searchBox = type
-      this.filterCirlce = this.circles.filter((circle) => {
-        return circle.type === type
-      })
+      this.filterCirlce = this.circles.filter((circle) => circle.type === type)
     },
 
     computedCircleBySearchBox() {
