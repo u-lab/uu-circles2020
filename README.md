@@ -57,6 +57,11 @@ GitHub Actionsを使って、masterにpushされたら、自動でデプロイ�
   <a href="https://uu-circle20.firebaseapp.com/">
     <img src="./.github/image/toppage-screenshot.png">
   </a>
+  
+## サークルビラ一覧紹介リンク
+
+- [課外活動|宇都宮大学](https://www.utsunomiya-u.ac.jp/convenient/campuslife/club.php#u-lab_chirasi)
+- [［新入生の皆さまへ］宇都宮大学課外活動団体一覧ページのご紹介](https://www.utsunomiya-u.ac.jp/topics/student/008225.php)
 
 ## テーブル定義
 
