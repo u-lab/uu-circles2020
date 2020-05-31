@@ -42,43 +42,33 @@ const create = async () => {
 const getData = async () => {
   // firestoreからDataの回収
   const collection = firestore.collection('interviews')
-  const docs = await collection.get()
+  const { docs } = await collection.get()
 
   // 戻り値の生成
-  const datas = []
-  for (const doc of docs.docs) {
+  return docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
-    datas.push(data)
-  }
-
-  return datas
+    return data
+  })
 }
 
 const fetchInterviewsImageAll = async (interviews) => {
-  const promise = []
-
   // promiseのためのimageデータの作成
-  for (const interview of interviews) {
+  const promise = interviews.reduce((arr, interview) => {
     if (!checkCompleteImage(interview)) {
-      try {
-        promise.push(
-          storageRef.child(`/interviews/${interview.image}`).getDownloadURL()
-        )
-      } catch (e) {}
+      arr.push(
+        storageRef.child(`/interviews/${interview.image}`).getDownloadURL()
+      )
     }
-  }
+    return arr
+  }, [])
 
   // 画像のURLをまとめて取得
   const urls = await Promise.all(promise)
-
-  for (let i = 0; i < interviews.length; i++) {
-    interviews[i].image = !checkCompleteImage(interviews[i])
-      ? urls[i]
-      : '/no-image.jpg'
-  }
-
-  return interviews
+  return interviews.map((interview, i) => {
+    interview.image = !checkCompleteImage(interview) ? urls[i] : '/no-image.jpg'
+    return interview
+  })
 }
 
 const fetchImageAll = async (interviews) => {
@@ -88,14 +78,12 @@ const fetchImageAll = async (interviews) => {
 
     // promiseのためのimageデータの作成
     for (const content of interview.contents) {
-      if (content.image) {
-        if (!checkCompleteImage(content)) {
-          try {
-            promise.push(
-              storageRef.child(`interviews/${content.image}`).getDownloadURL()
-            )
-          } catch (e) {}
-        }
+      if (content.image && !checkCompleteImage(content)) {
+        try {
+          promise.push(
+            storageRef.child(`interviews/${content.image}`).getDownloadURL()
+          )
+        } catch (e) {}
       }
     }
 

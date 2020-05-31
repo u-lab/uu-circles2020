@@ -42,43 +42,31 @@ const create = async () => {
 const getData = async () => {
   // firestoreからDataの回収
   const collection = firestore.collection('circles')
-  const docs = await collection.get()
+  const { docs } = await collection.get()
 
   // 戻り値の生成
-  const datas = []
-  for (const doc of docs.docs) {
+  return docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
-    datas.push(data)
-  }
-
-  return datas
+    return data
+  })
 }
 
 const fetchCircleImageAll = async (circles) => {
-  const promise = []
-
   // promiseのためのimageデータの作成
-  for (const circle of circles) {
+  const promise = circles.reduce((arr, circle) => {
     if (!checkCompleteImage(circle)) {
-      try {
-        promise.push(
-          storageRef.child(`circles/${circle.image}`).getDownloadURL()
-        )
-      } catch (e) {}
+      arr.push(storageRef.child(`circles/${circle.image}`).getDownloadURL())
     }
-  }
+    return arr
+  }, [])
 
   // 画像のURLをまとめて取得
   const urls = await Promise.all(promise)
-
-  for (let i = 0; i < circles.length; i++) {
-    circles[i].image = !checkCompleteImage(circles[i])
-      ? urls[i]
-      : '/no-image.jpg'
-  }
-
-  return circles
+  return circles.map((circle, i) => {
+    circle.image = !checkCompleteImage(circle) ? urls[i] : '/no-image.jpg'
+    return circle
+  })
 }
 
 const subimage = async (circles) => {
