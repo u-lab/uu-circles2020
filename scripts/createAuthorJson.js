@@ -41,17 +41,14 @@ const create = async () => {
 const getData = async () => {
   // firestoreからDataの回収
   const collection = firestore.collection('interviews_authors')
-  const docs = await collection.get()
+  const { docs } = await collection.get()
 
   // 戻り値の生成
-  const datas = []
-  for (const doc of docs.docs) {
+  return docs.map((doc) => {
     const data = doc.data()
     data.id = doc.id
-    datas.push(data)
-  }
-
-  return datas
+    return data
+  })
 }
 
 const fetchImageAll = async (circles) => {
