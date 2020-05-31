@@ -82,9 +82,8 @@ const fetchInterviewsImageAll = async (interviews) => {
 }
 
 const fetchImageAll = async (interviews) => {
-  const promise = []
-
   for (let idx = 0; idx < interviews.length; idx++) {
+    const promise = []
     const interview = interviews[idx]
 
     // promiseのためのimageデータの作成
