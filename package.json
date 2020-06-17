@@ -20,14 +20,6 @@
     "test:e2e": "cross-env NODE_ENV=test jest --config ./tests/e2e-config.json",
     "testServer": "cross-env NODE_ENV=test nuxt build && nuxt start --port 3000"
   },
-  "lint-staged": {
-    "*.{js,vue}": "npm run lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.7",
     "@nuxtjs/device": "^1.2.7",
