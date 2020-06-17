@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import Circle from '@/type/Circle'
 const CircleImage = () => import('@/components/organisms/image/CircleImage')
 const CircleListBtn = () =>
   import('@/components/molecules/buttons/CircleListBtn')
@@ -63,7 +62,7 @@ export default {
 
   props: {
     circle: {
-      type: Circle,
+      type: Object,
       required: true
     },
 
@@ -73,12 +72,12 @@ export default {
     },
 
     beforeCircle: {
-      type: Circle,
+      type: Object,
       default: undefined
     },
 
     nextCircle: {
-      type: Circle,
+      type: Object,
       default: undefined
     }
   },

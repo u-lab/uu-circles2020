@@ -1,13 +1,13 @@
 <template>
   <!-- ビラ一覧 -->
   <v-row>
-    <v-col v-for="(circle, key) in circles" :key="key" cols="12" xs="6" sm="4">
+    <v-col v-for="(circle, key) in circles" :key="key" cols="12" sm="4">
       <v-lazy>
         <circle-card
-          v-if="circle.id && circle.image && circle.name"
+          v-if="circle.id && circle.image"
           :to="`/circles/${circle.id}`"
           :src="circle.image"
-          :name="circle.shortname || circle.name"
+          :name="circle._shortname || circle._name"
         />
       </v-lazy>
     </v-col>
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-const CircleCard = () => import('@/components/organisms/cards/CircleCard')
+import CircleCard from '@/components/organisms/cards/CircleCard'
 
 export default {
   components: {

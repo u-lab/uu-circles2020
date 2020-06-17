@@ -5,7 +5,7 @@ import InterviewsData from './src/infra/InterviewsData'
 require('dotenv').config()
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
 
   env: {
     appUrl: process.env.BASE_URL,

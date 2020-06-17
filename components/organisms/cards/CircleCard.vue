@@ -3,7 +3,6 @@
     :to="to"
     hover
     class="pos-relative"
-    ontouchstart=""
     @mouseover="TitleOn()"
     @mouseout="TitleDown()"
   >
@@ -20,7 +19,7 @@ export default {
   props: {
     to: {
       type: [String, Object],
-      required: true
+      default: undefined
     },
 
     src: {
@@ -30,7 +29,7 @@ export default {
 
     name: {
       type: String,
-      required: true
+      default: undefined
     }
   },
 

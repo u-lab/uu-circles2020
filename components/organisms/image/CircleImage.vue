@@ -26,12 +26,10 @@
 </template>
 
 <script>
-import Circle from '@/type/Circle'
-
 export default {
   props: {
     circle: {
-      type: Circle,
+      type: Object,
       required: true
     }
   },
