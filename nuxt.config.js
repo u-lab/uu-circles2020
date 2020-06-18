@@ -189,6 +189,21 @@ export default {
       Scope: '/',
       start_url: '/',
       splash_pages: null
+    },
+
+    /* workbox options */
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: '^https://use.typekit.net/(.*)',
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern:
+            '^https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/(.*)',
+          handler: 'cacheFirst'
+        }
+      ]
     }
   },
 
