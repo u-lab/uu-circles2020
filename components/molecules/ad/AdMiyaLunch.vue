@@ -1,12 +1,12 @@
 <template>
   <ad-base
-    href="https://www.utsunomiya-u.ac.jp/important/essential/008205.php"
+    href="https://twitter.com/miyameshiouen/status/1271759789148663815?s=21"
     :src="logo"
   />
 </template>
 
 <script>
-import Logo from '@/assets/img/circle-enki.jpg'
+import Logo from '@/assets/img/ad/miya-lunch202006.jpg'
 const AdBase = () => import('@/components/molecules/ad/AdBase')
 
 export default {
