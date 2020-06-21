@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [10.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,9 +26,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm install
-    - name: npm run build
+    - name: npm run build:prod
       run: |-
-        npm run build
+        npm run build:prod
       env:
         BASE_URL: https://uu-circle20.firebaseapp.com
         FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
