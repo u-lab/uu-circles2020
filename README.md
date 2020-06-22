@@ -18,6 +18,7 @@
 - Vue.js
 - Nuxt.js v2.12.0
 - Firebase
+- GitHub Actions
 
 ## 環境構築
 
