@@ -3,7 +3,7 @@ const PUBLIC_LIST = {
   public: '公認団体',
   private: '非公認団体',
   student: '学生団体',
-  send: '届出団体'
+  send: '届出団体',
 }
 
 /**

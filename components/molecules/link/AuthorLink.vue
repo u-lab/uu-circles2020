@@ -19,32 +19,32 @@ import AuthorText from '@/components/atoms/text/AuthorText'
 
 export default {
   components: {
-    AuthorText
+    AuthorText,
   },
 
   props: {
     href: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     to: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

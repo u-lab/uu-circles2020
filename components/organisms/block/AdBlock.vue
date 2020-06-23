@@ -16,13 +16,13 @@ const rand = () => randInt(4)
 export default {
   components: {
     AdInterviews,
-    AdMiyaLunch
+    AdMiyaLunch,
   },
 
   computed: {
     getComponentName() {
       return rand() > 2 ? 'AdMiyaLunch' : 'AdInterviews'
-    }
-  }
+    },
+  },
 }
 </script>

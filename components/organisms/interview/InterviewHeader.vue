@@ -20,35 +20,35 @@ export default {
   components: {
     AuthorLink,
     FormatYyyyMmDd,
-    InterviewHeading
+    InterviewHeading,
   },
 
   props: {
     authorImage: {
       type: String,
-      required: true
+      required: true,
     },
 
     authorName: {
       type: String,
-      required: true
+      required: true,
     },
 
     date: {
       type: Date,
-      default: undefined
+      default: undefined,
     },
 
     toAuthor: {
       type: String,
-      required: true
+      required: true,
     },
 
     title: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

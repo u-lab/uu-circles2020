@@ -3,8 +3,8 @@ export default {
   props: {
     element: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   render(h) {
@@ -13,7 +13,7 @@ export default {
       { class: 'font-weight-bold site-title m-0 white--text' },
       '宇都宮大学のサークルビラ一覧'
     )
-  }
+  },
 }
 </script>
 

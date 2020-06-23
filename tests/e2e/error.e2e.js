@@ -4,7 +4,7 @@ const routes = [
   '/interviews',
   '/about/company',
   '/about/creater',
-  '/circles/u-lab'
+  '/circles/u-lab',
 ]
 
 describe('すべてのページで500エラーが表示されない', () => {

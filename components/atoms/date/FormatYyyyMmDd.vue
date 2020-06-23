@@ -9,8 +9,8 @@ export default {
   props: {
     date: {
       type: Date,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
@@ -21,7 +21,7 @@ export default {
       const day = date.getDate()
 
       return year + '年' + month + '月' + day + '日'
-    }
-  }
+    },
+  },
 }
 </script>

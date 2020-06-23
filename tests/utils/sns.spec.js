@@ -3,13 +3,13 @@ import * as sns from '@/util/sns'
 const isSnsValueExpect = {
   isFacebook: [
     { arg: 'facebook', expV: true },
-    { arg: 'Facebook', expV: true }
+    { arg: 'Facebook', expV: true },
   ],
   isForm: [
     { arg: 'form', expV: true },
     { arg: 'Form', expV: true },
     { arg: 'googleform', expV: true },
-    { arg: 'GoogleForm', expV: true }
+    { arg: 'GoogleForm', expV: true },
   ],
   isHome: [
     { arg: 'home', expV: true },
@@ -17,50 +17,50 @@ const isSnsValueExpect = {
     { arg: 'hp', expV: true },
     { arg: 'Hp', expV: true },
     { arg: 'homepage', expV: true },
-    { arg: 'Homepage', expV: true }
+    { arg: 'Homepage', expV: true },
   ],
   isGithub: [
     { arg: 'github', expV: true },
     { arg: 'Github', expV: true },
-    { arg: 'GitHub', expV: true }
+    { arg: 'GitHub', expV: true },
   ],
   isInstagram: [
     { arg: 'instagram', expV: true },
     { arg: 'Instagram', expV: true },
     { arg: 'insta', expV: true },
-    { arg: 'Insta', expV: true }
+    { arg: 'Insta', expV: true },
   ],
   isLine: [
     { arg: 'line', expV: true },
-    { arg: 'Line', expV: true }
+    { arg: 'Line', expV: true },
   ],
   isMail: [
     { arg: 'mail', expV: true },
     { arg: 'Mail', expV: true },
     { arg: 'email', expV: true },
-    { arg: 'Email', expV: true }
+    { arg: 'Email', expV: true },
   ],
   isPeing: [
     { arg: 'peing', expV: true },
-    { arg: 'Peing', expV: true }
+    { arg: 'Peing', expV: true },
   ],
   isTwitter: [
     { arg: 'twitter', expV: true },
-    { arg: 'Twitter', expV: true }
+    { arg: 'Twitter', expV: true },
   ],
   isYoutube: [
     { arg: 'youtube', expV: true },
-    { arg: 'Youtube', expV: true }
-  ]
+    { arg: 'Youtube', expV: true },
+  ],
 }
 
 const isSnsNameExpectCommon = [
   {
     arg: 'face',
     exp: '異なる値のとき、falseであるか',
-    expV: false
+    expV: false,
   },
-  { arg: '', exp: '文字列が空のとき、falseであるか', expV: false }
+  { arg: '', exp: '文字列が空のとき、falseであるか', expV: false },
 ]
 
 describe('sns関数群のテスト', () => {

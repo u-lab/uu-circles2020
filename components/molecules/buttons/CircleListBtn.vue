@@ -10,14 +10,14 @@ import NavyBlueButton from '@/components/atoms/buttons/NavyBlueButton'
 
 export default {
   components: {
-    NavyBlueButton
+    NavyBlueButton,
   },
 
   props: {
     large: {
       type: Boolean,
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 }
 </script>

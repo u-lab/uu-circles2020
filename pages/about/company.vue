@@ -27,7 +27,7 @@
         </div>
 
         <div class="d-flex justify-center">
-          <div style="width: 320px">
+          <div style="width: 320px;">
             <v-img src="/kyousan.jpg" alt="協賛募集" width="320" />
           </div>
         </div>
@@ -47,7 +47,7 @@ import CircleListBtn from '@/components/molecules/buttons/CircleListBtn'
 export default {
   components: {
     AboutHeading,
-    CircleListBtn
+    CircleListBtn,
   },
 
   head() {
@@ -58,20 +58,20 @@ export default {
           hid: 'description',
           name: 'description',
           content:
-            '宇都宮大学の部活動・サークル・学生団体のビラ一覧の協賛企業・支援者一覧です。協賛していただいてありがとうございます。'
+            '宇都宮大学の部活動・サークル・学生団体のビラ一覧の協賛企業・支援者一覧です。協賛していただいてありがとうございます。',
         },
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '協賛企業・支援者一覧'
+          content: '協賛企業・支援者一覧',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            '宇都宮大学の部活動・サークル・学生団体のビラ一覧の協賛企業・支援者一覧です。協賛していただいてありがとうございます。-labです。'
-        }
+            '宇都宮大学の部活動・サークル・学生団体のビラ一覧の協賛企業・支援者一覧です。協賛していただいてありがとうございます。-labです。',
+        },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -100,10 +100,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

@@ -98,7 +98,7 @@ import CircleListBtn from '@/components/molecules/buttons/CircleListBtn'
 export default {
   components: {
     AboutHeading,
-    CircleListBtn
+    CircleListBtn,
   },
   head() {
     return {
@@ -109,15 +109,15 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'このサイトについて'
+          content: 'このサイトについて',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。'
-        }
+            '宇都宮大学の部活動・サークル・学生団体のビラ一覧についてです。運営団体はU-labです。',
+        },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -146,10 +146,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

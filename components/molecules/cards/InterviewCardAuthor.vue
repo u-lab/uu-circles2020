@@ -13,31 +13,31 @@ import AuthorLink from '@/components/molecules/link/AuthorLink'
 
 export default {
   components: {
-    AuthorLink
+    AuthorLink,
   },
 
   props: {
     href: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     to: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>

@@ -23,15 +23,15 @@ const GroupBadge = () => import('@/components/organisms/badge/GroupBadge')
 
 export default {
   components: {
-    GroupBadge
+    GroupBadge,
   },
 
   props: {
     circle: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

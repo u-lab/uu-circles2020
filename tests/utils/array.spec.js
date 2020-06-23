@@ -16,7 +16,7 @@ describe('util/array', () => {
       { id: 7, name: 'foobar' },
       { id: 8, name: 'fuga' },
       { id: 9, name: 'piyo' },
-      { id: 10, name: 'hogehoge' }
+      { id: 10, name: 'hogehoge' },
     ]
   })
 

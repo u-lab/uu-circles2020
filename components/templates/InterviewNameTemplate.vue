@@ -46,19 +46,19 @@ export default {
   components: {
     InterviewHeader,
     NavyBlueButton,
-    QAndAList
+    QAndAList,
   },
 
   props: {
     author: {
       type: Author,
-      required: true
+      required: true,
     },
 
     interview: {
       type: Interview,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

@@ -23,33 +23,33 @@ export default {
   props: {
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     to: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     href: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data() {
     return {
-      displayOn: true
+      displayOn: true,
     }
   },
 
   methods: {
     close() {
       this.displayOn = false
-    }
-  }
+    },
+  },
 }
 </script>
 

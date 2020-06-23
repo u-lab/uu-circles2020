@@ -53,7 +53,7 @@
           :width="$device.isDesktop ? 600 : 300"
           :height="$device.isDesktop ? 450 : 225"
           frameborder="0"
-          style="border:0;"
+          style="border: 0;"
           allowfullscreen=""
           aria-hidden="false"
           tabindex="0"
@@ -76,13 +76,13 @@ const CircleListBtn = () =>
 export default {
   components: {
     AboutHeading,
-    CircleListBtn
+    CircleListBtn,
   },
 
   computed: {
     mainImg() {
       return MainImg
-    }
+    },
   },
 
   head() {
@@ -92,9 +92,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '学生応援きずなセット配布会'
+          content: '学生応援きずなセット配布会',
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -123,11 +123,11 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

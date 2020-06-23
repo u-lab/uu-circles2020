@@ -6,13 +6,13 @@ import { getRandArr } from '@/util/array'
 
 // state
 export const state = () => ({
-  circles: null
+  circles: null,
 })
 
 // getters
 export const getters = {
   circles: (state) => state.circles,
-  check: (state) => state.circles !== null
+  check: (state) => state.circles !== null,
 }
 
 // mutaiton
@@ -23,7 +23,7 @@ export const mutations = {
 
   SET_CIRCLES(state, circles) {
     state.circles = circles
-  }
+  },
 }
 
 // actions
@@ -42,5 +42,5 @@ export const actions = {
     const randomCircles = getRandArr(circles, times)
 
     commit('SET_CIRCLES', randomCircles)
-  }
+  },
 }

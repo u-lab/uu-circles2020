@@ -9,13 +9,13 @@ export default {
   props: {
     large: {
       type: Boolean,
-      default: false
+      default: false,
     },
 
     to: {
       type: [String, Object],
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 }
 </script>

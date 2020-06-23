@@ -1,5 +1,5 @@
 <template>
-  <div style="max-width: 350px">
+  <div style="max-width: 350px;">
     <interview-card-intro
       :title="title"
       :to="toInterview"
@@ -18,41 +18,41 @@ import InterviewCardIntro from '@/components/molecules/cards/InterviewCardIntro'
 export default {
   components: {
     InterviewCardAuthor,
-    InterviewCardIntro
+    InterviewCardIntro,
   },
 
   props: {
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     toAuthor: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     toInterview: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     srcAuthor: {
       type: String,
-      required: true
+      required: true,
     },
 
     srcInterview: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

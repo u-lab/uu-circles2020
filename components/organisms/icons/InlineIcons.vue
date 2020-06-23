@@ -7,14 +7,14 @@ import InlineIcons from '@/components/molecules/icons/InlineIcons'
 
 export default {
   components: {
-    InlineIcons
+    InlineIcons,
   },
 
   props: {
     sns: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

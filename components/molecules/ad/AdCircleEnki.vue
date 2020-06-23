@@ -11,13 +11,13 @@ const AdBase = () => import('@/components/molecules/ad/AdBase')
 
 export default {
   components: {
-    AdBase
+    AdBase,
   },
 
   computed: {
     logo() {
       return Logo
-    }
-  }
+    },
+  },
 }
 </script>

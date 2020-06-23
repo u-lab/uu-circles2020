@@ -17,14 +17,14 @@ export default {
     GreyBadge,
     LightGreenBadge,
     LightBlueBadge,
-    PinkBadge
+    PinkBadge,
   },
 
   props: {
     public: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
@@ -82,7 +82,7 @@ export default {
 
     is_student() {
       return this.public === 'student'
-    }
-  }
+    },
+  },
 }
 </script>

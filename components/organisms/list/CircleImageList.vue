@@ -19,15 +19,15 @@ const CircleCard = () => import('@/components/organisms/cards/CircleCard')
 
 export default {
   components: {
-    CircleCard
+    CircleCard,
   },
 
   props: {
     circles: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

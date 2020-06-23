@@ -13,33 +13,33 @@ import QuestionField from '@/components/atoms/text/QuestionField'
 export default {
   components: {
     AnswerField,
-    QuestionField
+    QuestionField,
   },
 
   props: {
     aIsMark: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
 
     qIsMark: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
 
     aText: {
       type: [String, Array],
       required: false,
-      default: null
+      default: null,
     },
 
     qText: {
       type: String,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
 
   computed: {
@@ -49,7 +49,7 @@ export default {
 
     getQText() {
       return this.qText || 'なし'
-    }
-  }
+    },
+  },
 }
 </script>

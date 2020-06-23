@@ -14,25 +14,25 @@ export default {
     href: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     name: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     to: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

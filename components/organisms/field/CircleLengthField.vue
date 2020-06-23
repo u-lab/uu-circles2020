@@ -3,7 +3,7 @@
     <div class="font-klee intro-background pa-6">
       <p class="mb-0 text-center">
         掲載団体数:
-        <span style="font-size: 24px">{{ length }}</span>
+        <span style="font-size: 24px;">{{ length }}</span>
       </p>
     </div>
   </div>
@@ -14,9 +14,9 @@ export default {
   props: {
     length: {
       type: Number,
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 }
 </script>
 

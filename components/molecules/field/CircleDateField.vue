@@ -15,9 +15,9 @@ export default {
   props: {
     dates: {
       type: Array,
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 }
 </script>
 

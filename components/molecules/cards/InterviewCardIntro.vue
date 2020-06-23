@@ -19,32 +19,32 @@ import InterviewIntro from '@/components/atoms/cards/InterviewIntro'
 
 export default {
   components: {
-    InterviewIntro
+    InterviewIntro,
   },
 
   props: {
     href: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     title: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     to: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

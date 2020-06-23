@@ -75,14 +75,14 @@ const TYPE_LIST = [
   { name: '音楽系', type: 'music' },
   { name: '文化系', type: 'culture' },
   { name: '製作系', type: 'mono' },
-  { name: '農業系', type: 'agri' }
+  { name: '農業系', type: 'agri' },
 ]
 
 export default {
   components: {
     CircleImageList,
     GachaBannerField,
-    SearchResultEmptyText
+    SearchResultEmptyText,
   },
 
   /**
@@ -93,19 +93,19 @@ export default {
   props: {
     circles: {
       type: Array,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
 
   data() {
     return {
       filterCirlce: this.circles,
-      searchBox: ''
+      searchBox: '',
     }
   },
 
   computed: {
-    typeListForSearch: () => TYPE_LIST
+    typeListForSearch: () => TYPE_LIST,
   },
 
   methods: {
@@ -121,7 +121,7 @@ export default {
 
     computedCircleBySearchBox() {
       this.filterCirlce = filterCircle(this.circles, this.searchBox)
-    }
-  }
+    },
+  },
 }
 </script>
