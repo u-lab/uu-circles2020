@@ -108,7 +108,7 @@ export default {
     MailIcon,
     PeingIcon,
     TwitterIcon,
-    YoutubeIcon
+    YoutubeIcon,
   },
 
   props: {
@@ -126,8 +126,8 @@ export default {
      */
     sns: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
@@ -137,7 +137,7 @@ export default {
 
     width() {
       return 50
-    }
-  }
+    },
+  },
 }
 </script>

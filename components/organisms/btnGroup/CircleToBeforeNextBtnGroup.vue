@@ -17,14 +17,14 @@ export default {
   props: {
     toBefore: {
       type: [String, Object],
-      default: undefined
+      default: undefined,
     },
 
     toNext: {
       type: [String, Object],
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 }
 </script>
 

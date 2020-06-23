@@ -25,14 +25,14 @@ import QAndAField from '@/components/molecules/field/QAndAField'
 
 export default {
   components: {
-    QAndAField
+    QAndAField,
   },
 
   props: {
     contents: {
       type: Array,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

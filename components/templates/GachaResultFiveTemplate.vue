@@ -25,15 +25,15 @@ const AboutHeading = () => import('@/components/atoms/heading/AboutHeading')
 
 export default {
   components: {
-    AboutHeading
+    AboutHeading,
   },
 
   props: {
     circles: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>
 

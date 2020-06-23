@@ -6,7 +6,7 @@
 
     <div class="py-4">
       <p class="text-center">
-        <b style="color: red">本イベントは延期になりました。</b>
+        <b style="color: red;">本イベントは延期になりました。</b>
       </p>
 
       <p class="text-center">
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <p class="text-center" style="font-size: 80%">
+    <p class="text-center" style="font-size: 80%;">
       <span class="kome">
         新型コロナウイルスに対して運営側はマスク、アルコール消毒などの対策に努めます。また新型コロナウイルスを考慮しご飯会などは行いません
       </span>
@@ -148,13 +148,13 @@ export default {
   components: {
     AboutHeading,
     CircleListBtn,
-    LineIcon
+    LineIcon,
   },
 
   computed: {
     mainImg() {
       return MainImg
-    }
+    },
   },
 
   head() {
@@ -164,9 +164,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: '製作系合同新歓説明会'
+          content: '製作系合同新歓説明会',
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -195,11 +195,11 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

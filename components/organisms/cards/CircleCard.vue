@@ -20,23 +20,23 @@ export default {
   props: {
     to: {
       type: [String, Object],
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
-      required: true
+      required: true,
     },
 
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   data() {
     return {
-      imageTitleOn: false
+      imageTitleOn: false,
     }
   },
 
@@ -47,8 +47,8 @@ export default {
 
     TitleDown() {
       this.imageTitleOn = false
-    }
-  }
+    },
+  },
 }
 </script>
 

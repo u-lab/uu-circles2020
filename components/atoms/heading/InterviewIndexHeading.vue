@@ -3,13 +3,13 @@ export default {
   props: {
     element: {
       type: String,
-      default: 'h1'
-    }
+      default: 'h1',
+    },
   },
 
   render(h) {
     return h(this.element, { class: 'interview-heading' }, this.$slots.default)
-  }
+  },
 }
 </script>
 

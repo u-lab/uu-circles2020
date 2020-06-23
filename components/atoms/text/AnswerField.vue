@@ -17,23 +17,23 @@ export default {
     text: {
       type: [String, Array],
       required: false,
-      default: ''
+      default: '',
     },
 
     isMark: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
 
   computed: {
     isArray() {
-      return function(value) {
+      return function (value) {
         return Array.isArray(value)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

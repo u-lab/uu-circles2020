@@ -14,7 +14,7 @@ const CircleNameTemplate = () =>
 
 export default {
   components: {
-    CircleNameTemplate
+    CircleNameTemplate,
   },
 
   fetch({ store }) {
@@ -23,7 +23,7 @@ export default {
 
   data() {
     return {
-      count: ''
+      count: '',
     }
   },
 
@@ -42,7 +42,7 @@ export default {
 
     nextCircle() {
       return getArrAfter(this.circles, this.count) // 一つ後のサークル情報取得
-    }
+    },
   },
 
   created() {
@@ -53,7 +53,7 @@ export default {
     if (idx === -1) {
       return this.$nuxt.error({
         statusCode: 404,
-        message: 'Page Not Found'
+        message: 'Page Not Found',
       })
     }
 
@@ -67,9 +67,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.circle.name || this.circle.shortname
+          content: this.circle.name || this.circle.shortname,
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -98,10 +98,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

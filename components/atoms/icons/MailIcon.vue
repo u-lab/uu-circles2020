@@ -13,21 +13,21 @@ export default {
   props: {
     email: {
       type: String,
-      required: true
+      required: true,
     },
 
     subject: {
       type: String,
       default: '宇都宮大学サークルビラ一覧からのお知らせ',
-      required: false
+      required: false,
     },
 
     width: {
       type: [Number, String],
       default: 50,
-      required: false
-    }
-  }
+      required: false,
+    },
+  },
 }
 </script>
 

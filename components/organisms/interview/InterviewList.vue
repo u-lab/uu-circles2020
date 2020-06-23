@@ -26,32 +26,32 @@ const InterviewCard = () => import('@/components/molecules/cards/InterviewCard')
 
 export default {
   components: {
-    InterviewCard
+    InterviewCard,
   },
 
   props: {
     interviews: {
       type: Array,
-      required: true
+      required: true,
     },
 
     authors: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
     getAuthor() {
-      return function(authorId) {
+      return function (authorId) {
         return (
           this.authors.find((obj) => obj.id === authorId) || {
             name: '不明',
-            src: '/no-image.png'
+            src: '/no-image.png',
           }
         )
       }
-    }
+    },
   },
 
   methods: {
@@ -63,7 +63,7 @@ export default {
     getAuthorSrc(authorId) {
       const author = this.getAuthor(authorId)
       return author.image
-    }
-  }
+    },
+  },
 }
 </script>

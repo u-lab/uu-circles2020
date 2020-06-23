@@ -32,14 +32,14 @@ export default {
   props: {
     circle: {
       type: Circle,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
     carouselImage() {
       return [this.circle.image, ...this.circle.subImage]
-    }
-  }
+    },
+  },
 }
 </script>

@@ -9,20 +9,20 @@ export default {
   props: {
     href: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
       default: '',
-      required: false
+      required: false,
     },
 
     width: {
       type: [Number, String],
       default: 50,
-      required: false
-    }
-  }
+      required: false,
+    },
+  },
 }
 </script>

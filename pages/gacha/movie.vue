@@ -8,7 +8,7 @@
           // autoplay: 1,
           controls: 0,
           modestbranding: 1,
-          playsinline: 1
+          playsinline: 1,
         }"
         :controls="0"
         @playing="playing"
@@ -38,7 +38,7 @@ export default {
         grey: 'r-UyKBwLtkk',
         pink: 'imdevLeQog4',
         yellow: 'PogDpBdSVm0',
-        five: 'bMYQ8JhCpwg'
+        five: 'bMYQ8JhCpwg',
       }
     },
 
@@ -76,7 +76,7 @@ export default {
 
     player() {
       return this.$refs.youtube.player
-    }
+    },
   },
 
   mounted() {
@@ -96,7 +96,7 @@ export default {
     // 再生終了した際に発火
     ended() {
       this.$router.push('/gacha/result')
-    }
+    },
   },
 
   head() {
@@ -106,9 +106,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'ガチャ演出'
+          content: 'ガチャ演出',
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -137,10 +137,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

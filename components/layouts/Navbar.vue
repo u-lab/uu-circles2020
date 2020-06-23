@@ -11,14 +11,14 @@ const SiteTitleText = () => import('@/components/atoms/text/SiteTitleText')
 
 export default {
   components: {
-    SiteTitleText
+    SiteTitleText,
   },
 
   computed: {
     titleElement() {
       return this.$route.path === '/' ? 'h1' : 'p'
-    }
-  }
+    },
+  },
 }
 </script>
 

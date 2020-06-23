@@ -12,15 +12,15 @@ export default {
     text: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
 
     isMark: {
       type: Boolean,
       required: false,
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 }
 </script>
 

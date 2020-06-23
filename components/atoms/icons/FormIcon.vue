@@ -7,26 +7,26 @@ import BaseIcon from '@/components/atoms/icons/BaseIcon'
 
 export default {
   components: {
-    BaseIcon
+    BaseIcon,
   },
 
   props: {
     href: {
       type: String,
-      required: true
+      required: true,
     },
 
     src: {
       type: String,
       default: '',
-      required: false
+      required: false,
     },
 
     width: {
       type: [Number, String],
       default: 50,
-      required: false
-    }
+      required: false,
+    },
   },
 
   computed: {
@@ -36,7 +36,7 @@ export default {
 
     iconSrc() {
       return this.src || this.baseIconSrc
-    }
-  }
+    },
+  },
 }
 </script>

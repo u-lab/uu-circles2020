@@ -44,13 +44,13 @@ export default {
     AboutHeading,
     CircleListBtn,
     GachaResultOneTemplate,
-    GachaResultFiveTemplate
+    GachaResultFiveTemplate,
   },
 
   computed: {
     ...mapGetters({
-      gachaResult: 'gacha/circles'
-    })
+      gachaResult: 'gacha/circles',
+    }),
   },
 
   head() {
@@ -60,9 +60,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'ガチャ結果'
+          content: 'ガチャ結果',
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -91,10 +91,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

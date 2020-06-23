@@ -12,13 +12,13 @@ export default {
     src: {
       type: String,
       required: false,
-      default: 'no-image.png'
+      default: 'no-image.png',
     },
 
     title: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

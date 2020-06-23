@@ -10,13 +10,13 @@ const InterviewIndexTemplate = () =>
 
 export default {
   components: {
-    InterviewIndexTemplate
+    InterviewIndexTemplate,
   },
 
   asyncData() {
     return {
       authors: getAuthors(),
-      interviews: getInterviews()
+      interviews: getInterviews(),
     }
   },
 
@@ -27,21 +27,21 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'インタビュー記事一覧'
+          content: 'インタビュー記事一覧',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'description',
           name: 'description',
           content:
-            'ビラだけじゃわからないサークルの魅力を知れ！インタビュー記事一覧です。様々な団体にインタビューしました。ぜひ、ご覧ください！'
+            'ビラだけじゃわからないサークルの魅力を知れ！インタビュー記事一覧です。様々な団体にインタビューしました。ぜひ、ご覧ください！',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'ビラだけじゃわからないサークルの魅力を知れ！インタビュー記事一覧です。様々な団体にインタビューしました。ぜひ、ご覧ください！'
-        }
+            'ビラだけじゃわからないサークルの魅力を知れ！インタビュー記事一覧です。様々な団体にインタビューしました。ぜひ、ご覧ください！',
+        },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -70,10 +70,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

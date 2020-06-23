@@ -30,19 +30,19 @@ export default {
   components: {
     CircleListBtn,
     InterviewIndexHeading,
-    InterviewList
+    InterviewList,
   },
 
   props: {
     authors: {
       type: Array /** Author[] */,
-      default: undefined
+      default: undefined,
     },
 
     interviews: {
       type: Array /** Interview[] */,
-      default: undefined
-    }
-  }
+      default: undefined,
+    },
+  },
 }
 </script>

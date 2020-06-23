@@ -25,8 +25,8 @@ const AboutHeading = () => import('@/components/atoms/heading/AboutHeading')
 
 export default {
   components: {
-    AboutHeading
-  }
+    AboutHeading,
+  },
 }
 </script>
 

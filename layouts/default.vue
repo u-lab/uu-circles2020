@@ -21,11 +21,11 @@ export default {
   components: {
     Navbar,
     MainBackground,
-    UuFooter
+    UuFooter,
   },
 
   mounted() {
     Typekit.load({ async: true })
-  }
+  },
 }
 </script>

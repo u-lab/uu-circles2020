@@ -58,29 +58,29 @@ export default {
     CircleImage,
     CircleListBtn,
     CircleNameHeader,
-    InlineIcons
+    InlineIcons,
   },
 
   props: {
     circle: {
       type: Circle,
-      required: true
+      required: true,
     },
 
     circles: {
       type: Array,
-      required: true
+      required: true,
     },
 
     beforeCircle: {
       type: Circle,
-      default: undefined
+      default: undefined,
     },
 
     nextCircle: {
       type: Circle,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
 
   computed: {
@@ -90,7 +90,7 @@ export default {
 
     toBefore() {
       return this.beforeCircle ? `/circles/${this.beforeCircle.id}` : undefined
-    }
-  }
+    },
+  },
 }
 </script>

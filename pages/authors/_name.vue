@@ -17,7 +17,7 @@
 
       <div class="mb-4">
         <h2 class="description">新入生に向けて一言</h2>
-        <div class="radius pa-2" style="border: 1px solid #000">
+        <div class="radius pa-2" style="border: 1px solid #000;">
           <p
             v-for="(description, key) in author.description"
             :key="key"
@@ -38,19 +38,19 @@
 <script>
 import {
   getAuthors,
-  findAuthorById
+  findAuthorById,
 } from '@/src/domains/services/AuthorService'
 const NavyBlueButton = () => import('@/components/atoms/buttons/NavyBlueButton')
 
 export default {
   components: {
-    NavyBlueButton
+    NavyBlueButton,
   },
 
   asyncData({ params }) {
     const author = findAuthorById(getAuthors(), params.name)
     return {
-      author
+      author,
     }
   },
 
@@ -61,9 +61,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.author.name
+          content: this.author.name,
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -92,11 +92,11 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

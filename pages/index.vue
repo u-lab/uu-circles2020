@@ -23,7 +23,7 @@ export default {
   components: {
     CircleListField,
     CircleLengthField,
-    IntroContentField
+    IntroContentField,
   },
 
   fetch({ store }) {
@@ -33,7 +33,7 @@ export default {
   computed: {
     circles() {
       return this.$store.getters.circles
-    }
+    },
   },
 
   head() {
@@ -57,10 +57,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

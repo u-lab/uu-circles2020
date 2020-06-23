@@ -1,8 +1,12 @@
 <template>
-  <v-row style="width: 320px">
+  <v-row style="width: 320px;">
     <v-col cols="4" sm="4" class="d-flex justify-end">
       <p class="pt-4" style="width: 60px;">
-        <v-img src="/icon-60x60.png" width="60px" style="border-radius: 10px" />
+        <v-img
+          src="/icon-60x60.png"
+          width="60px"
+          style="border-radius: 10px;"
+        />
       </p>
     </v-col>
 

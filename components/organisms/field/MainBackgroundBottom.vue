@@ -2,8 +2,8 @@
   <v-row class="main-background-bottom">
     <v-col cols="2" sm="3" class="main-background-bottom-l">
       <div class="text-center">
-        <v-icon color="#fff">mdi-information-variant</v-icon>
-        <p class="mb-0" style="font-size: 10px">重要な<br />お知らせ</p>
+        <v-icon color="#fff" small>mdi-information-variant</v-icon>
+        <p class="mb-0" style="font-size: 10px;">重要な<br />お知らせ</p>
       </div>
     </v-col>
 
@@ -19,8 +19,12 @@
 .main-background-bottom {
   position: absolute;
   max-width: 500px;
-  bottom: 0;
   margin: 0 !important;
+  bottom: 1vh;
+
+  @include mq(sm) {
+    bottom: 0;
+  }
 
   &-l {
     background: grey;

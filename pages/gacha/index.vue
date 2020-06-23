@@ -3,7 +3,7 @@
     <h1 class="text-center about-heading">サークル・部活ガチャ</h1>
 
     <div v-once class="d-flex justify-center">
-      <div style="max-width: 300px">
+      <div style="max-width: 300px;">
         <v-img src="/gacha-with-intro3.png" max-width="300px" alt="ガチャ" />
 
         <div class="cactus">
@@ -35,7 +35,7 @@ const CircleListBtn = () =>
 
 export default {
   components: {
-    CircleListBtn
+    CircleListBtn,
   },
 
   fetch({ store }) {
@@ -43,7 +43,7 @@ export default {
   },
 
   computed: mapGetters({
-    circles: 'circles'
+    circles: 'circles',
   }),
 
   methods: {
@@ -53,12 +53,12 @@ export default {
       // ガチャを引く
       this.$store.dispatch('gacha/gachaDraw', {
         circles,
-        times
+        times,
       })
 
       // リダイレクト
       this.$router.push('/gacha/movie')
-    }
+    },
   },
 
   head() {
@@ -68,21 +68,21 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'サークル・部活ガチャ'
+          content: 'サークル・部活ガチャ',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
         {
           hid: 'description',
           name: 'description',
           content:
-            'サークル・部活ガチャです。どの団体がいいかお悩みの皆さん！！ガチャを引いて楽しくサークルや部活を選んでみよう！'
+            'サークル・部活ガチャです。どの団体がいいかお悩みの皆さん！！ガチャを引いて楽しくサークルや部活を選んでみよう！',
         },
         {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'サークル・部活ガチャです。どの団体がいいかお悩みの皆さん！！ガチャを引いて楽しくサークルや部活を選んでみよう！'
-        }
+            'サークル・部活ガチャです。どの団体がいいかお悩みの皆さん！！ガチャを引いて楽しくサークルや部活を選んでみよう！',
+        },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -111,11 +111,11 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

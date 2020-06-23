@@ -5,18 +5,18 @@
 <script>
 import {
   findInterviewById,
-  getInterviews
+  getInterviews,
 } from '@/src/domains/services/InterviewService'
 import {
   findAuthorById,
-  getAuthors
+  getAuthors,
 } from '@/src/domains/services/AuthorService'
 const InterviewNameTemplate = () =>
   import('@/components/templates/InterviewNameTemplate')
 
 export default {
   components: {
-    InterviewNameTemplate
+    InterviewNameTemplate,
   },
 
   asyncData({ params }) {
@@ -24,7 +24,7 @@ export default {
     const author = findAuthorById(getAuthors(), interview.author)
     return {
       author,
-      interview
+      interview,
     }
   },
 
@@ -35,9 +35,9 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: this.interview.title
+          content: this.interview.title,
         },
-        { hid: 'og:type', property: 'og:type', content: 'article' }
+        { hid: 'og:type', property: 'og:type', content: 'article' },
       ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
@@ -74,10 +74,10 @@ export default {
               }
             ]
           }`,
-          type: 'application/ld+json'
-        }
-      ]
+          type: 'application/ld+json',
+        },
+      ],
     }
-  }
+  },
 }
 </script>

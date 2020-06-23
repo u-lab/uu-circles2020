@@ -2,21 +2,24 @@ import colors from 'vuetify/es5/util/colors'
 import AuthorsData from './src/infra/AuthorsData'
 import CircleData from './src/infra/CircleData'
 import InterviewsData from './src/infra/InterviewsData'
-require('dotenv').config()
 
 export default {
   mode: 'spa',
 
   env: {
-    appUrl: process.env.BASE_URL,
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
   },
+
+  publicRuntimeConfig: {
+    appUrl: process.env.BASE_URL,
+  },
+
   /*
    ** Headers of the page
    */
   head: {
     htmlAttrs: {
-      lang: 'ja'
+      lang: 'ja',
     },
     titleTemplate: '%s - ' + '宇都宮大学ビラ一覧',
     title: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
@@ -27,74 +30,74 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。'
+          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。',
       },
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧'
+        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧'
+        content: '宇都宮大学の部活動・サークル・学生団体のビラ一覧',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。'
+          '宇都宮大学の部活動・サークル・学生団体のビラ一覧です。ここは宇都宮大学で活動するサークルや学生団体のビラを眺められるサイトです。コロナのせいで入学式が危ぶまれていますが、それでもサークルや学生団体を調べられたらいいなと思い製作しています。在校生一同皆様の入学を心からお祝い申し上げます。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://uu-circle20.firebaseapp.com/icon.png'
+        content: 'https://uu-circle20.firebaseapp.com/icon.png',
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
-        content: 'summary'
+        content: 'summary',
       },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@U_lab0811'
+        content: '@U_lab0811',
       },
       {
         name: 'msapplication-TileColor',
-        color: '#2b5797'
+        color: '#2b5797',
       },
       {
         name: 'theme-color',
-        color: '#ffffff'
+        color: '#ffffff',
       },
       {
         name: 'google-site-verification',
-        content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w'
-      }
+        content: 'dmlG89twr8fNzrWOXm2xBlzl3z8td-Ods3QozpaX89w',
+      },
     ],
     link: [
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
-        href: '/apple-touch-icon.png'
+        href: '/apple-touch-icon.png',
       },
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '32x32',
-        href: '/favicon-32x32.png'
+        href: '/favicon-32x32.png',
       },
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '16x16',
-        href: '/favicon-16x16.png'
+        href: '/favicon-16x16.png',
       },
-      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' }
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1c2122' },
     ],
-    script: [{ src: 'https://use.typekit.net/hir7vbf.js', rel: 'preload' }]
+    script: [{ src: 'https://use.typekit.net/hir7vbf.js', rel: 'preload' }],
   },
   /*
    ** Customize the progress-bar color
@@ -113,13 +116,11 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-analytics',
     '@nuxtjs/vuetify',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
   /*
    ** Nuxt.js modules
@@ -129,7 +130,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/device',
     '@nuxtjs/pwa',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
   ],
   /*
    ** Axios module configuration
@@ -149,10 +150,10 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
-    }
+          success: colors.green.accent3,
+        },
+      },
+    },
   },
 
   sitemap: {
@@ -169,15 +170,15 @@ export default {
       }
 
       return urls
-    }
+    },
   },
 
   styleResources: {
-    scss: ['~/assets/scss/functions/*.scss']
+    scss: ['~/assets/scss/functions/*.scss'],
   },
 
   googleAnalytics: {
-    id: 'UA-159871975-1'
+    id: 'UA-159871975-1',
   },
 
   pwa: {
@@ -188,7 +189,7 @@ export default {
       display: 'standalone',
       Scope: '/',
       start_url: '/',
-      splash_pages: null
+      splash_pages: null,
     },
 
     /* workbox options */
@@ -196,16 +197,18 @@ export default {
       runtimeCaching: [
         {
           urlPattern: '^https://use.typekit.net/(.*)',
-          handler: 'cacheFirst'
+          handler: 'cacheFirst',
         },
         {
           urlPattern:
             '^https://firebasestorage.googleapis.com/v0/b/uu-circle20.appspot.com/(.*)',
-          handler: 'cacheFirst'
-        }
-      ]
-    }
+          handler: 'cacheFirst',
+        },
+      ],
+    },
   },
+
+  telemetry: false,
 
   generate: {
     routes() {
@@ -226,7 +229,7 @@ export default {
       arr = [...arr, ...circleArr]
 
       return arr
-    }
+    },
   },
 
   /*
@@ -237,6 +240,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
-  }
+    extend(config, ctx) {},
+  },
 }
