@@ -2,7 +2,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/u-lab/uu-circles2020/badge)](https://www.codefactor.io/repository/github/u-lab/uu-circles2020)
 [![DeepScan grade](https://deepscan.io/api/teams/8910/projects/11141/branches/161914/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8910&pid=11141&bid=161914)
  
-  <img src="./static/favicon-32x32.png" style="width: 50px; margin-right: 16px">
   <a href="https://uu-circle20.firebaseapp.com/">
     https://uu-circle20.firebaseapp.com/
   </a>
@@ -18,6 +17,7 @@
 - Vue.js
 - Nuxt.js v2.12.0
 - Firebase
+- GitHub Actions
 
 ## 環境構築
 
