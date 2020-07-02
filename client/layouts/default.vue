@@ -4,9 +4,9 @@
 
     <navbar />
 
-    <v-content>
+    <v-main>
       <nuxt />
-    </v-content>
+    </v-main>
 
     <uu-footer />
   </v-app>
