@@ -27,21 +27,13 @@
     "test:e2e": "cross-env NODE_ENV=test jest --config ./tests/e2e-config.json",
     "testServer": "cross-env NODE_ENV=test nuxt build && nuxt start --port 3000"
   },
-  "lint-staged": {
-    "*.{js,vue}": "npm run lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
     "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "@nuxtjs/sitemap": "^2.3.2",
+    "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^2.6.11",
-    "nuxt": "^2.13.0",
+    "nuxt": "^2.13.2",
     "sanitize-html": "^1.27.0",
     "vue-youtube": "^1.4.0"
   },
@@ -54,16 +46,16 @@
     "@vue/test-utils": "^1.0.3",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
     "babel-preset-env": "^1.7.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.3.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": ">=1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "firebase": "^7.15.4",
+    "firebase": "^7.15.5",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "jest-puppeteer": "^4.4.0",
     "lint-staged": "^10.2.11",
     "lodash.clonedeep": "^4.5.0",

@@ -24,11 +24,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: npm install
-    - name: npm run build:prod
-      run: |-
-        npm run build:prod
+    - name: インストール
+      run: npm ci
+      working-directory: ./client
+    - name: ビルド
+      run: npm run build:prod
+      working-directory: ./client
       env:
         BASE_URL: https://uu-circle20.firebaseapp.com
         FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
