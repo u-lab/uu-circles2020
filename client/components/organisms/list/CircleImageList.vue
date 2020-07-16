@@ -5,6 +5,7 @@
       <v-lazy>
         <circle-card
           v-if="circle.id && circle.image && circle.name"
+          :detail="circle.detail"
           :to="`/circles/${circle.id}`"
           :src="circle.image"
           :name="circle.shortname || circle.name"

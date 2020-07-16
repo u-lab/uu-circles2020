@@ -28,7 +28,7 @@ class Circle {
    * @param { circle } circle
    */
   constructor(circle) {
-    this.detail = circle.detail
+    this.detail = circle.detail || false
     /** @type String[] */
     this.description = convertToArr(circle.description)
       ? convertToArr(circle.description)
