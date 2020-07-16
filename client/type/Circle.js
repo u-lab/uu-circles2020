@@ -8,6 +8,7 @@ const PUBLIC_LIST = {
 
 /**
  * @typedef {{
+ *  detail: Boolean,
  *  date: String|String[]
  *  description: String|String[],
  *  kana: String|null,
@@ -27,6 +28,7 @@ class Circle {
    * @param { circle } circle
    */
   constructor(circle) {
+    this.detail = circle.detail || false
     /** @type String[] */
     this.description = convertToArr(circle.description)
       ? convertToArr(circle.description)

@@ -21,6 +21,7 @@
           <p class="text-center">宇都宮大学消費生活協同組合</p>
           <p class="text-center">お米ひろばさとう</p>
           <p class="text-center">Future Rise</p>
+          <p class="text-center">Lifedge</p>
           <p class="text-center">
             <small>※五十音順</small>
           </p>
