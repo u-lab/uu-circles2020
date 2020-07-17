@@ -47,7 +47,11 @@ export default {
 
   computed: {
     getLink() {
-      return !this.detail ? this.to : (this.detail || undefined)
+      if (!this.detail) {
+        return this.to
+      }
+
+      return this.detail !== false ? this.to : undefined
     },
   },
 
