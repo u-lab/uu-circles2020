@@ -1,6 +1,6 @@
 <template>
   <v-card
-    :to="isLink"
+    :to="getLink"
     hover
     class="pos-relative"
     ontouchstart=""
@@ -19,7 +19,7 @@
 export default {
   props: {
     detail: {
-      type: Boolean,
+      type: String,
       default: false,
     },
 
@@ -46,8 +46,8 @@ export default {
   },
 
   computed: {
-    isLink() {
-      return !this.detail ? this.to : undefined
+    getLink() {
+      return !this.detail ? this.to : (this.detail || undefined)
     },
   },
 
