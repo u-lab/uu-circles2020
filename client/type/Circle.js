@@ -8,7 +8,7 @@ const PUBLIC_LIST = {
 
 /**
  * @typedef {{
- *  detail: Boolean,
+ *  detail: String,
  *  date: String|String[]
  *  description: String|String[],
  *  kana: String|null,
