@@ -1,6 +1,6 @@
 <template>
   <v-card
-    :to="to"
+    :to="getTo"
     :href="getDetail"
     hover
     class="pos-relative"
@@ -53,6 +53,14 @@ export default {
       }
 
       return this.detail
+    },
+
+    getTo() {
+      if (this.getDetail) {
+        return this.getDetail
+      }
+
+      return to
     },
   },
 
