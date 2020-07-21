@@ -1,6 +1,7 @@
 <template>
   <v-card
-    :to="getLink"
+    :to="to"
+    :href="getDetail"
     hover
     class="pos-relative"
     ontouchstart=""
@@ -25,7 +26,7 @@ export default {
 
     to: {
       type: [String, Object],
-      default: '',
+      default: undefined,
     },
 
     src: {
@@ -46,9 +47,9 @@ export default {
   },
 
   computed: {
-    getLink() {
+    getDetail() {
       if (!this.detail) {
-        return this.to
+        return undefined
       }
 
       return this.detail
