@@ -2,6 +2,7 @@
   <v-card
     :to="getTo"
     :href="getDetail"
+    :target="getDetail ? '_blank' : undefined"
     hover
     class="pos-relative"
     ontouchstart=""
@@ -57,10 +58,10 @@ export default {
 
     getTo() {
       if (this.getDetail) {
-        return this.getDetail
+        return undefined
       }
 
-      return to
+      return this.to
     },
   },
 
