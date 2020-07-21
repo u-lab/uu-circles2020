@@ -20,12 +20,12 @@ export default {
   props: {
     detail: {
       type: String,
-      default: false,
+      default: '',
     },
 
     to: {
       type: [String, Object],
-      required: true,
+      default: '',
     },
 
     src: {
@@ -51,7 +51,7 @@ export default {
         return this.to
       }
 
-      return this.detail !== false ? this.to : undefined
+      return this.detail
     },
   },
 
