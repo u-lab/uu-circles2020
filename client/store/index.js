@@ -30,6 +30,7 @@ export const actions = {
       shuffleArr(circles)
       // サークルの上位表示の固定
       fixedCircleById(circles, 'u-lab', 0)
+      fixedCircleById(circles, 'engmix', 10)
       commit('SET_CIRCLES', circles)
     }
   },
