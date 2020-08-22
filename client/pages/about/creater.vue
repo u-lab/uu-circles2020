@@ -13,7 +13,7 @@
           <div>
             <p>このサイトは学生団体U-labが作成しました。</p>
             <p>
-              <nuxt-link to="circles/u-lab"
+              <nuxt-link to="/circles/u-lab"
                 >U-labの新歓チラシはこちら</nuxt-link
               >
             </p>
