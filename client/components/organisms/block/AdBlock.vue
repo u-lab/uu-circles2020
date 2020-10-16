@@ -25,12 +25,8 @@ export default {
     getComponentName() {
       const num = rand()
 
-      if (num > 6) {
+      if (num > 4) {
         return 'AdMiyaLunch'
-      }
-
-      if (num < 1) {
-        return 'AdInterviews'
       }
 
       return 'AdEngeeMix'
