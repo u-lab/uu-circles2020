@@ -5,7 +5,12 @@
         <v-img :src="src" max-width="300px" />
       </nuxt-link>
 
-      <a v-if="href" :href="href" target="_blank" rel="noopener">
+      <a
+        v-if="href"
+        :href="href"
+        target="_blank"
+        :rel="isRel ? noopener : undefined"
+      >
         <v-img :src="src" max-width="300px" />
       </a>
 
@@ -36,6 +41,11 @@ export default {
       type: String,
       required: false,
       default: '',
+    },
+
+    isRel: {
+      type: Boolean,
+      default: true,
     },
   },
 

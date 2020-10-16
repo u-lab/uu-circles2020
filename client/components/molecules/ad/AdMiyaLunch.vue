@@ -1,8 +1,5 @@
 <template>
-  <ad-base
-    href="https://twitter.com/miyameshiouen/status/1271759789148663815?s=21"
-    :src="logo"
-  />
+  <ad-base href="https://miyameshi.com/" :is-rel="true" :src="logo" />
 </template>
 
 <script>
