@@ -34,7 +34,7 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "core-js": "^2.6.11",
     "nuxt": "^2.13.2",
-    "sanitize-html": "^1.27.0",
+    "sanitize-html": "^2.3.2",
     "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
